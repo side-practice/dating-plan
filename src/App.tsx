@@ -63,7 +63,7 @@ function ItemCard({ it, f }: { it: Item; f: Favs }) {
   return <div className="card p-3 flex flex-col gap-2 animate-pop">
     <Thumb it={it} />
     <div className="flex items-start justify-between gap-2"><h3 className="font-bold leading-snug">{it.name}</h3><Heart it={it} f={f} /></div>
-    <div className="flex flex-wrap gap-1 text-[11px]"><span className="px-2 py-0.5 rounded-full bg-blush-100 text-blush-700">{it.category}</span>
+    <div className="flex flex-wrap gap-1 text-[11px]"><span className="px-2 py-0.5 rounded-full bg-mint-100 text-mint-700">{it.category}</span>
       {it.area && <span className="px-2 py-0.5 rounded-full bg-slate-100">{it.area}</span>}<Badges it={it} /></div>
     {it.type !== 'idea' && <Stars it={it} />}
     {it.address && <div className="text-xs text-slate-500">📍 {it.address}</div>}
@@ -84,7 +84,7 @@ function PlanCard({ pl, title, budget, min, f, onSwap, actions, delay = 0 }: { p
   const t = total(pl); const tier = budget ? tierOf(pl.slots.map(s => s.item), budget) : null
   return <div className="card p-4 sm:p-5 animate-pop" style={{ animationDelay: `${delay}ms` }}>
     <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
-      <h3 className="font-extrabold text-lg bg-gradient-to-r from-blush-700 to-blush-500 bg-clip-text text-transparent">{title}</h3>
+      <h3 className="font-extrabold text-lg bg-gradient-to-r from-blush-600 to-mint-600 bg-clip-text text-transparent">{title}</h3>
       {tier != null && <span className={`text-[11px] font-semibold px-2.5 py-1 rounded-full ${tierCls[tier]}`}>{TIER_LABEL[tier]}</span>}</div>
     <div className="text-sm mb-3">💸 Ước tính: <b className={tier === 3 ? 'text-blush-600' : 'text-mint-700'}>{t.unknown === t.slots ? 'chưa rõ giá' : fmtRange(t.lo, t.hi)}</b>{t.unknown > 0 && t.unknown < t.slots && <span className="text-amber-700"> + {t.unknown} chỗ chưa rõ giá</span>}{budget ? <span className="text-slate-500"> / ngân sách {min != null ? rangeOf(budget, min).label : fmt(budget)}</span> : null}{budget && min != null && t.unknown === 0 && t.hi < min ? <span className="text-slate-500"> · rẻ hơn khoảng đã chọn</span> : null}</div>
     <ol className="relative border-l-2 border-dashed border-blush-300 ml-2 space-y-4">
@@ -99,7 +99,7 @@ function PlanCard({ pl, title, budget, min, f, onSwap, actions, delay = 0 }: { p
             <Stars it={s.item} />
             <div className="text-xs"><Price it={s.item} /></div>
             {s.item.opening_hours && <div className="text-xs text-slate-500">🕒 {s.item.opening_hours}</div>}
-            <div className="flex flex-wrap gap-2 items-center">{onSwap && <button onClick={() => onSwap(si)} className="btn bg-blush-100 text-blush-700 !px-3 !py-1 text-xs">🔄 Đổi gợi ý</button>}<Links it={s.item} /></div></div></div>
+            <div className="flex flex-wrap gap-2 items-center">{onSwap && <button onClick={() => onSwap(si)} className="btn bg-mint-100 text-mint-700 !px-3 !py-1 text-xs">🔄 Đổi gợi ý</button>}<Links it={s.item} /></div></div></div>
       </li>)}</ol>
     {actions && <div className="flex flex-wrap gap-2 mt-4 pt-3 border-t border-blush-100">{actions}</div>}
   </div>
@@ -107,7 +107,7 @@ function PlanCard({ pl, title, budget, min, f, onSwap, actions, delay = 0 }: { p
 function PlanActions({ pl, meta, diary, toast }: { pl: Plan; meta: Meta; diary: Diary; toast: (m: string) => void }) {
   const saved = diary.has(pl)
   return <>
-    <button className="btn bg-gradient-to-r from-blush-600 to-blush-400 text-white" onClick={async () => { const r = await sharePlan(pl, meta); toast(r === 'copied' ? '📋 Đã chép kèo + link, dán gửi người ấy nhé!' : r === 'shared' ? '💌 Đã chia sẻ' : 'Không chia sẻ được 😢') }}>📤 Chia sẻ</button>
+    <button className="btn bg-gradient-to-r from-blush-500 via-blush-400 to-mint-400 text-white" onClick={async () => { const r = await sharePlan(pl, meta); toast(r === 'copied' ? '📋 Đã chép kèo + link, dán gửi người ấy nhé!' : r === 'shared' ? '💌 Đã chia sẻ' : 'Không chia sẻ được 😢') }}>📤 Chia sẻ</button>
     <button disabled={saved} className={`btn ${saved ? 'bg-mint-100 text-mint-700' : 'bg-mint-100 text-mint-700'}`} onClick={() => { diary.add(pl, meta); toast('📔 Đã lưu kèo vào Nhật ký') }}>{saved ? '✓ Đã lưu' : '📌 Lưu kèo'}</button></>
 }
 
@@ -155,14 +155,14 @@ function Planner({ f, diary, toast }: { f: Favs; diary: Diary; toast: (m: string
         <p className="text-xs text-slate-500 mt-1">Số bên cạnh = chỗ hợp điểm đầu của combo vào giờ đã chọn. Các điểm liền nhau luôn cùng quận hoặc quận kề.</p></div>
       <div><h2 className="font-bold mb-2">💗 Mood</h2>
         <div className="flex flex-wrap gap-2">{MOODS.map(m => <Chip key={m} on={p.moods.includes(m)} onClick={() => setP({ ...p, moods: tog(p.moods, m) })}>{m}</Chip>)}</div></div>
-      <button onClick={() => run(p)} className="btn w-full !py-3 text-base text-white bg-gradient-to-r from-blush-600 to-blush-400 shadow-lg hover:shadow-blush-300/50">Lên kèo hẹn hò 💞</button>
+      <button onClick={() => run(p)} className="btn w-full !py-3 text-base text-white bg-gradient-to-r from-blush-500 via-blush-400 to-mint-400 shadow-lg hover:shadow-blush-300/50">Lên kèo hẹn hò 💞</button>
     </section>
     <section className="space-y-4" id="results">
       {!res && <div className="card p-8 text-center text-slate-500"><div className="text-6xl mb-3 animate-bounce">💌</div>Chọn ngân sách, giờ, combo rồi bấm <b>Lên kèo</b> nhé!</div>}
       {res && res.empty && <div className="card p-5 space-y-3 border-amber-200 animate-pop" data-testid="empty">
         <div className="text-3xl">🧭</div>
         <p><b>{res.empty.district.join(', ')}</b> hiện chỉ có <b>{res.empty.count}</b> địa điểm phù hợp cho chặng “{res.empty.slot}” vào giờ này, nên chưa ghép được kèo.</p>
-        {res.empty.neighbourCount > res.empty.count && <button className="btn bg-gradient-to-r from-blush-600 to-blush-400 text-white" onClick={() => run({ ...res.p, districts: res.empty!.neighbours })}>🗺️ Mở rộng sang quận lân cận ({res.empty.neighbourCount} chỗ)</button>}
+        {res.empty.neighbourCount > res.empty.count && <button className="btn bg-gradient-to-r from-blush-500 via-blush-400 to-mint-400 text-white" onClick={() => run({ ...res.p, districts: res.empty!.neighbours })}>🗺️ Mở rộng sang quận lân cận ({res.empty.neighbourCount} chỗ)</button>}
         <button className="btn bg-slate-100 ml-2" onClick={() => run({ ...res.p, districts: [] })}>Mọi khu trung tâm</button></div>}
       {res && !res.plans.length && !res.empty && <div className="card p-5 space-y-2" data-testid="empty"><div className="text-3xl">🌙</div><p>Giờ này hầu hết chỗ cho combo này đã đóng cửa hoặc chưa mở. Thử buổi khác nhé!</p>
         <div className="flex flex-wrap gap-2">{PARTS.filter(x => x.id !== res.p.part).map(x => <button key={x.id} className="btn bg-mint-100 text-mint-700" onClick={() => run({ ...res.p, part: x.id })}>{x.label}</button>)}</div></div>}
@@ -201,7 +201,7 @@ function DiaryEntry({ e, diary, f, toast }: { e: Entry; diary: Diary; f: Favs; t
       <label className="w-24 h-24 rounded-xl border-2 border-dashed border-blush-200 grid place-items-center text-xs text-blush-500 cursor-pointer text-center">{busy ? 'Đang lưu…' : <>📷<br />Thêm ảnh</>}
         <input type="file" accept="image/*" multiple className="hidden" onChange={async x => { const fs = [...(x.target.files ?? [])]; if (!fs.length) return; setBusy(true); try { const ks = await Promise.all(fs.slice(0, 6).map(addPhoto)); diary.update(e.id, { photos: [...e.photos, ...ks] }) } catch { toast('Không lưu được ảnh 😢') } setBusy(false); x.target.value = '' }} /></label></div>
     <div className="flex flex-wrap gap-2 text-xs"><button className="btn bg-slate-100 !py-1" onClick={() => setOpen(!open)}>{open ? 'Thu gọn' : 'Xem chi tiết'}</button>
-      <button className="btn bg-blush-100 text-blush-700 !py-1" onClick={async () => { const r = await sharePlan(pl, { combo: e.combo, budget: e.budget, min: e.min, date: e.date }); if (r === 'copied') toast('📋 Đã chép kèo + link') }}>📤 Chia sẻ</button>
+      <button className="btn bg-mint-100 text-mint-700 !py-1" onClick={async () => { const r = await sharePlan(pl, { combo: e.combo, budget: e.budget, min: e.min, date: e.date }); if (r === 'copied') toast('📋 Đã chép kèo + link') }}>📤 Chia sẻ</button>
       <button className="btn bg-blush-50 text-blush-600 !py-1 ml-auto" onClick={() => { if (confirm('Xoá kèo này khỏi nhật ký?')) diary.remove(e.id) }}>Xoá</button></div>
     {open && <PlanCard pl={relink(pl)} title="Chi tiết kèo" budget={e.budget} min={e.min} f={f} />}
   </div>
@@ -233,7 +233,7 @@ function AtHome({ f }: { f: Favs }) {
       <div className="flex flex-wrap gap-2">{moodsAvail.map(m => <Chip key={m} on={moods.includes(m)} onClick={() => setMoods(tog(moods, m))}>#{m} <span className="opacity-50">{all.filter(i => i.mood_tags.includes(m)).length}</span></Chip>)}</div>
       {hasCost ? <div className="flex flex-wrap gap-2">{COST.map(([id, l]) => <Chip key={id} on={cost === id} onClick={() => setCost(cost === id ? '' : id)}>{l}</Chip>)}</div>
         : <p className="text-xs text-slate-500">Các ý tưởng tại nhà chưa có dữ liệu chi phí nên chỉ lọc theo mood (đa số gần như miễn phí).</p>}
-      <button className="btn w-full sm:w-auto text-white bg-gradient-to-r from-blush-600 to-blush-400" onClick={() => { const src = list.length ? list : all; let x = src[Math.floor(Math.random() * src.length)]; if (src.length > 1) while (x === pick) x = src[Math.floor(Math.random() * src.length)]; setPick(x) }}>🎲 Gợi ý ngẫu nhiên</button></div>
+      <button className="btn w-full sm:w-auto text-white bg-gradient-to-r from-blush-500 via-blush-400 to-mint-400" onClick={() => { const src = list.length ? list : all; let x = src[Math.floor(Math.random() * src.length)]; if (src.length > 1) while (x === pick) x = src[Math.floor(Math.random() * src.length)]; setPick(x) }}>🎲 Gợi ý ngẫu nhiên</button></div>
     {pick && <div className="card p-4 ring-2 ring-blush-300 animate-pop"><div className="text-xs font-bold text-blush-600 mb-2">✨ Tối nay thử cái này nha</div><div className="max-w-sm"><ItemCard it={pick} f={f} /></div></div>}
     <p className="text-sm text-slate-500">{list.length} ý tưởng</p>
     <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">{list.map(i => <ItemCard key={i.id} it={i} f={f} />)}</div>
@@ -285,7 +285,7 @@ export default function App() {
   return <div className="pb-24 sm:pb-8">
     <header className="sticky top-0 z-20 backdrop-blur bg-blush-100/70 border-b border-blush-200">
       <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
-        <h1 className="font-black text-xl bg-gradient-to-r from-blush-700 to-blush-500 bg-clip-text text-transparent">Hẹn Hò Sài Gòn 💞</h1>
+        <h1 className="font-black text-xl bg-gradient-to-r from-blush-600 via-blush-500 to-mint-500 bg-clip-text text-transparent">Hẹn Hò Sài Gòn 💞</h1>
         <nav className="hidden sm:flex gap-1">{TABS.map(([id, e, l]) => <Chip key={id} on={tab === id} onClick={() => go(id)}>{e} {l}{id === 'mine' && diary.list.length ? ` (${diary.list.length})` : ''}</Chip>)}</nav>
       </div></header>
     <main className="max-w-6xl mx-auto px-4 py-5">
@@ -297,7 +297,7 @@ export default function App() {
       {tab === 'mine' && <Mine f={f} diary={diary} toast={show} />}
     </main>
     <Toast msg={msg} />
-    <nav className="sm:hidden fixed bottom-0 inset-x-0 z-20 bg-white/85 backdrop-blur border-t border-blush-100 grid grid-cols-5 pb-[env(safe-area-inset-bottom)]">
-      {TABS.map(([id, e, l]) => <button key={id} onClick={() => go(id)} className={`py-2 flex flex-col items-center text-[11px] transition ${tab === id ? 'text-blush-600 font-bold' : 'text-slate-500'}`}><span className={`text-xl transition ${tab === id ? 'scale-125' : ''}`}>{e}</span>{l}</button>)}
+    <nav className="sm:hidden fixed bottom-0 inset-x-0 z-20 bg-mint-50/90 backdrop-blur border-t border-mint-200 grid grid-cols-5 pb-[env(safe-area-inset-bottom)]">
+      {TABS.map(([id, e, l]) => <button key={id} onClick={() => go(id)} className={`py-2 flex flex-col items-center text-[11px] transition ${tab === id ? 'text-mint-700 font-bold' : 'text-slate-500'}`}><span className={`text-xl transition ${tab === id ? 'scale-125' : ''}`}>{e}</span>{l}</button>)}
     </nav></div>
 }
