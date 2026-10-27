@@ -275,7 +275,7 @@ function Section({ title, sub, list, f }: { title: string; sub: string; list: It
     <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">{list.map(i => <ItemCard key={i.id} it={i} f={f} />)}</div></div>
 }
 
-const TABS = [['plan', '💞', 'Lên kèo'], ['browse', '🗺️', 'Khám phá'], ['ideas', '🏠', 'Tại nhà'], ['trip', '🏕️', 'Đi xa'], ['mine', '📔', 'Nhật ký']] as const
+const TABS = [['plan', '💞', 'Lên kèo'], ['browse', '🗺️', 'Khám phá'], ['trip', '🏕️', 'Đi xa'], ['mine', '📔', 'Nhật ký']] as const
 export default function App() {
   const f = useFavs(); const diary = useDiary(); const { msg, show } = useToast()
   const [tab, setTab] = useState<string>('plan')
@@ -292,12 +292,12 @@ export default function App() {
       {tab === 'plan' && <>{shared && <SharedPlan data={shared} f={f} diary={diary} toast={show} onClose={() => { setShared(null); history.replaceState(null, '', location.pathname) }} />}
         <p className="mb-4 text-slate-600">Tối nay đi đâu? Để mình lên kèo vừa túi tiền cho hai bạn ở trung tâm Sài Gòn ✨</p><Planner f={f} diary={diary} toast={show} /></>}
       {tab === 'browse' && <Browse f={f} />}
-      {tab === 'ideas' && <AtHome f={f} />}
+      {/* TODO: bật lại tab Tại nhà sau — {tab === 'ideas' && <AtHome f={f} />} */}
       {tab === 'trip' && <Section f={f} title="🏕️ Chuyến đi xa" sub="Ngoài khu trung tâm — không nằm trong gợi ý tối nay" list={items.filter(i => i.out_of_area)} />}
       {tab === 'mine' && <Mine f={f} diary={diary} toast={show} />}
     </main>
     <Toast msg={msg} />
-    <nav className="sm:hidden fixed bottom-0 inset-x-0 z-20 bg-mint-50/90 backdrop-blur border-t border-mint-200 grid grid-cols-5 pb-[env(safe-area-inset-bottom)]">
+    <nav className="sm:hidden fixed bottom-0 inset-x-0 z-20 bg-mint-50/90 backdrop-blur border-t border-mint-200 grid grid-cols-4 pb-[env(safe-area-inset-bottom)]">
       {TABS.map(([id, e, l]) => <button key={id} onClick={() => go(id)} className={`py-2 flex flex-col items-center text-[11px] transition ${tab === id ? 'text-mint-700 font-bold' : 'text-slate-500'}`}><span className={`text-xl transition ${tab === id ? 'scale-125' : ''}`}>{e}</span>{l}</button>)}
     </nav></div>
 }
