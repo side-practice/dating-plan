@@ -1,7 +1,7 @@
 @tailwind base; @tailwind components; @tailwind utilities;
-body { @apply bg-gradient-to-br from-rose-50 via-pink-50 to-emerald-100 min-h-screen text-slate-800 antialiased; }
+body { @apply min-h-screen text-slate-800 antialiased; background: linear-gradient(180deg,#fcd6dc 0%,#f9dbe8 50%,#fbe7ec 85%,#e8f6ef 100%) fixed; }
 .chip { @apply px-3 py-1.5 rounded-full text-sm border transition-all duration-200 select-none; }
-.chip-on { @apply bg-gradient-to-r from-pink-500 to-emerald-500 text-white border-transparent shadow-md scale-[1.03]; }
-.chip-off { @apply bg-white/70 border-pink-200 text-slate-700 hover:bg-emerald-50 hover:border-emerald-200; }
+.chip-on { @apply bg-gradient-to-r from-blush-600 to-blush-400 text-white border-transparent shadow-md scale-[1.03]; }
+.chip-off { @apply bg-white/70 border-blush-200 text-slate-700 hover:bg-blush-50 hover:border-mint-300; }
 .card { @apply bg-white/80 backdrop-blur rounded-3xl shadow-sm border border-white; }
 .btn { @apply rounded-full px-4 py-2 text-sm font-medium transition active:scale-95; }
