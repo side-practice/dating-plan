@@ -240,19 +240,32 @@ function AtHome({ f }: { f: Favs }) {
   </div>
 }
 
+const fold = (t: string) => t.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/đ/g, 'd').replace(/Đ/g, 'd').toLowerCase()
+const hay = new Map<string, { name: string; all: string }>()
+const haystack = (i: Item) => { let h = hay.get(i.id); if (!h) { h = { name: fold(i.name), all: fold([i.name, i.address, i.district, i.area, i.category, i.google_category, i.description_vi, ...(i.mood_tags || [])].filter(Boolean).join(' ')) }; hay.set(i.id, h) } return h }
 function Browse({ f, onlyFavs }: { f: Favs; onlyFavs?: boolean }) {
+  const [q, setQ] = useState('')
   const [type, setType] = useState(''); const [cat, setCat] = useState(''); const [ds, setDs] = useState<string[]>([]); const [moods, setMoods] = useState<string[]>([])
   const base = useMemo(() => items.filter(i => !i.out_of_area && i.type !== 'idea').sort(byRating), [])
   const cats = useMemo(() => [...new Set(base.filter(i => !type || i.type === type).map(i => i.category))].sort((a, b) => a.localeCompare(b, 'vi')), [type, base])
-  const list = (onlyFavs ? items.filter(i => f.favs.includes(i.id)) : base.filter(i => (!type || i.type === type) && (!cat || i.category === cat) && inDistrict(i, ds) && (!moods.length || i.mood_tags.some(m => moods.includes(m)))))
+  const filtered = (onlyFavs ? items.filter(i => f.favs.includes(i.id)) : base.filter(i => (!type || i.type === type) && (!cat || i.category === cat) && inDistrict(i, ds) && (!moods.length || i.mood_tags.some(m => moods.includes(m)))))
+  const words = fold(q.trim()).split(/\s+/).filter(Boolean)
+  const list = !words.length ? filtered : filtered.filter(i => { const h = haystack(i); return words.every(w => h.all.includes(w)) })
+    .map(i => { const h = haystack(i); const w = words.join(' '); return [i, h.name.startsWith(w) ? 0 : h.name.includes(w) ? 1 : words.every(x => h.name.includes(x)) ? 2 : 3] as const })
+    .sort((a, b) => a[1] - b[1]).map(x => x[0])
   return <div className="space-y-4">
     {!onlyFavs && <div className="card p-4 space-y-3">
+      <div className="relative"><span className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">🔍</span>
+        <input type="text" inputMode="search" enterKeyHint="search" value={q} onChange={e => setQ(e.target.value)} placeholder="Tìm quán, địa chỉ, quận, mood… (vd: lau, bui vien, rooftop)" aria-label="Tìm địa điểm"
+          className="w-full rounded-full border border-pink-200 bg-white/80 pl-10 pr-10 py-2.5 outline-none focus:ring-2 focus:ring-pink-300" />
+        {q && <button onClick={() => setQ('')} aria-label="Xóa tìm kiếm" className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600">✕</button>}</div>
       <div className="flex flex-wrap gap-2">{[['', 'Tất cả'], ['food', '🍽️ Ăn uống'], ['activity', '🎡 Đi chơi']].map(([v, l]) => <Chip key={v} on={type === v} onClick={() => { setType(v); setCat('') }}>{l}</Chip>)}
         <select value={cat} onChange={e => setCat(e.target.value)} className="chip chip-off"><option value="">Mọi loại hình</option>{cats.map(c => <option key={c}>{c}</option>)}</select></div>
       <div className="flex flex-wrap gap-2">{DISTRICTS.map(d => <Chip key={d} on={ds.includes(d)} onClick={() => setDs(tog(ds, d))}>{d} <span className="opacity-50">{districtCount(d)}</span></Chip>)}</div>
       <div className="flex flex-wrap gap-2">{MOODS.map(m => <Chip key={m} on={moods.includes(m)} onClick={() => setMoods(tog(moods, m))}>#{m}</Chip>)}</div>
     </div>}
-    <p className="text-sm text-slate-500">{list.length} địa điểm · sắp xếp theo đánh giá (★ có tính số lượt review)</p>
+    <p className="text-sm text-slate-500">{list.length} địa điểm · {words.length ? `kết quả cho “${q.trim()}”` : "sắp xếp theo đánh giá (★ có tính số lượt review)"}</p>
+    {!onlyFavs && words.length > 0 && !list.length && <div className="card p-8 text-center text-slate-500">Không tìm thấy “{q.trim()}”. Thử bỏ bớt bộ lọc quận/mood hoặc gõ ngắn hơn nhé.</div>}
     {onlyFavs && !list.length && <div className="card p-8 text-center text-slate-500">Chưa có mục yêu thích nào. Bấm 🤍 để lưu nhé!</div>}
     <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">{list.map(i => <ItemCard key={i.id} it={i} f={f} />)}</div>
   </div>
