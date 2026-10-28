@@ -53,7 +53,7 @@ function Price({ it }: { it: Item }) {
   if (it.price_unit === 'free' || (lo === 0 && hi === 0)) return <span className="text-mint-700"><b>Miễn phí</b>{it.price_note ? ` · ${it.price_note}` : ''}</span>
   if (lo == null && hi == null) return <span className="text-amber-700"><b>Chưa rõ giá</b>{per && ` · ${per}`}{it.price_note ? ` · ${it.price_note}` : ''}</span>
   return <span className="space-x-1"><span className="text-mint-700 font-semibold">{fmtRange(lo, hi)}/2 người</span>
-    {per && <span className="text-slate-500">({per})</span>}
+    {per && <span className="text-slate-600">({per})</span>}
     {conf && (it.price_source_url ? <a href={it.price_source_url} target="_blank" rel="noreferrer" className={`underline decoration-dotted ${conf[1]}`} title={`${it.price_note ?? ''} — kiểm tra ${it.price_checked ?? ''}`}>{conf[0]}</a> : <span className={conf[1]}>{conf[0]}</span>)}</span>
 }
 function Stars({ it }: { it: Item }) {
@@ -61,7 +61,7 @@ function Stars({ it }: { it: Item }) {
   const full = Math.round(it.rating)
   return <span className="text-xs inline-flex items-center gap-1" title={`${it.rating} / 5 trên Google Maps`}>
     <span className="text-amber-500 tracking-tighter">{'★'.repeat(full)}<span className="text-slate-300">{'★'.repeat(5 - full)}</span></span>
-    <b>{it.rating.toLocaleString('vi-VN', { minimumFractionDigits: 1 })}</b>{it.reviews != null && <span className="text-slate-500">({fmtCount(it.reviews)} đánh giá)</span>}</span>
+    <b>{it.rating.toLocaleString('vi-VN', { minimumFractionDigits: 1 })}</b>{it.reviews != null && <span className="text-slate-600">({fmtCount(it.reviews)} đánh giá)</span>}</span>
 }
 function Badges({ it }: { it: Item }) {
   return <>{isUncertain(it) && <span className="text-[11px] px-2 py-0.5 rounded-full bg-amber-100 text-amber-800">⚠️ cần kiểm tra lại</span>}
@@ -99,10 +99,10 @@ function ItemCard({ it, f }: { it: Item; f: Favs }) {
     <div className="flex flex-wrap gap-1 text-[11px]"><span className="sticker bg-mint-50 text-mint-800">{it.category}</span>
       {it.area && <span className="px-2 py-0.5 rounded-full bg-slate-100">{it.area}</span>}<Badges it={it} /></div>
     {it.type !== 'idea' && <Stars it={it} />}
-    {it.address && <div className="text-xs text-slate-500">📍 {it.address}</div>}
+    {it.address && <div className="text-xs text-slate-600">📍 {it.address}</div>}
     <p className="text-sm text-slate-600">{it.description_vi}</p>
     {it.type !== 'idea' && <div className="text-xs"><Price it={it} /></div>}
-    {it.opening_hours && <div className="text-xs text-slate-500">🕒 {it.opening_hours}</div>}
+    {it.opening_hours && <div className="text-xs text-slate-600">🕒 {it.opening_hours}</div>}
     <div className="flex flex-wrap gap-1">{it.mood_tags.map(m => <span key={m} className="text-[11px] text-mint-600">#{m}</span>)}</div>
     <div className="mt-auto"><Links it={it} /></div>
   </div>
@@ -116,22 +116,23 @@ function Toast({ msg }: { msg: string }) { return msg ? <div className="fixed z-
 function PlanCard({ pl, title, budget, min, f, onSwap, actions, delay = 0 }: { pl: Plan; title: string; budget?: number; min?: number; f: Favs; onSwap?: (si: number) => void; actions?: React.ReactNode; delay?: number }) {
   const t = total(pl); const tier = budget ? tierOf(pl.slots.map(s => s.item), budget) : null
   return <div className={`card p-5 sm:p-7 ${delay % 160 ? 'mint-shadow' : ''}`} style={{ animationDelay: `${delay}ms` }}>
+    <div className="win-bar -mx-5 sm:-mx-7 -mt-5 sm:-mt-7 mb-5 px-5 sm:px-7 py-3 flex items-center gap-1.5"><span className="w-2.5 h-2.5 rounded-full bg-blush-400" /><span className="w-2.5 h-2.5 rounded-full bg-mint-400" /><span className="w-2.5 h-2.5 rounded-full bg-slate-300" /><span className="ml-3 text-[11px] text-slate-600 truncate">hen-ho-sai-gon · {title}</span></div>
     <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
       <h3 className="font-semibold text-lg"><span className="eyebrow block mb-0.5">Kèo hẹn hò</span>{title}</h3>
       {tier != null && <span className={`text-[11px] font-semibold px-2.5 py-1 rounded-full ${tierCls[tier]}`}>{TIER_LABEL[tier]}</span>}</div>
-    <div className="text-sm mb-3">💸 Ước tính: <b className={tier === 3 ? 'text-blush-600' : 'text-mint-700'}>{t.unknown === t.slots ? 'chưa rõ giá' : fmtRange(t.lo, t.hi)}</b>{t.unknown > 0 && t.unknown < t.slots && <span className="text-amber-700"> + {t.unknown} chỗ chưa rõ giá</span>}{budget ? <span className="text-slate-500"> / ngân sách {min != null ? rangeOf(budget, min).label : fmt(budget)}</span> : null}{budget && min != null && t.unknown === 0 && t.hi < min ? <span className="text-slate-500"> · rẻ hơn khoảng đã chọn</span> : null}</div>
+    <div className="text-sm mb-3">💸 Ước tính: <b className={tier === 3 ? 'text-blush-600' : 'text-mint-700'}>{t.unknown === t.slots ? 'chưa rõ giá' : fmtRange(t.lo, t.hi)}</b>{t.unknown > 0 && t.unknown < t.slots && <span className="text-amber-700"> + {t.unknown} chỗ chưa rõ giá</span>}{budget ? <span className="text-slate-600"> / ngân sách {min != null ? rangeOf(budget, min).label : fmt(budget)}</span> : null}{budget && min != null && t.unknown === 0 && t.hi < min ? <span className="text-slate-600"> · rẻ hơn khoảng đã chọn</span> : null}</div>
     <ol className="relative border-l-2 border-solid border-blush-100 ml-2 space-y-4">
       {pl.slots.map((s, si) => <li key={si} className="pl-5 relative">
         <span className="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-white border-2 border-blush-500 ring-4 ring-white" />
-        <div className="text-xs font-semibold text-blush-700 tabular-nums">{s.time} · {s.label}{si > 0 && <span className="font-normal text-slate-500"> · {s.km != null ? `cách điểm trước ~${s.km.toLocaleString('vi-VN', { maximumFractionDigits: 1 })} km` : (s.item.area === pl.slots[si - 1].item.area ? 'cùng quận' : 'quận kề bên')}</span>}</div>
+        <div className="text-xs font-semibold text-blush-700 tabular-nums">{s.time} · {s.label}{si > 0 && <span className="font-normal text-slate-600"> · {s.km != null ? `cách điểm trước ~${s.km.toLocaleString('vi-VN', { maximumFractionDigits: 1 })} km` : (s.item.area === pl.slots[si - 1].item.area ? 'cùng quận' : 'quận kề bên')}</span>}</div>
         <div className="flex gap-3 mt-1"><div className="w-20 shrink-0"><Thumb it={s.item} h="h-20" credit={false} /></div>
           <div className="min-w-0 flex-1 space-y-1"><div className="flex justify-between gap-2"><b>{s.item.name}</b><Heart it={s.item} f={f} /></div>
             <div className="flex flex-wrap gap-1 text-[11px]">{s.item.area && <span className="px-2 py-0.5 rounded-full bg-slate-100">{s.item.area}</span>}<Badges it={s.item} />
               {s.closed === true && <span className="px-2 py-0.5 rounded-full bg-blush-100 text-blush-700">⏰ có thể đóng cửa lúc {s.time}</span>}
-              {s.closed == null && s.item.type !== 'idea' && <span className="px-2 py-0.5 rounded-full bg-slate-100 text-slate-500">🕒 chưa rõ giờ mở</span>}</div>
+              {s.closed == null && s.item.type !== 'idea' && <span className="px-2 py-0.5 rounded-full bg-slate-100 text-slate-600">🕒 chưa rõ giờ mở</span>}</div>
             <Stars it={s.item} />
             <div className="text-xs"><Price it={s.item} /></div>
-            {s.item.opening_hours && <div className="text-xs text-slate-500">🕒 {s.item.opening_hours}</div>}
+            {s.item.opening_hours && <div className="text-xs text-slate-600">🕒 {s.item.opening_hours}</div>}
             <div className="flex flex-wrap gap-2 items-center">{onSwap && <button onClick={() => onSwap(si)} className="btn bg-mint-100 text-mint-700 !px-3 !py-1 text-xs">🔄 Đổi gợi ý</button>}<Links it={s.item} /></div></div></div>
       </li>)}</ol>
     {actions && <div className="flex flex-wrap gap-2 mt-4 pt-3 border-t border-blush-100">{actions}</div>}
@@ -172,11 +173,11 @@ function Planner({ f, diary, toast }: { f: Favs; diary: Diary; toast: (m: string
   const meta = (q: Prefs): Meta => ({ combo: q.combo, budget: q.budget, min: q.min, date: nextDate(q.dow ?? null) })
   const rl = (q: Prefs) => q.min != null ? rangeOf(q.budget, q.min).label : fmt(q.budget)
   const today = new Date().getDay()
-  return <div className="grid grid-cols-[minmax(0,1fr)] lg:grid-cols-[minmax(340px,400px)_minmax(0,1fr)] gap-6 lg:gap-8">
+  return <div id="planner" className="scroll-mt-20 grid grid-cols-[minmax(0,1fr)] lg:grid-cols-[minmax(340px,400px)_minmax(0,1fr)] gap-6 lg:gap-8">
     <section className="card p-6 space-y-7 h-fit lg:sticky lg:top-24">
       <div data-testid="ranges"><h2 className="font-semibold text-[15px] mb-2.5">💸 Ngân sách (cho 2 người, tối đa 1tr/buổi)</h2>
         <div className="grid grid-cols-3 gap-1.5 sm:gap-2 [&>button]:!px-1 [&>button]:max-[379px]:!text-[12px]">{RANGES.map(r => <Chip key={r.id} on={p.budget === r.max && p.min === r.min} onClick={() => setP({ ...p, budget: r.max, min: r.min })}>{r.label}</Chip>)}</div>
-        <p className="text-xs text-slate-500 mt-1">Ưu tiên kèo có tổng giá <b>nằm trong khoảng</b> đã chọn — khoảng cao hơn sẽ gợi ý chỗ xịn hơn.</p></div>
+        <p className="text-xs text-slate-600 mt-1">Ưu tiên kèo có tổng giá <b>nằm trong khoảng</b> đã chọn — khoảng cao hơn sẽ gợi ý chỗ xịn hơn.</p></div>
       <div><h2 className="font-semibold text-[15px] mb-2.5">🕒 Khi nào?</h2>
         <div className="flex flex-wrap gap-2">{PARTS.map(x => <Chip key={x.id} on={p.part === x.id} onClick={() => setP({ ...p, part: x.id })}>{x.label}</Chip>)}</div>
         <div className="flex flex-wrap gap-1.5 mt-2">{[null, 1, 2, 3, 4, 5, 6, 0].map(d => <Chip key={String(d)} on={p.dow === d} onClick={() => setP({ ...p, dow: d })}>{d == null ? 'Ngày bất kỳ' : DOW[d] + (d === today ? ' (nay)' : '')}</Chip>)}</div>
@@ -185,7 +186,7 @@ function Planner({ f, diary, toast }: { f: Favs; diary: Diary; toast: (m: string
         <div className="flex flex-wrap gap-2">{COMBOS.map(c => <Chip key={c.id} on={p.combo === c.id} onClick={() => setP({ ...p, combo: c.id as Combo, part: c.part ?? p.part })}>{c.label}</Chip>)}</div></div>
       <div><h2 className="font-semibold text-[15px] mb-2.5">📍 Khu vực</h2>
         <div className="flex flex-wrap gap-2">{DISTRICTS.map(d => <Chip mint key={d} on={p.districts.includes(d)} onClick={() => setP({ ...p, districts: tog(p.districts, d) })}>{d} <span className={counts[d] ? 'opacity-60' : 'opacity-40 line-through'}>{counts[d]}</span></Chip>)}</div>
-        <p className="text-xs text-slate-500 mt-1">Số bên cạnh = chỗ hợp điểm đầu của combo vào giờ đã chọn. Các điểm liền nhau luôn cùng quận hoặc quận kề.</p></div>
+        <p className="text-xs text-slate-600 mt-1">Số bên cạnh = chỗ hợp điểm đầu của combo vào giờ đã chọn. Các điểm liền nhau luôn cùng quận hoặc quận kề.</p></div>
       <div><h2 className="font-semibold text-[15px] mb-2.5">💗 Mood</h2>
         <div className="flex flex-wrap gap-2">{MOODS.map(m => <Chip mint key={m} on={p.moods.includes(m)} onClick={() => setP({ ...p, moods: tog(p.moods, m) })}>{m}</Chip>)}</div></div>
       <button onClick={() => run(p)} className="btn btn-pop btn-primary w-full !py-3 text-base">Lên kèo hẹn hò 💞</button>
@@ -206,12 +207,12 @@ function Planner({ f, diary, toast }: { f: Favs; diary: Diary; toast: (m: string
           {res.altCombos.slice(0, 4).map(c => <button key={c} className="btn bg-white border border-blush-200" onClick={() => run({ ...res.p, combo: c })}>Thử {COMBOS.find(x => x.id === c)?.label} (vừa {rl(res.p)})</button>)}</div></div>}
       {res?.plans.map((pl, pi) => <PlanCard key={pi} pl={pl} title={`Kế hoạch ${pi + 1}${pl.slots.length > 2 ? ' · Buổi dài' : ''}`} budget={res.p.budget} min={res.p.min} f={f} delay={pi * 80} onSwap={si => swap(pi, si)}
         actions={<PlanActions pl={pl} meta={meta(res.p)} diary={diary} toast={toast} />} />)}
-      {res && res.plans.length > 0 && <p className="text-xs text-slate-500">✅ chắc chắn = tổng giá cao nhất ≤ mức trên của khoảng · 🟡 có thể = tổng giá thấp nhất ≤ mức trên của khoảng. Giá ước tính cho 2 người từ nguồn công khai (kiểm tra 26/10/2026), có thể đã đổi. Giờ mở cửa: chỗ đã biết giờ luôn được kiểm tra; chỗ “chưa rõ giờ” nên gọi trước.</p>}
+      {res && res.plans.length > 0 && <p className="text-xs text-slate-600">✅ chắc chắn = tổng giá cao nhất ≤ mức trên của khoảng · 🟡 có thể = tổng giá thấp nhất ≤ mức trên của khoảng. Giá ước tính cho 2 người từ nguồn công khai (kiểm tra 26/10/2026), có thể đã đổi. Giờ mở cửa: chỗ đã biết giờ luôn được kiểm tra; chỗ “chưa rõ giờ” nên gọi trước.</p>}
     </section></div>
 }
 
 function SharedPlan({ data, f, diary, toast, onClose }: { data: { plan: Plan; meta: Meta }; f: Favs; diary: Diary; toast: (m: string) => void; onClose: () => void }) {
-  return <div className="space-y-3 mb-6"><div className="flex items-center justify-between"><h2 className="font-bold">💌 Kèo được chia sẻ {data.meta.date && <span className="font-normal text-slate-500">· {fmtDate(data.meta.date)}</span>}</h2><button className="btn bg-slate-100" onClick={onClose}>Đóng</button></div>
+  return <div className="space-y-3 mb-6"><div className="flex items-center justify-between"><h2 className="font-bold">💌 Kèo được chia sẻ {data.meta.date && <span className="font-normal text-slate-600">· {fmtDate(data.meta.date)}</span>}</h2><button className="btn bg-slate-100" onClick={onClose}>Đóng</button></div>
     <PlanCard pl={relink(data.plan)} title="Kèo của tụi mình" budget={data.meta.budget} min={data.meta.min} f={f} actions={<PlanActions pl={data.plan} meta={data.meta} diary={diary} toast={toast} />} /></div>
 }
 
@@ -225,9 +226,9 @@ function DiaryEntry({ e, diary, f, toast }: { e: Entry; diary: Diary; f: Favs; t
   if (!pl) return null
   const t = total(pl)
   return <div className={`card p-4 space-y-3 ${e.done ? 'ring-2 ring-mint-200' : ''}`}>
-    <div className="flex items-start justify-between gap-2"><div><div className="text-xs text-slate-500">{e.done ? '💖 Đã đi' : '📌 Sắp đi'} · <input type="date" value={e.date} onChange={x => diary.update(e.id, { date: x.target.value })} className="bg-transparent underline decoration-dotted" /></div>
+    <div className="flex items-start justify-between gap-2"><div><div className="text-xs text-slate-600">{e.done ? '💖 Đã đi' : '📌 Sắp đi'} · <input type="date" value={e.date} onChange={x => diary.update(e.id, { date: x.target.value })} className="bg-transparent underline decoration-dotted" /></div>
       <h3 className="font-bold">{pl.slots.map(s => s.item.name).join(' → ')}</h3>
-      <div className="text-xs text-slate-500">{pl.slots.map(s => s.time).join(' · ')} · 💸 {t.unknown === t.slots ? 'chưa rõ giá' : fmtRange(t.lo, t.hi)}</div></div>
+      <div className="text-xs text-slate-600">{pl.slots.map(s => s.time).join(' · ')} · 💸 {t.unknown === t.slots ? 'chưa rõ giá' : fmtRange(t.lo, t.hi)}</div></div>
       <button onClick={() => diary.update(e.id, { done: !e.done })} className={`btn shrink-0 ${e.done ? 'bg-mint-500 text-white' : 'bg-mint-50 text-mint-700 border border-mint-200'}`}>{e.done ? '✓ Đã đi' : 'Đánh dấu đã đi'}</button></div>
     <textarea value={e.note} onChange={x => diary.update(e.id, { note: x.target.value.slice(0, 280) })} rows={2} placeholder="Ghi chú ngắn: hôm đó thế nào? 💭" className="w-full rounded-2xl border border-blush-100 bg-white/70 p-3 text-sm outline-none focus:ring-2 ring-blush-200" />
     <div className="flex flex-wrap gap-2 items-center">{e.photos.map(k => <Photo key={k} k={k} onDel={() => { delPhoto(k); diary.update(e.id, { photos: e.photos.filter(x => x !== k) }) }} />)}
@@ -245,10 +246,10 @@ function Mine({ f, diary, toast }: { f: Favs; diary: Diary; toast: (m: string) =
   return <div className="space-y-4">
     <div className="flex gap-2"><Chip on={view === 'diary'} onClick={() => setView('diary')}>📔 Nhật ký ({diary.list.length})</Chip><Chip on={view === 'fav'} onClick={() => setView('fav')}>❤️ Yêu thích ({f.favs.length})</Chip></div>
     {view === 'fav' ? <Browse f={f} onlyFavs /> : <>
-      {!diary.list.length && <div className="card p-8 text-center text-slate-500"><div className="text-5xl mb-2">📔</div>Chưa có kèo nào. Lên kèo rồi bấm <b>📌 Lưu kèo</b> để lưu lại nhé!</div>}
+      {!diary.list.length && <div className="card p-8 text-center text-slate-600"><div className="text-5xl mb-2">📔</div>Chưa có kèo nào. Lên kèo rồi bấm <b>📌 Lưu kèo</b> để lưu lại nhé!</div>}
       {up.length > 0 && <><h2 className="font-bold">📌 Sắp tới</h2><div className="grid lg:grid-cols-2 gap-4">{up.map(e => <DiaryEntry key={e.id} e={e} diary={diary} f={f} toast={toast} />)}</div></>}
       {done.length > 0 && <><h2 className="font-bold">💖 Kỷ niệm đã đi</h2><div className="grid lg:grid-cols-2 gap-4">{done.map(e => <DiaryEntry key={e.id} e={e} diary={diary} f={f} toast={toast} />)}</div></>}
-      <p className="text-xs text-slate-500">Nhật ký và ảnh chỉ lưu trên máy này (localStorage + IndexedDB), không gửi đi đâu.</p></>}
+      <p className="text-xs text-slate-600">Nhật ký và ảnh chỉ lưu trên máy này (localStorage + IndexedDB), không gửi đi đâu.</p></>}
   </div>
 }
 
@@ -261,14 +262,14 @@ function AtHome({ f }: { f: Favs }) {
   const list = all.filter(i => (!moods.length || i.mood_tags.some(m => moods.includes(m))) && (!cost || (() => { const v = costOf(i); const c = COST.find(x => x[0] === cost)!; return v != null && c[2](v) })()))
   const moodsAvail = MOODS.filter(m => all.some(i => i.mood_tags.includes(m)))
   return <div className="space-y-4">
-    <div><h2 className="text-xl font-bold">🏠 Date tại nhà / sáng tạo</h2><p className="text-sm text-slate-500">Không cần ra đường vẫn ngọt ngào</p></div>
+    <div><h2 className="text-xl font-bold">🏠 Date tại nhà / sáng tạo</h2><p className="text-sm text-slate-600">Không cần ra đường vẫn ngọt ngào</p></div>
     <div className="card p-4 space-y-3">
       <div className="flex flex-wrap gap-2">{moodsAvail.map(m => <Chip key={m} on={moods.includes(m)} onClick={() => setMoods(tog(moods, m))}>#{m} <span className="opacity-50">{all.filter(i => i.mood_tags.includes(m)).length}</span></Chip>)}</div>
       {hasCost ? <div className="flex flex-wrap gap-2">{COST.map(([id, l]) => <Chip key={id} on={cost === id} onClick={() => setCost(cost === id ? '' : id)}>{l}</Chip>)}</div>
-        : <p className="text-xs text-slate-500">Các ý tưởng tại nhà chưa có dữ liệu chi phí nên chỉ lọc theo mood (đa số gần như miễn phí).</p>}
+        : <p className="text-xs text-slate-600">Các ý tưởng tại nhà chưa có dữ liệu chi phí nên chỉ lọc theo mood (đa số gần như miễn phí).</p>}
       <button className="btn btn-pop btn-primary w-full sm:w-auto" onClick={() => { const src = list.length ? list : all; let x = src[Math.floor(Math.random() * src.length)]; if (src.length > 1) while (x === pick) x = src[Math.floor(Math.random() * src.length)]; setPick(x) }}>🎲 Gợi ý ngẫu nhiên</button></div>
     {pick && <div className="card p-4 ring-2 ring-blush-300 animate-pop"><div className="text-xs font-bold text-blush-600 mb-2">✨ Tối nay thử cái này nha</div><div className="max-w-sm"><ItemCard it={pick} f={f} /></div></div>}
-    <p className="text-sm text-slate-500">{list.length} ý tưởng</p>
+    <p className="text-sm text-slate-600">{list.length} ý tưởng</p>
     <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-4 lg:gap-5">{list.map(i => <ItemCard key={i.id} it={i} f={f} />)}</div>
   </div>
 }
@@ -297,17 +298,24 @@ function Browse({ f, onlyFavs }: { f: Favs; onlyFavs?: boolean }) {
       <div className="flex flex-wrap gap-2">{DISTRICTS.map(d => <Chip mint key={d} on={ds.includes(d)} onClick={() => setDs(tog(ds, d))}>{d} <span className="opacity-50">{districtCount(d)}</span></Chip>)}</div>
       <div className="flex flex-wrap gap-2">{MOODS.map(m => <Chip mint key={m} on={moods.includes(m)} onClick={() => setMoods(tog(moods, m))}>#{m}</Chip>)}</div>
     </div>}
-    <p className="text-sm text-slate-500">{list.length} địa điểm · {words.length ? `kết quả cho “${q.trim()}”` : "sắp xếp theo đánh giá (★ có tính số lượt review)"}</p>
-    {!onlyFavs && words.length > 0 && !list.length && <div className="card p-8 text-center text-slate-500">Không tìm thấy “{q.trim()}”. Thử bỏ bớt bộ lọc quận/mood hoặc gõ ngắn hơn nhé.</div>}
-    {onlyFavs && !list.length && <div className="card p-8 text-center text-slate-500">Chưa có mục yêu thích nào. Bấm 🤍 để lưu nhé!</div>}
+    <p className="text-sm text-slate-600">{list.length} địa điểm · {words.length ? `kết quả cho “${q.trim()}”` : "sắp xếp theo đánh giá (★ có tính số lượt review)"}</p>
+    {!onlyFavs && words.length > 0 && !list.length && <div className="card p-8 text-center text-slate-600">Không tìm thấy “{q.trim()}”. Thử bỏ bớt bộ lọc quận/mood hoặc gõ ngắn hơn nhé.</div>}
+    {onlyFavs && !list.length && <div className="card p-8 text-center text-slate-600">Chưa có mục yêu thích nào. Bấm 🤍 để lưu nhé!</div>}
     <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-4 lg:gap-5">{list.map(i => <ItemCard key={i.id} it={i} f={f} />)}</div>
   </div>
 }
 function Section({ title, sub, list, f }: { title: string; sub: string; list: Item[]; f: Favs }) {
-  return <div className="space-y-4"><div><h2 className="text-xl font-bold">{title}</h2><p className="text-sm text-slate-500">{sub}</p></div>
+  return <div className="space-y-4"><div><h2 className="text-xl font-bold">{title}</h2><p className="text-sm text-slate-600">{sub}</p></div>
     <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-4 lg:gap-5">{list.map(i => <ItemCard key={i.id} it={i} f={f} />)}</div></div>
 }
 
+/** DSH-style soft cloud background: a few solid-colour blobs, blurred via CSS filter (solid fills only). */
+function Clouds() {
+  return <div aria-hidden className="clouds">
+    <span className="blob b1" /><span className="blob b2" /><span className="blob b3" />
+    <span className="blob b4" /><span className="blob b5 hidden lg:block" />
+  </div>
+}
 const TABS = [['plan', '💞', 'Lên kèo'], ['browse', '🗺️', 'Khám phá'], ['trip', '🏕️', 'Đi xa'], ['mine', '📔', 'Nhật ký']] as const
 export default function App() {
   const f = useFavs(); const diary = useDiary(); const { msg, show } = useToast()
@@ -318,22 +326,27 @@ export default function App() {
   const go = (id: string) => { if (id === tab) return; const run = () => { flushSync(() => setTab(id)); window.scrollTo(0, 0) }
     const d = document as Document & { startViewTransition?: (cb: () => void) => unknown }
     if (d.startViewTransition && !reduced()) d.startViewTransition(run); else run() }
-  return <div className="pb-24 sm:pb-8">
-    <header className={`sticky top-0 z-20 transition-[background-color,border-color,box-shadow] duration-300 border-b ${sc.scrolled ? 'bg-[#fdf8f9]/85 backdrop-blur-md border-[rgba(30,35,44,.08)] shadow-[0_1px_0_rgba(30,35,44,.02)]' : 'bg-[#fdf8f9] border-transparent'}`}>
+  return <div className="pb-24 sm:pb-8 relative isolate"><Clouds />
+    <header className={`sticky top-0 z-20 transition-[background-color,border-color,box-shadow] duration-300 border-b ${sc.scrolled ? 'bg-white/65 backdrop-blur-xl border-white/70 shadow-[0_1px_12px_-6px_rgba(30,35,44,.12)]' : 'bg-transparent border-transparent'}`}>
       <div className={`max-w-6xl mx-auto px-5 flex transition-[padding] duration-300 ${sc.scrolled ? 'py-2' : 'py-3 sm:py-4'} items-center justify-between gap-4`}>
         <h1 className="font-semibold text-lg tracking-tight flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-blush-500" /><span>Hẹn Hò <span className="text-mint-700">Sài Gòn</span></span></h1>
-        <nav className="hidden sm:flex gap-1">{TABS.map(([id, e, l]) => <Chip key={id} on={tab === id} onClick={() => go(id)}>{e} {l}{id === 'mine' && diary.list.length ? ` (${diary.list.length})` : ''}</Chip>)}</nav>
+        <nav className="hidden sm:flex gap-1 p-1 rounded-full bg-white/40 backdrop-blur-md border border-white/70">{TABS.map(([id, e, l]) => <Chip key={id} on={tab === id} onClick={() => go(id)}>{e} {l}{id === 'mine' && diary.list.length ? ` (${diary.list.length})` : ''}</Chip>)}</nav>
       </div></header>
     <main ref={mainRef} className="max-w-6xl mx-auto px-5 py-8 sm:py-12"><div key={tab} className="tab-in">
       {tab === 'plan' && <>{shared && <SharedPlan data={shared} f={f} diary={diary} toast={show} onClose={() => { setShared(null); history.replaceState(null, '', location.pathname) }} />}
-        <div className="eyebrow mb-2">✦ Lên kèo tối nay</div><p className="mb-8 text-2xl sm:text-3xl font-medium max-w-2xl leading-snug">Tối nay đi đâu? Để mình lên kèo vừa túi tiền cho hai bạn ở trung tâm Sài Gòn ✨</p><Planner f={f} diary={diary} toast={show} /></>}
+        <section className="text-center pt-6 pb-10 sm:pt-14 sm:pb-16 max-w-3xl mx-auto">
+          <div className="eyebrow mb-5 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/50 backdrop-blur border border-white/70">✦ Lên kèo tối nay</div>
+          <h2 className="text-[34px] leading-[1.15] sm:text-5xl sm:leading-[1.12] font-medium tracking-tight"><span className="text-blush-700">Hẹn hò</span> <span className="text-mint-800">Sài Gòn</span></h2>
+          <p className="mt-5 text-[15px] sm:text-base text-slate-600 max-w-xl mx-auto leading-relaxed">Tối nay đi đâu? Chọn ngân sách, giờ và combo — mình ghép kèo 2–3 điểm gần nhau ở trung tâm Sài Gòn cho hai bạn ✨</p>
+          <button type="button" onClick={() => document.getElementById('planner')?.scrollIntoView({ block: 'start' })} className="btn mt-7 bg-white text-[var(--ink)] !px-5 !py-2.5 shadow-[0_1px_3px_rgba(0,0,0,.08)] hover:shadow-[0_6px_20px_-8px_rgba(179,54,79,.45)] border border-white">💞 Bắt đầu lên kèo</button>
+        </section><Planner f={f} diary={diary} toast={show} /></>}
       {tab === 'browse' && <Browse f={f} />}
       {/* TODO: bật lại tab Tại nhà sau — {tab === 'ideas' && <AtHome f={f} />} */}
       {tab === 'trip' && <Section f={f} title="🏕️ Chuyến đi xa" sub="Ngoài khu trung tâm — không nằm trong gợi ý tối nay" list={items.filter(i => i.out_of_area)} />}
       {tab === 'mine' && <Mine f={f} diary={diary} toast={show} />}
     </div></main>
     <Toast msg={msg} />
-    <nav aria-label="Điều hướng" className={`sm:hidden fixed bottom-0 inset-x-0 z-20 transition-transform duration-300 ${sc.hidden ? 'translate-y-full' : ''}`}><div className="bg-white/95 border-t border-[rgba(30,35,44,.08)] grid grid-cols-4 gap-1 px-2 pt-1.5 pb-[max(.375rem,env(safe-area-inset-bottom))]">
-      {TABS.map(([id, e, l]) => <button key={id} onClick={() => go(id)} className={`py-1.5 flex flex-col items-center text-[11px] rounded-2xl transition-all active:scale-90 ${tab === id ? 'bg-mint-50 text-mint-800 font-semibold' : 'text-slate-500'}`}><span className={`text-xl transition ${tab === id ? 'scale-110' : ''}`}>{e}</span>{l}</button>)}
+    <nav aria-label="Điều hướng" className={`sm:hidden fixed bottom-0 inset-x-0 z-20 transition-transform duration-300 ${sc.hidden ? 'translate-y-full' : ''}`}><div className="bg-white/70 backdrop-blur-xl border-t border-[rgba(30,35,44,.08)] grid grid-cols-4 gap-1 px-2 pt-1.5 pb-[max(.375rem,env(safe-area-inset-bottom))]">
+      {TABS.map(([id, e, l]) => <button key={id} onClick={() => go(id)} className={`py-1.5 flex flex-col items-center text-[11px] rounded-2xl transition-all active:scale-90 ${tab === id ? 'bg-mint-50 text-mint-800 font-semibold' : 'text-slate-600'}`}><span className={`text-xl transition ${tab === id ? 'scale-110' : ''}`}>{e}</span>{l}</button>)}
     </div></nav></div>
 }
