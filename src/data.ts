@@ -36,11 +36,11 @@ export const ratingScore = (it: Item) => it.rating == null ? 0 : (it.rating * (i
 export const byRating = (a: Item, b: Item) => ratingScore(b) - ratingScore(a)
 export const fmtCount = (n: number) => n >= 1000 ? `${(n / 1000).toLocaleString('vi-VN', { maximumFractionDigits: 1 })}k` : String(n)
 const EMO: Record<Kind, [string, string]> = {
-  restaurant: ['🍽️', 'from-orange-200 to-rose-300'], streetfood: ['🍢', 'from-yellow-200 to-orange-300'], cafe: ['☕', 'from-amber-200 to-rose-200'],
-  bar: ['🍸', 'from-indigo-300 to-fuchsia-300'], dessert: ['🍰', 'from-pink-200 to-yellow-100'], photobooth: ['📸', 'from-rose-200 to-sky-200'],
-  spa: ['💆', 'from-emerald-100 to-teal-200'], homestay: ['🏡', 'from-orange-100 to-pink-200'], workshop: ['🎨', 'from-teal-200 to-sky-200'],
-  game: ['🎮', 'from-lime-200 to-emerald-200'], show: ['🎭', 'from-violet-300 to-rose-200'], cinema: ['🎬', 'from-slate-300 to-rose-200'],
-  shopping: ['🛍️', 'from-pink-200 to-violet-200'], experience: ['✨', 'from-amber-100 to-violet-200'], sight: ['🌃', 'from-violet-300 to-pink-200'],
-  idea: ['💡', 'from-yellow-100 to-pink-200'], other: ['💞', 'from-pink-200 to-violet-200'],
+  restaurant: ['🍽️', 'bg-orange-200'], streetfood: ['🍢', 'bg-yellow-200'], cafe: ['☕', 'bg-amber-200'],
+  bar: ['🍸', 'bg-indigo-300'], dessert: ['🍰', 'bg-pink-200'], photobooth: ['📸', 'bg-rose-200'],
+  spa: ['💆', 'bg-emerald-100'], homestay: ['🏡', 'bg-orange-100'], workshop: ['🎨', 'bg-teal-200'],
+  game: ['🎮', 'bg-lime-200'], show: ['🎭', 'bg-violet-300'], cinema: ['🎬', 'bg-slate-300'],
+  shopping: ['🛍️', 'bg-pink-200'], experience: ['✨', 'bg-amber-100'], sight: ['🌃', 'bg-violet-300'],
+  idea: ['💡', 'bg-yellow-100'], other: ['💞', 'bg-pink-200'],
 }
-export const look = (it: Item) => { const m = it.out_of_area ? ['🏕️', 'from-emerald-200 to-teal-300'] : EMO[it.kind] ?? EMO.other; return { emoji: m[0], grad: m[1] } }
+export const look = (it: Item) => { const m = it.out_of_area ? ['🏕️', 'bg-emerald-200'] : EMO[it.kind] ?? EMO.other; return { emoji: m[0], grad: m[1] } }

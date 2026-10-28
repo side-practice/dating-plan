@@ -1,4 +1,5 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
+import { flushSync } from 'react-dom'
 import { Item, items, MOODS, DISTRICTS, districtCount, inDistrict, isUncertain, fmt, fmtCount, mapsUrl, look, byRating, coupleRange, fmtRange, UNIT } from './data'
 import { COMBOS, Combo, Plan, Prefs, PlanResult, Tier, TIER_LABEL, PARTS, DOW, RANGES, rangeOf, plan, districtFit, swapCandidates, relink, total, tierOf } from './planner'
 import { Entry, Meta, decodePlan, sharePlan, loadDiary, saveDiary, newEntry, entryPlan, addPhoto, getPhoto, delPhoto, nextDate, fmtDate, itemIdx } from './store'
@@ -11,8 +12,36 @@ function useFavs() {
 }
 type Favs = ReturnType<typeof useFavs>
 
-function Chip({ on, onClick, children }: { on: boolean; onClick: () => void; children: React.ReactNode }) {
-  return <button type="button" onClick={onClick} className={`chip ${on ? 'chip-on' : 'chip-off'}`}>{children}</button>
+const reduced = () => typeof matchMedia !== 'undefined' && matchMedia('(prefers-reduced-motion: reduce)').matches
+/** Scroll-reveal: watches .card / [data-reveal] elements added under root; fades+rises them in once, staggered per batch. */
+function useReveal(root: React.RefObject<HTMLElement>) {
+  useEffect(() => {
+    const el = root.current; if (!el || reduced() || !('IntersectionObserver' in window)) return
+    const io = new IntersectionObserver(es => {
+      let i = 0
+      for (const e of es) if (e.isIntersecting) { const t = e.target as HTMLElement; t.style.transitionDelay = `${Math.min(i++, 6) * 60}ms`; t.classList.add('in'); io.unobserve(t) }
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.05 })
+    const seen = new WeakSet<Element>()
+    const scan = () => el.querySelectorAll('.card, [data-reveal]').forEach(c => { if (seen.has(c) || c.closest('.card') !== c && c.parentElement?.closest('.card')) return; seen.add(c); c.classList.add('rv'); io.observe(c) })
+    scan(); const mo = new MutationObserver(scan); mo.observe(el, { childList: true, subtree: true })
+    return () => { io.disconnect(); mo.disconnect() }
+  }, [root])
+}
+/** Scroll direction + scrolled flag (rAF-throttled). */
+function useScrollState() {
+  const [st, setSt] = useState({ scrolled: false, hidden: false })
+  useEffect(() => {
+    let last = scrollY, tick = false
+    const on = () => { if (tick) return; tick = true; requestAnimationFrame(() => { const y = scrollY, d = y - last; tick = false
+      setSt(s => { const n = { scrolled: y > 8, hidden: Math.abs(d) < 6 ? s.hidden : d > 0 && y > 120 }; return n.scrolled === s.scrolled && n.hidden === s.hidden ? s : n })
+      if (Math.abs(d) >= 6) last = y }) }
+    addEventListener('scroll', on, { passive: true }); return () => removeEventListener('scroll', on)
+  }, [])
+  return st
+}
+
+function Chip({ on, onClick, children, mint }: { on: boolean; onClick: () => void; children: React.ReactNode; mint?: boolean }) {
+  return <button type="button" aria-pressed={on} onClick={onClick} className={`chip ${on ? 'chip-on' : 'chip-off'} ${mint ? 'mint' : ''}`}>{children}</button>
 }
 const tog = (arr: string[], v: string) => arr.includes(v) ? arr.filter(x => x !== v) : [...arr, v]
 
@@ -48,22 +77,26 @@ function Links({ it }: { it: Item }) {
 }
 function Thumb({ it, h = 'h-28', credit = true }: { it: Item; h?: string; credit?: boolean }) {
   const l = look(it)
-  if (!it.image) return <div className={`w-full ${h} rounded-2xl bg-gradient-to-br ${l.grad} grid place-items-center text-5xl`}>{l.emoji}</div>
-  const logo = it.image_kind === 'logo'
-  return <div className={`relative w-full ${h} rounded-2xl overflow-hidden ${logo ? `bg-gradient-to-br ${l.grad}` : 'bg-slate-100'}`}>
-    <img src={it.image.startsWith('/') ? import.meta.env.BASE_URL + it.image.slice(1) : it.image} alt={it.name} loading="lazy" className={logo ? 'w-full h-full object-contain p-2 mix-blend-multiply' : 'w-full h-full object-cover'} />
+  if (!it.image) return <div className={`w-full ${h} rounded-2xl ${l.grad} grid place-items-center text-5xl`}>{l.emoji}</div>
+  return <Img it={it} h={h} credit={credit} bg={l.grad} />
+}
+function Img({ it, h, credit, bg }: { it: Item; h: string; credit: boolean; bg: string }) {
+  const logo = it.image_kind === 'logo'; const [ok, setOk] = useState(false); const ref = useRef<HTMLImageElement>(null)
+  useEffect(() => { if (ref.current?.complete && ref.current.naturalWidth) setOk(true) }, [])
+  return <div className={`relative w-full ${h} rounded-2xl overflow-hidden ${logo ? bg : ok ? 'bg-slate-100' : (it.id.length % 2 ? 'bg-blush-100' : 'bg-mint-100') + ' skeleton'}`}>
+    <img ref={ref} onLoad={() => setOk(true)} src={it.image!.startsWith('/') ? import.meta.env.BASE_URL + it.image!.slice(1) : it.image} alt={it.name} loading="lazy" decoding="async" className={`img-fade ${ok ? 'opacity-100' : 'opacity-0'} ${logo ? 'w-full h-full object-contain p-2 mix-blend-multiply' : 'w-full h-full object-cover'}`} />
     {credit && it.image_credit && <a href={it.image_source_url} target="_blank" rel="noreferrer" className="absolute bottom-1 right-1 text-[9px] leading-none px-1.5 py-0.5 rounded bg-black/45 text-white">{it.image_credit}</a>}
   </div>
 }
 function Heart({ it, f }: { it: Item; f: Favs }) {
   const on = f.favs.includes(it.id)
-  return <button aria-label="Yêu thích" onClick={() => f.toggle(it.id)} className={`text-xl transition ${on ? 'scale-110' : 'opacity-60 hover:opacity-100'}`}>{on ? '❤️' : '🤍'}</button>
+  return <button aria-label="Yêu thích" onClick={() => f.toggle(it.id)} className={`text-xl transition ${on ? 'wiggle' : 'opacity-60 hover:opacity-100 hover:scale-110'}`}>{on ? '❤️' : '🤍'}</button>
 }
 function ItemCard({ it, f }: { it: Item; f: Favs }) {
-  return <div className="card p-3 flex flex-col gap-2 animate-pop">
+  return <div className="card card-hover p-3 flex flex-col gap-2">
     <Thumb it={it} />
     <div className="flex items-start justify-between gap-2"><h3 className="font-bold leading-snug">{it.name}</h3><Heart it={it} f={f} /></div>
-    <div className="flex flex-wrap gap-1 text-[11px]"><span className="px-2 py-0.5 rounded-full bg-mint-100 text-mint-700">{it.category}</span>
+    <div className="flex flex-wrap gap-1 text-[11px]"><span className="sticker bg-mint-50 text-mint-800">{it.category}</span>
       {it.area && <span className="px-2 py-0.5 rounded-full bg-slate-100">{it.area}</span>}<Badges it={it} /></div>
     {it.type !== 'idea' && <Stars it={it} />}
     {it.address && <div className="text-xs text-slate-500">📍 {it.address}</div>}
@@ -82,15 +115,15 @@ function Toast({ msg }: { msg: string }) { return msg ? <div className="fixed z-
 
 function PlanCard({ pl, title, budget, min, f, onSwap, actions, delay = 0 }: { pl: Plan; title: string; budget?: number; min?: number; f: Favs; onSwap?: (si: number) => void; actions?: React.ReactNode; delay?: number }) {
   const t = total(pl); const tier = budget ? tierOf(pl.slots.map(s => s.item), budget) : null
-  return <div className="card p-4 sm:p-5 animate-pop" style={{ animationDelay: `${delay}ms` }}>
+  return <div className={`card p-5 sm:p-7 ${delay % 160 ? 'mint-shadow' : ''}`} style={{ animationDelay: `${delay}ms` }}>
     <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
-      <h3 className="font-extrabold text-lg bg-gradient-to-r from-blush-600 to-mint-600 bg-clip-text text-transparent">{title}</h3>
+      <h3 className="font-semibold text-lg"><span className="eyebrow block mb-0.5">Kèo hẹn hò</span>{title}</h3>
       {tier != null && <span className={`text-[11px] font-semibold px-2.5 py-1 rounded-full ${tierCls[tier]}`}>{TIER_LABEL[tier]}</span>}</div>
     <div className="text-sm mb-3">💸 Ước tính: <b className={tier === 3 ? 'text-blush-600' : 'text-mint-700'}>{t.unknown === t.slots ? 'chưa rõ giá' : fmtRange(t.lo, t.hi)}</b>{t.unknown > 0 && t.unknown < t.slots && <span className="text-amber-700"> + {t.unknown} chỗ chưa rõ giá</span>}{budget ? <span className="text-slate-500"> / ngân sách {min != null ? rangeOf(budget, min).label : fmt(budget)}</span> : null}{budget && min != null && t.unknown === 0 && t.hi < min ? <span className="text-slate-500"> · rẻ hơn khoảng đã chọn</span> : null}</div>
-    <ol className="relative border-l-2 border-dashed border-blush-300 ml-2 space-y-4">
+    <ol className="relative border-l-2 border-solid border-blush-100 ml-2 space-y-4">
       {pl.slots.map((s, si) => <li key={si} className="pl-5 relative">
-        <span className="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-gradient-to-br from-blush-400 to-mint-400 ring-4 ring-white" />
-        <div className="text-xs font-bold text-blush-600">{s.time} · {s.label}{si > 0 && <span className="font-normal text-slate-500"> · {s.km != null ? `cách điểm trước ~${s.km.toLocaleString('vi-VN', { maximumFractionDigits: 1 })} km` : (s.item.area === pl.slots[si - 1].item.area ? 'cùng quận' : 'quận kề bên')}</span>}</div>
+        <span className="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-white border-2 border-blush-500 ring-4 ring-white" />
+        <div className="text-xs font-semibold text-blush-700 tabular-nums">{s.time} · {s.label}{si > 0 && <span className="font-normal text-slate-500"> · {s.km != null ? `cách điểm trước ~${s.km.toLocaleString('vi-VN', { maximumFractionDigits: 1 })} km` : (s.item.area === pl.slots[si - 1].item.area ? 'cùng quận' : 'quận kề bên')}</span>}</div>
         <div className="flex gap-3 mt-1"><div className="w-20 shrink-0"><Thumb it={s.item} h="h-20" credit={false} /></div>
           <div className="min-w-0 flex-1 space-y-1"><div className="flex justify-between gap-2"><b>{s.item.name}</b><Heart it={s.item} f={f} /></div>
             <div className="flex flex-wrap gap-1 text-[11px]">{s.item.area && <span className="px-2 py-0.5 rounded-full bg-slate-100">{s.item.area}</span>}<Badges it={s.item} />
@@ -107,7 +140,7 @@ function PlanCard({ pl, title, budget, min, f, onSwap, actions, delay = 0 }: { p
 function PlanActions({ pl, meta, diary, toast }: { pl: Plan; meta: Meta; diary: Diary; toast: (m: string) => void }) {
   const saved = diary.has(pl)
   return <>
-    <button className="btn bg-gradient-to-r from-blush-500 via-blush-400 to-mint-400 text-white" onClick={async () => { const r = await sharePlan(pl, meta); toast(r === 'copied' ? '📋 Đã chép kèo + link, dán gửi người ấy nhé!' : r === 'shared' ? '💌 Đã chia sẻ' : 'Không chia sẻ được 😢') }}>📤 Chia sẻ</button>
+    <button className="btn btn-pop btn-primary" onClick={async () => { const r = await sharePlan(pl, meta); toast(r === 'copied' ? '📋 Đã chép kèo + link, dán gửi người ấy nhé!' : r === 'shared' ? '💌 Đã chia sẻ' : 'Không chia sẻ được 😢') }}>📤 Chia sẻ</button>
     <button disabled={saved} className={`btn ${saved ? 'bg-mint-100 text-mint-700' : 'bg-mint-100 text-mint-700'}`} onClick={() => { diary.add(pl, meta); toast('📔 Đã lưu kèo vào Nhật ký') }}>{saved ? '✓ Đã lưu' : '📌 Lưu kèo'}</button></>
 }
 
@@ -139,30 +172,30 @@ function Planner({ f, diary, toast }: { f: Favs; diary: Diary; toast: (m: string
   const meta = (q: Prefs): Meta => ({ combo: q.combo, budget: q.budget, min: q.min, date: nextDate(q.dow ?? null) })
   const rl = (q: Prefs) => q.min != null ? rangeOf(q.budget, q.min).label : fmt(q.budget)
   const today = new Date().getDay()
-  return <div className="grid lg:grid-cols-[380px_1fr] gap-6">
-    <section className="card p-5 space-y-5 h-fit lg:sticky lg:top-24">
-      <div data-testid="ranges"><h2 className="font-bold mb-2">💸 Ngân sách (cho 2 người, tối đa 1tr/buổi)</h2>
-        <div className="grid grid-cols-3 gap-2">{RANGES.map(r => <Chip key={r.id} on={p.budget === r.max && p.min === r.min} onClick={() => setP({ ...p, budget: r.max, min: r.min })}>{r.label}</Chip>)}</div>
+  return <div className="grid grid-cols-[minmax(0,1fr)] lg:grid-cols-[minmax(340px,400px)_minmax(0,1fr)] gap-6 lg:gap-8">
+    <section className="card p-6 space-y-7 h-fit lg:sticky lg:top-24">
+      <div data-testid="ranges"><h2 className="font-semibold text-[15px] mb-2.5">💸 Ngân sách (cho 2 người, tối đa 1tr/buổi)</h2>
+        <div className="grid grid-cols-3 gap-1.5 sm:gap-2 [&>button]:!px-1 [&>button]:max-[379px]:!text-[12px]">{RANGES.map(r => <Chip key={r.id} on={p.budget === r.max && p.min === r.min} onClick={() => setP({ ...p, budget: r.max, min: r.min })}>{r.label}</Chip>)}</div>
         <p className="text-xs text-slate-500 mt-1">Ưu tiên kèo có tổng giá <b>nằm trong khoảng</b> đã chọn — khoảng cao hơn sẽ gợi ý chỗ xịn hơn.</p></div>
-      <div><h2 className="font-bold mb-2">🕒 Khi nào?</h2>
+      <div><h2 className="font-semibold text-[15px] mb-2.5">🕒 Khi nào?</h2>
         <div className="flex flex-wrap gap-2">{PARTS.map(x => <Chip key={x.id} on={p.part === x.id} onClick={() => setP({ ...p, part: x.id })}>{x.label}</Chip>)}</div>
         <div className="flex flex-wrap gap-1.5 mt-2">{[null, 1, 2, 3, 4, 5, 6, 0].map(d => <Chip key={String(d)} on={p.dow === d} onClick={() => setP({ ...p, dow: d })}>{d == null ? 'Ngày bất kỳ' : DOW[d] + (d === today ? ' (nay)' : '')}</Chip>)}</div>
         <label className="mt-3 flex items-center gap-2 text-sm cursor-pointer"><input type="checkbox" className="accent-blush-500 w-4 h-4" checked={!!p.long} onChange={e => setP({ ...p, long: e.target.checked })} /><span><b>Buổi dài</b> · 3 điểm (vd. photobooth → ăn tối → cafe)</span></label></div>
-      <div><h2 className="font-bold mb-2">✨ Combo</h2>
+      <div><h2 className="font-semibold text-[15px] mb-2.5">✨ Combo</h2>
         <div className="flex flex-wrap gap-2">{COMBOS.map(c => <Chip key={c.id} on={p.combo === c.id} onClick={() => setP({ ...p, combo: c.id as Combo, part: c.part ?? p.part })}>{c.label}</Chip>)}</div></div>
-      <div><h2 className="font-bold mb-2">📍 Khu vực</h2>
-        <div className="flex flex-wrap gap-2">{DISTRICTS.map(d => <Chip key={d} on={p.districts.includes(d)} onClick={() => setP({ ...p, districts: tog(p.districts, d) })}>{d} <span className={counts[d] ? 'opacity-60' : 'opacity-40 line-through'}>{counts[d]}</span></Chip>)}</div>
+      <div><h2 className="font-semibold text-[15px] mb-2.5">📍 Khu vực</h2>
+        <div className="flex flex-wrap gap-2">{DISTRICTS.map(d => <Chip mint key={d} on={p.districts.includes(d)} onClick={() => setP({ ...p, districts: tog(p.districts, d) })}>{d} <span className={counts[d] ? 'opacity-60' : 'opacity-40 line-through'}>{counts[d]}</span></Chip>)}</div>
         <p className="text-xs text-slate-500 mt-1">Số bên cạnh = chỗ hợp điểm đầu của combo vào giờ đã chọn. Các điểm liền nhau luôn cùng quận hoặc quận kề.</p></div>
-      <div><h2 className="font-bold mb-2">💗 Mood</h2>
-        <div className="flex flex-wrap gap-2">{MOODS.map(m => <Chip key={m} on={p.moods.includes(m)} onClick={() => setP({ ...p, moods: tog(p.moods, m) })}>{m}</Chip>)}</div></div>
-      <button onClick={() => run(p)} className="btn w-full !py-3 text-base text-white bg-gradient-to-r from-blush-500 via-blush-400 to-mint-400 shadow-lg hover:shadow-blush-300/50">Lên kèo hẹn hò 💞</button>
+      <div><h2 className="font-semibold text-[15px] mb-2.5">💗 Mood</h2>
+        <div className="flex flex-wrap gap-2">{MOODS.map(m => <Chip mint key={m} on={p.moods.includes(m)} onClick={() => setP({ ...p, moods: tog(p.moods, m) })}>{m}</Chip>)}</div></div>
+      <button onClick={() => run(p)} className="btn btn-pop btn-primary w-full !py-3 text-base">Lên kèo hẹn hò 💞</button>
     </section>
     <section className="space-y-4" id="results">
-      {!res && <div className="card p-8 text-center text-slate-500"><div className="text-6xl mb-3 animate-bounce">💌</div>Chọn ngân sách, giờ, combo rồi bấm <b>Lên kèo</b> nhé!</div>}
+      {!res && <div className="card p-10 text-center text-slate-600"><div className="eyebrow mb-3">Bắt đầu</div><div className="text-5xl mb-4">💌</div>Chọn ngân sách, giờ, combo rồi bấm <b>Lên kèo</b> nhé!</div>}
       {res && res.empty && <div className="card p-5 space-y-3 border-amber-200 animate-pop" data-testid="empty">
         <div className="text-3xl">🧭</div>
         <p><b>{res.empty.district.join(', ')}</b> hiện chỉ có <b>{res.empty.count}</b> địa điểm phù hợp cho chặng “{res.empty.slot}” vào giờ này, nên chưa ghép được kèo.</p>
-        {res.empty.neighbourCount > res.empty.count && <button className="btn bg-gradient-to-r from-blush-500 via-blush-400 to-mint-400 text-white" onClick={() => run({ ...res.p, districts: res.empty!.neighbours })}>🗺️ Mở rộng sang quận lân cận ({res.empty.neighbourCount} chỗ)</button>}
+        {res.empty.neighbourCount > res.empty.count && <button className="btn btn-pop btn-primary" onClick={() => run({ ...res.p, districts: res.empty!.neighbours })}>🗺️ Mở rộng sang quận lân cận ({res.empty.neighbourCount} chỗ)</button>}
         <button className="btn bg-slate-100 ml-2" onClick={() => run({ ...res.p, districts: [] })}>Mọi khu trung tâm</button></div>}
       {res && !res.plans.length && !res.empty && <div className="card p-5 space-y-2" data-testid="empty"><div className="text-3xl">🌙</div><p>Giờ này hầu hết chỗ cho combo này đã đóng cửa hoặc chưa mở. Thử buổi khác nhé!</p>
         <div className="flex flex-wrap gap-2">{PARTS.filter(x => x.id !== res.p.part).map(x => <button key={x.id} className="btn bg-mint-100 text-mint-700" onClick={() => run({ ...res.p, part: x.id })}>{x.label}</button>)}</div></div>}
@@ -233,10 +266,10 @@ function AtHome({ f }: { f: Favs }) {
       <div className="flex flex-wrap gap-2">{moodsAvail.map(m => <Chip key={m} on={moods.includes(m)} onClick={() => setMoods(tog(moods, m))}>#{m} <span className="opacity-50">{all.filter(i => i.mood_tags.includes(m)).length}</span></Chip>)}</div>
       {hasCost ? <div className="flex flex-wrap gap-2">{COST.map(([id, l]) => <Chip key={id} on={cost === id} onClick={() => setCost(cost === id ? '' : id)}>{l}</Chip>)}</div>
         : <p className="text-xs text-slate-500">Các ý tưởng tại nhà chưa có dữ liệu chi phí nên chỉ lọc theo mood (đa số gần như miễn phí).</p>}
-      <button className="btn w-full sm:w-auto text-white bg-gradient-to-r from-blush-500 via-blush-400 to-mint-400" onClick={() => { const src = list.length ? list : all; let x = src[Math.floor(Math.random() * src.length)]; if (src.length > 1) while (x === pick) x = src[Math.floor(Math.random() * src.length)]; setPick(x) }}>🎲 Gợi ý ngẫu nhiên</button></div>
+      <button className="btn btn-pop btn-primary w-full sm:w-auto" onClick={() => { const src = list.length ? list : all; let x = src[Math.floor(Math.random() * src.length)]; if (src.length > 1) while (x === pick) x = src[Math.floor(Math.random() * src.length)]; setPick(x) }}>🎲 Gợi ý ngẫu nhiên</button></div>
     {pick && <div className="card p-4 ring-2 ring-blush-300 animate-pop"><div className="text-xs font-bold text-blush-600 mb-2">✨ Tối nay thử cái này nha</div><div className="max-w-sm"><ItemCard it={pick} f={f} /></div></div>}
     <p className="text-sm text-slate-500">{list.length} ý tưởng</p>
-    <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">{list.map(i => <ItemCard key={i.id} it={i} f={f} />)}</div>
+    <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-4 lg:gap-5">{list.map(i => <ItemCard key={i.id} it={i} f={f} />)}</div>
   </div>
 }
 
@@ -257,22 +290,22 @@ function Browse({ f, onlyFavs }: { f: Favs; onlyFavs?: boolean }) {
     {!onlyFavs && <div className="card p-4 space-y-3">
       <div className="relative"><span className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">🔍</span>
         <input type="text" inputMode="search" enterKeyHint="search" value={q} onChange={e => setQ(e.target.value)} placeholder="Tìm quán, địa chỉ, quận, mood… (vd: lau, bui vien, rooftop)" aria-label="Tìm địa điểm"
-          className="w-full rounded-full border border-blush-200 bg-white/80 pl-10 pr-10 py-2.5 outline-none focus:ring-2 focus:ring-blush-300" />
+          className="w-full rounded-full border border-slate-200 bg-white pl-10 pr-10 py-3 outline-none focus:border-blush-300 focus:ring-4 focus:ring-blush-100 transition" />
         {q && <button onClick={() => setQ('')} aria-label="Xóa tìm kiếm" className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600">✕</button>}</div>
       <div className="flex flex-wrap gap-2">{[['', 'Tất cả'], ['food', '🍽️ Ăn uống'], ['activity', '🎡 Đi chơi']].map(([v, l]) => <Chip key={v} on={type === v} onClick={() => { setType(v); setCat('') }}>{l}</Chip>)}
         <select value={cat} onChange={e => setCat(e.target.value)} className="chip chip-off"><option value="">Mọi loại hình</option>{cats.map(c => <option key={c}>{c}</option>)}</select></div>
-      <div className="flex flex-wrap gap-2">{DISTRICTS.map(d => <Chip key={d} on={ds.includes(d)} onClick={() => setDs(tog(ds, d))}>{d} <span className="opacity-50">{districtCount(d)}</span></Chip>)}</div>
-      <div className="flex flex-wrap gap-2">{MOODS.map(m => <Chip key={m} on={moods.includes(m)} onClick={() => setMoods(tog(moods, m))}>#{m}</Chip>)}</div>
+      <div className="flex flex-wrap gap-2">{DISTRICTS.map(d => <Chip mint key={d} on={ds.includes(d)} onClick={() => setDs(tog(ds, d))}>{d} <span className="opacity-50">{districtCount(d)}</span></Chip>)}</div>
+      <div className="flex flex-wrap gap-2">{MOODS.map(m => <Chip mint key={m} on={moods.includes(m)} onClick={() => setMoods(tog(moods, m))}>#{m}</Chip>)}</div>
     </div>}
     <p className="text-sm text-slate-500">{list.length} địa điểm · {words.length ? `kết quả cho “${q.trim()}”` : "sắp xếp theo đánh giá (★ có tính số lượt review)"}</p>
     {!onlyFavs && words.length > 0 && !list.length && <div className="card p-8 text-center text-slate-500">Không tìm thấy “{q.trim()}”. Thử bỏ bớt bộ lọc quận/mood hoặc gõ ngắn hơn nhé.</div>}
     {onlyFavs && !list.length && <div className="card p-8 text-center text-slate-500">Chưa có mục yêu thích nào. Bấm 🤍 để lưu nhé!</div>}
-    <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">{list.map(i => <ItemCard key={i.id} it={i} f={f} />)}</div>
+    <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-4 lg:gap-5">{list.map(i => <ItemCard key={i.id} it={i} f={f} />)}</div>
   </div>
 }
 function Section({ title, sub, list, f }: { title: string; sub: string; list: Item[]; f: Favs }) {
   return <div className="space-y-4"><div><h2 className="text-xl font-bold">{title}</h2><p className="text-sm text-slate-500">{sub}</p></div>
-    <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">{list.map(i => <ItemCard key={i.id} it={i} f={f} />)}</div></div>
+    <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-4 lg:gap-5">{list.map(i => <ItemCard key={i.id} it={i} f={f} />)}</div></div>
 }
 
 const TABS = [['plan', '💞', 'Lên kèo'], ['browse', '🗺️', 'Khám phá'], ['trip', '🏕️', 'Đi xa'], ['mine', '📔', 'Nhật ký']] as const
@@ -281,23 +314,26 @@ export default function App() {
   const [tab, setTab] = useState<string>('plan')
   const [shared, setShared] = useState(() => decodePlan(location.hash))
   useEffect(() => { const h = () => { const d = decodePlan(location.hash); if (d) { setShared(d); setTab('plan') } }; addEventListener('hashchange', h); return () => removeEventListener('hashchange', h) }, [])
-  const go = (id: string) => { setTab(id); window.scrollTo(0, 0) }
+  const mainRef = useRef<HTMLElement>(null); useReveal(mainRef); const sc = useScrollState()
+  const go = (id: string) => { if (id === tab) return; const run = () => { flushSync(() => setTab(id)); window.scrollTo(0, 0) }
+    const d = document as Document & { startViewTransition?: (cb: () => void) => unknown }
+    if (d.startViewTransition && !reduced()) d.startViewTransition(run); else run() }
   return <div className="pb-24 sm:pb-8">
-    <header className="sticky top-0 z-20 backdrop-blur bg-blush-100/70 border-b border-blush-200">
-      <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
-        <h1 className="font-black text-xl bg-gradient-to-r from-blush-600 via-blush-500 to-mint-500 bg-clip-text text-transparent">Hẹn Hò Sài Gòn 💞</h1>
+    <header className={`sticky top-0 z-20 transition-[background-color,border-color,box-shadow] duration-300 border-b ${sc.scrolled ? 'bg-[#fdf8f9]/85 backdrop-blur-md border-[rgba(30,35,44,.08)] shadow-[0_1px_0_rgba(30,35,44,.02)]' : 'bg-[#fdf8f9] border-transparent'}`}>
+      <div className={`max-w-6xl mx-auto px-5 flex transition-[padding] duration-300 ${sc.scrolled ? 'py-2' : 'py-3 sm:py-4'} items-center justify-between gap-4`}>
+        <h1 className="font-semibold text-lg tracking-tight flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-blush-500" /><span>Hẹn Hò <span className="text-mint-700">Sài Gòn</span></span></h1>
         <nav className="hidden sm:flex gap-1">{TABS.map(([id, e, l]) => <Chip key={id} on={tab === id} onClick={() => go(id)}>{e} {l}{id === 'mine' && diary.list.length ? ` (${diary.list.length})` : ''}</Chip>)}</nav>
       </div></header>
-    <main className="max-w-6xl mx-auto px-4 py-5">
+    <main ref={mainRef} className="max-w-6xl mx-auto px-5 py-8 sm:py-12"><div key={tab} className="tab-in">
       {tab === 'plan' && <>{shared && <SharedPlan data={shared} f={f} diary={diary} toast={show} onClose={() => { setShared(null); history.replaceState(null, '', location.pathname) }} />}
-        <p className="mb-4 text-slate-600">Tối nay đi đâu? Để mình lên kèo vừa túi tiền cho hai bạn ở trung tâm Sài Gòn ✨</p><Planner f={f} diary={diary} toast={show} /></>}
+        <div className="eyebrow mb-2">✦ Lên kèo tối nay</div><p className="mb-8 text-2xl sm:text-3xl font-medium max-w-2xl leading-snug">Tối nay đi đâu? Để mình lên kèo vừa túi tiền cho hai bạn ở trung tâm Sài Gòn ✨</p><Planner f={f} diary={diary} toast={show} /></>}
       {tab === 'browse' && <Browse f={f} />}
       {/* TODO: bật lại tab Tại nhà sau — {tab === 'ideas' && <AtHome f={f} />} */}
       {tab === 'trip' && <Section f={f} title="🏕️ Chuyến đi xa" sub="Ngoài khu trung tâm — không nằm trong gợi ý tối nay" list={items.filter(i => i.out_of_area)} />}
       {tab === 'mine' && <Mine f={f} diary={diary} toast={show} />}
-    </main>
+    </div></main>
     <Toast msg={msg} />
-    <nav className="sm:hidden fixed bottom-0 inset-x-0 z-20 bg-mint-50/90 backdrop-blur border-t border-mint-200 grid grid-cols-4 pb-[env(safe-area-inset-bottom)]">
-      {TABS.map(([id, e, l]) => <button key={id} onClick={() => go(id)} className={`py-2 flex flex-col items-center text-[11px] transition ${tab === id ? 'text-mint-700 font-bold' : 'text-slate-500'}`}><span className={`text-xl transition ${tab === id ? 'scale-125' : ''}`}>{e}</span>{l}</button>)}
-    </nav></div>
+    <nav aria-label="Điều hướng" className={`sm:hidden fixed bottom-0 inset-x-0 z-20 transition-transform duration-300 ${sc.hidden ? 'translate-y-full' : ''}`}><div className="bg-white/95 border-t border-[rgba(30,35,44,.08)] grid grid-cols-4 gap-1 px-2 pt-1.5 pb-[max(.375rem,env(safe-area-inset-bottom))]">
+      {TABS.map(([id, e, l]) => <button key={id} onClick={() => go(id)} className={`py-1.5 flex flex-col items-center text-[11px] rounded-2xl transition-all active:scale-90 ${tab === id ? 'bg-mint-50 text-mint-800 font-semibold' : 'text-slate-500'}`}><span className={`text-xl transition ${tab === id ? 'scale-110' : ''}`}>{e}</span>{l}</button>)}
+    </div></nav></div>
 }
