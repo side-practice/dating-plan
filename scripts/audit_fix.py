@@ -24,6 +24,7 @@ hide(71, 'Not a walk-in photobooth: Printaphy only rents photobooths for events 
 for i, x in enumerate(d):
     if x.get('status') in ('closed', 'hidden') or x.get('type') == 'idea' or x.get('out_of_area'): continue
     la, ln = x.get('lat'), x.get('lng')
+    if x.get('area') == 'Tân Phú': continue  # b13: Tân Phú is in scope (bbox lng extended to 106.60)
     if la and not (BOX['lat'][0] <= la <= BOX['lat'][1] and BOX['lng'][0] <= ln <= BOX['lng'][1]):
         hide(i, f'Out of central HCMC: coords {la},{ln} ({x.get("area")})', x.get('maps_url') or '')
 

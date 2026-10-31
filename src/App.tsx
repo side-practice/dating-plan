@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { flushSync } from 'react-dom'
 import { Item, items, MOODS, DISTRICTS, districtCount, inDistrict, isUncertain, fmt, fmtCount, mapsUrl, look, byRating, coupleRange, fmtRange, UNIT } from './data'
-import { COMBOS, Combo, Plan, Prefs, PlanResult, Tier, TIER_LABEL, PARTS, DOW, RANGES, rangeOf, plan, districtFit, swapCandidates, relink, total, tierOf } from './planner'
+import { COMBOS, Combo, Plan, Prefs, PlanResult, Tier, TIER_LABEL, PARTS, DOW, RANGES, rangeOf, plan, districtFit, swapCandidates, relink, total, tierOf, remember } from './planner'
 import { Entry, Meta, decodePlan, sharePlan, loadDiary, saveDiary, newEntry, entryPlan, addPhoto, getPhoto, delPhoto, nextDate, fmtDate, itemIdx } from './store'
 
 function useFavs() {
@@ -167,7 +167,7 @@ function Planner({ f, diary, toast }: { f: Favs; diary: Diary; toast: (m: string
     if (!r) return r
     const used = new Set(r.plans.flatMap(pl => pl.slots.map(s => s.item.id)))
     const c = swapCandidates(r.plans[pi], si, r.p, used); if (!c.length) { toast('Hết lựa chọn phù hợp gần đó rồi 😅'); return r }
-    const pick = c[Math.floor(Math.random() * Math.min(4, c.length))]
+    const pick = c[Math.floor(Math.random() * Math.min(6, c.length))]; remember([pick.id])
     return { ...r, plans: r.plans.map((pl, i) => i !== pi ? pl : relink({ ...pl, slots: pl.slots.map((s, j) => j === si ? { ...s, item: pick } : s) }, r.p)) }
   })
   const meta = (q: Prefs): Meta => ({ combo: q.combo, budget: q.budget, min: q.min, date: nextDate(q.dow ?? null) })

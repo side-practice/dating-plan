@@ -170,6 +170,24 @@ export interface Slot { time: string; label: string; key: PoolKey; item: Item; k
 export interface Plan { slots: Slot[]; tier?: Tier; recipe?: R }
 export interface PlanResult { plans: Plan[]; best: Tier | null; minSure: number | null; minMaybe: number | null; altCombos: Combo[]; empty?: { district: string[]; count: number; slot: string; neighbours: string[]; neighbourCount: number } | null }
 
+/* ---------- Recent history: places/plans shown in the last presses get a penalty (sessionStorage, per tab) ---------- */
+const HKEY = 'planner-recent-v1', MAX_IDS = 36, MAX_SIGS = 30
+let hist: { ids: string[]; sigs: string[] } = (() => { try { const h = JSON.parse(sessionStorage.getItem(HKEY) || ''); if (Array.isArray(h?.ids) && Array.isArray(h?.sigs)) return h } catch { /* no storage */ } return { ids: [], sigs: [] } })()
+const saveHist = () => { try { sessionStorage.setItem(HKEY, JSON.stringify(hist)) } catch { /* ignore */ } }
+const sigOf = (its: Item[]) => its.map(i => i.id).join('|')
+/** remember shown places (newest first) so the next press prefers fresh ones */
+export function remember(ids: string[], sigs: string[] = []) {
+  hist = { ids: [...ids, ...hist.ids.filter(x => !ids.includes(x))].slice(0, MAX_IDS), sigs: [...sigs, ...hist.sigs.filter(x => !sigs.includes(x))].slice(0, MAX_SIGS) }; saveHist()
+}
+export const resetHistory = () => { hist = { ids: [], sigs: [] }; saveHist() }
+/** 0 if not shown recently; decays with age (≈ last 2 presses strongest) */
+const recentPen = (id: string) => { const k = hist.ids.indexOf(id); return k < 0 ? 0 : k < 12 ? 4 : k < 24 ? 2.5 : 1.2 }
+/** weighted random pick: lower score = more likely (softmax, temperature T) */
+function pickWeighted<T>(xs: { c: T; v: number }[], T = 1.2): T {
+  const m = Math.min(...xs.map(x => x.v)); const w = xs.map(x => Math.exp(-(x.v - m) / T)); let r = Math.random() * w.reduce((a, b) => a + b, 0)
+  for (let k = 0; k < xs.length; k++) { r -= w[k]; if (r <= 0) return xs[k].c } return xs[xs.length - 1].c
+}
+
 const baseOk = (i: Item) => i.type !== 'idea' && !i.out_of_area
 /** secondary score: lower is better (rating, mood, data quality, a bit of randomness) */
 function sec(i: Item, p: Prefs, t: number) {
@@ -177,8 +195,9 @@ function sec(i: Item, p: Prefs, t: number) {
   if (p.moods.length && !i.mood_tags.some(m => p.moods.includes(m))) s += 1.5
   if (closedAt(i, t, p.dow ?? null) == null) s += 0.6
   if (i.status === 'uncertain') s += 1
-  s -= (ratingScore(i) - 4) * 2
-  return s + Math.random() * 1.5
+  s -= (ratingScore(i) - 4) * 2   // rating is a weight, not a hard sort
+  s += recentPen(i.id)
+  return s + Math.random() * 2
 }
 const link = (a: Item, b: Item) => { const d = distanceKm(a, b); return (d != null ? Math.max(0, d - 2) * 0.4 : 0.3) - (a.area === b.area ? 0.5 : 0) }
 
@@ -237,7 +256,7 @@ export function plan(p: Prefs, n = 3): PlanResult {
   const recs: R[] = p.combo === 'random' ? RANDOM_POOL : [p.combo]
   const dow = p.dow ?? null
   const per = recs.map(r => { const keys = recipeKeys(r, p.long), times = slotTimes(keys, p.part); return { r, keys, times, cs: chains(keys, p, times, new Set()).sort((a, b) => a.score - b.score) } })
-  const used = new Set<string>(), usedCat = new Set<string>(); const plans: Plan[] = []
+  const used = new Set<string>(), usedCat = new Set<string>(), usedArea = new Set<string>(); const plans: Plan[] = []
   for (let k = 0; k < n; k++) {
     const sig = new Set(plans.map(pl => pl.slots.map(s => s.item.id).join('|')))
     // fresh stops first; if that would drop to a worse budget tier, allow re-using ONE stop (e.g. the only cheap dinner) with different other stops
@@ -251,11 +270,16 @@ export function plan(p: Prefs, n = 3): PlanResult {
     const usedR = new Set(plans.map(pl => pl.recipe))                        // random: rotate combo types
     const goodR = good.filter(x => !usedR.has(x.r)); const g = (goodR.length ? goodR : good)[Math.floor(Math.random() * (goodR.length || good.length))]
     // diversity: avoid repeating a category (e.g. two "phở" dinners) or a place type across the 3 plans
-    const div = (c: Chain) => c.its.reduce((a, it) => a + (usedCat.has(catKey(it)) ? 1.2 : 0), 0)
-    const pool = g.cs.filter(c => c.tier === bestTier).slice(0, 30).map(c => ({ c, v: c.score + div(c) })).sort((a, b) => a.v - b.v).slice(0, 5)
-    const c = pool[Math.floor(Math.random() * pool.length)].c
-    c.its.forEach(i => { used.add(i.id); usedCat.add(catKey(i)) }); plans.push(toPlan(c, g.keys, g.times, g.r, dow))
+    // …and spread districts when the user didn't pick one
+    const div = (c: Chain) => c.its.reduce((a, it) => a + (usedCat.has(catKey(it)) ? 1.2 : 0) + (!p.districts.length && it.area && usedArea.has(it.area) ? 0.5 : 0) + (usedCat.has('k:' + it.kind) ? 0.3 : 0), 0)
+    const tierCs = g.cs.filter(c => c.tier === bestTier); let freshSig = tierCs.filter(c => !hist.sigs.includes(sigOf(c.its)))
+    // small pool (one district): rather than repeating a recent plan, allow the "có thể vừa ngân sách" tier (Σmin still ≤ budget)
+    if (freshSig.length < 3 && bestTier === 0) freshSig = [...freshSig, ...g.cs.filter(c => c.tier === 1 && !hist.sigs.includes(sigOf(c.its)))]
+    const pool = (freshSig.length ? freshSig : tierCs).slice(0, 40).map(c => ({ c, v: c.score + div(c) }))
+    const c = pickWeighted(pool)
+    c.its.forEach(i => { used.add(i.id); usedCat.add(catKey(i)); usedCat.add('k:' + i.kind); if (i.area) usedArea.add(i.area) }); plans.push(toPlan(c, g.keys, g.times, g.r, dow))
   }
+  if (plans.length) remember(plans.flatMap(pl => pl.slots.map(s => s.item.id)), plans.map(pl => sigOf(pl.slots.map(s => s.item))))
   const best = plans.length ? Math.min(...plans.map(x => x.tier!)) as Tier : null
   let minSure: number | null = null, minMaybe: number | null = null, altCombos: Combo[] = []
   if (best == null || best > 0) {
