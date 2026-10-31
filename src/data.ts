@@ -16,7 +16,9 @@ export interface Item {
   maps_kind?: 'direct' | 'search'
 }
 // status 'closed' = a recent source reports the place stopped operating -> hidden everywhere
-export const items: Item[] = (raw as unknown as Omit<Item, 'id'>[]).map((x, i) => ({ ...x, id: `${i}-${x.name}` })).filter(x => x.status !== 'closed')
+export const items: Item[] = (raw as unknown as Omit<Item, 'id'>[]).filter(x => x && typeof x === 'object')
+  .map((x, i) => ({ ...x, name: String(x.name ?? ''), category: x.category ?? 'Khác', description_vi: x.description_vi ?? '', mood_tags: Array.isArray(x.mood_tags) ? x.mood_tags : [], lists: Array.isArray(x.lists) ? x.lists : [], source_urls: Array.isArray(x.source_urls) ? x.source_urls.filter(Boolean) : [], id: `${i}-${x.name}` }))
+  .filter(x => x.name && x.status !== 'closed' && x.status !== 'hidden')
 export const MOODS = ['lãng mạn', 'chill', 'năng động', 'ngày mưa', 'kỷ niệm', 'rẻ mà vui', 'sang chảnh', 'đêm muộn']
 // District filter options derived from data (sorted by number of places)
 const counts = new Map<string, number>()

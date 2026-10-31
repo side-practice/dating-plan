@@ -95,7 +95,7 @@ function Heart({ it, f }: { it: Item; f: Favs }) {
 function ItemCard({ it, f }: { it: Item; f: Favs }) {
   return <div className="card card-hover p-3 flex flex-col gap-2">
     <Thumb it={it} />
-    <div className="flex items-start justify-between gap-2"><h3 className="font-bold leading-snug">{it.name}</h3><Heart it={it} f={f} /></div>
+    <div className="flex items-start justify-between gap-2"><h3 className="font-bold leading-snug">{it.name ?? 'Chưa rõ tên'}</h3><Heart it={it} f={f} /></div>
     <div className="flex flex-wrap gap-1 text-[11px]"><span className="sticker bg-mint-50 text-mint-800">{it.category}</span>
       {it.area && <span className="px-2 py-0.5 rounded-full bg-slate-100">{it.area}</span>}<Badges it={it} /></div>
     {it.type !== 'idea' && <Stars it={it} />}
@@ -103,7 +103,7 @@ function ItemCard({ it, f }: { it: Item; f: Favs }) {
     <p className="text-sm text-slate-600">{it.description_vi}</p>
     {it.type !== 'idea' && <div className="text-xs"><Price it={it} /></div>}
     {it.opening_hours && <div className="text-xs text-slate-600">🕒 {it.opening_hours}</div>}
-    <div className="flex flex-wrap gap-1">{it.mood_tags.map(m => <span key={m} className="text-[11px] text-mint-600">#{m}</span>)}</div>
+    <div className="flex flex-wrap gap-1">{(it.mood_tags ?? []).map(m => <span key={m} className="text-[11px] text-mint-600">#{m}</span>)}</div>
     <div className="mt-auto"><Links it={it} /></div>
   </div>
 }
@@ -274,15 +274,17 @@ function AtHome({ f }: { f: Favs }) {
   </div>
 }
 
-const fold = (t: string) => t.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/đ/g, 'd').replace(/Đ/g, 'd').toLowerCase()
+const fold = (t: unknown) => String(t ?? '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/đ/g, 'd').replace(/Đ/g, 'd').toLowerCase()
 const hay = new Map<string, { name: string; all: string }>()
-const haystack = (i: Item) => { let h = hay.get(i.id); if (!h) { h = { name: fold(i.name), all: fold([i.name, i.address, i.district, i.area, i.category, i.google_category, i.description_vi, ...(i.mood_tags || [])].filter(Boolean).join(' ')) }; hay.set(i.id, h) } return h }
+const haystack = (i: Item): { name: string; all: string } => { let h = hay.get(i.id); if (!h) { h = { name: fold(i.name), all: fold([i.name, i.address, i.district, i.area, i.category, i.google_category, i.description_vi, ...(i.mood_tags || [])].filter(Boolean).join(' ')) }; hay.set(i.id, h) } return h }
+const KIND_LABEL: Record<string, string> = { restaurant: 'Nhà hàng', cafe: 'Cà phê', photobooth: 'Photobooth / studio ảnh', workshop: 'Workshop', sight: 'Tham quan', game: 'Game / giải trí', bar: 'Bar / pub', shopping: 'Mua sắm', spa: 'Spa / massage', homestay: 'Homestay / khách sạn', show: 'Show / kịch', experience: 'Trải nghiệm', streetfood: 'Ăn vặt / đường phố', cinema: 'Rạp phim', dessert: 'Tráng miệng', other: 'Khác' }
+const kindLabel = (k: string) => KIND_LABEL[k] ?? k
 function Browse({ f, onlyFavs }: { f: Favs; onlyFavs?: boolean }) {
   const [q, setQ] = useState('')
   const [type, setType] = useState(''); const [cat, setCat] = useState(''); const [ds, setDs] = useState<string[]>([]); const [moods, setMoods] = useState<string[]>([])
   const base = useMemo(() => items.filter(i => !i.out_of_area && i.type !== 'idea').sort(byRating), [])
-  const cats = useMemo(() => [...new Set(base.filter(i => !type || i.type === type).map(i => i.category))].sort((a, b) => a.localeCompare(b, 'vi')), [type, base])
-  const filtered = (onlyFavs ? items.filter(i => f.favs.includes(i.id)) : base.filter(i => (!type || i.type === type) && (!cat || i.category === cat) && inDistrict(i, ds) && (!moods.length || i.mood_tags.some(m => moods.includes(m)))))
+  const cats = useMemo(() => [...new Set(base.filter(i => !type || i.type === type).map(i => i.kind || 'other'))].sort((a, b) => kindLabel(a).localeCompare(kindLabel(b), 'vi')), [type, base])
+  const filtered = (onlyFavs ? items.filter(i => f.favs.includes(i.id)) : base.filter(i => (!type || i.type === type) && (!cat || (i.kind || 'other') === cat) && inDistrict(i, ds) && (!moods.length || (i.mood_tags ?? []).some(m => moods.includes(m)))))
   const words = fold(q.trim()).split(/\s+/).filter(Boolean)
   const list = !words.length ? filtered : filtered.filter(i => { const h = haystack(i); return words.every(w => h.all.includes(w)) })
     .map(i => { const h = haystack(i); const w = words.join(' '); return [i, h.name.startsWith(w) ? 0 : h.name.includes(w) ? 1 : words.every(x => h.name.includes(x)) ? 2 : 3] as const })
@@ -294,19 +296,34 @@ function Browse({ f, onlyFavs }: { f: Favs; onlyFavs?: boolean }) {
           className="w-full rounded-full border border-slate-200 bg-white pl-10 pr-10 py-3 outline-none focus:border-blush-300 focus:ring-4 focus:ring-blush-100 transition" />
         {q && <button onClick={() => setQ('')} aria-label="Xóa tìm kiếm" className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600">✕</button>}</div>
       <div className="flex flex-wrap gap-2">{[['', 'Tất cả'], ['food', '🍽️ Ăn uống'], ['activity', '🎡 Đi chơi']].map(([v, l]) => <Chip key={v} on={type === v} onClick={() => { setType(v); setCat('') }}>{l}</Chip>)}
-        <select value={cat} onChange={e => setCat(e.target.value)} className="chip chip-off"><option value="">Mọi loại hình</option>{cats.map(c => <option key={c}>{c}</option>)}</select></div>
+        <select value={cat} onChange={e => setCat(e.target.value)} className="chip chip-off"><option value="">Mọi loại hình</option>{cats.map(c => <option key={c} value={c}>{kindLabel(c)}</option>)}</select></div>
       <div className="flex flex-wrap gap-2">{DISTRICTS.map(d => <Chip mint key={d} on={ds.includes(d)} onClick={() => setDs(tog(ds, d))}>{d} <span className="opacity-50">{districtCount(d)}</span></Chip>)}</div>
       <div className="flex flex-wrap gap-2">{MOODS.map(m => <Chip mint key={m} on={moods.includes(m)} onClick={() => setMoods(tog(moods, m))}>#{m}</Chip>)}</div>
     </div>}
     <p className="text-sm text-slate-600">{list.length} địa điểm · {words.length ? `kết quả cho “${q.trim()}”` : "sắp xếp theo đánh giá (★ có tính số lượt review)"}</p>
     {!onlyFavs && words.length > 0 && !list.length && <div className="card p-8 text-center text-slate-600">Không tìm thấy “{q.trim()}”. Thử bỏ bớt bộ lọc quận/mood hoặc gõ ngắn hơn nhé.</div>}
     {onlyFavs && !list.length && <div className="card p-8 text-center text-slate-600">Chưa có mục yêu thích nào. Bấm 🤍 để lưu nhé!</div>}
-    <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-4 lg:gap-5">{list.map(i => <ItemCard key={i.id} it={i} f={f} />)}</div>
+    <CardGrid list={list} f={f} reset={`${q}|${type}|${cat}|${ds.join()}|${moods.join()}`} />
   </div>
+}
+const PAGE = 24
+/** Renders cards incrementally (PAGE at a time) — rendering all ~400 frosted cards at once exhausted GPU memory on phones (tab crash). */
+function CardGrid({ list, f, reset }: { list: Item[]; f: Favs; reset?: string }) {
+  const [n, setN] = useState(PAGE); const more = useRef<HTMLButtonElement>(null)
+  useEffect(() => setN(PAGE), [reset])
+  useEffect(() => {
+    const el = more.current; if (!el || !('IntersectionObserver' in window)) return
+    const io = new IntersectionObserver(es => { if (es.some(e => e.isIntersecting)) setN(x => x + PAGE) }, { rootMargin: '600px 0px' })
+    io.observe(el); return () => io.disconnect()
+  }, [n, list.length])
+  return <>
+    <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-4 lg:gap-5">{list.slice(0, n).map(i => <ItemCard key={i.id} it={i} f={f} />)}</div>
+    {n < list.length && <div className="text-center"><button ref={more} type="button" onClick={() => setN(x => x + PAGE)} className="btn bg-white border border-blush-200 text-blush-700">Xem thêm ({list.length - n} địa điểm)</button></div>}
+  </>
 }
 function Section({ title, sub, list, f }: { title: string; sub: string; list: Item[]; f: Favs }) {
   return <div className="space-y-4"><div><h2 className="text-xl font-bold">{title}</h2><p className="text-sm text-slate-600">{sub}</p></div>
-    <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-4 lg:gap-5">{list.map(i => <ItemCard key={i.id} it={i} f={f} />)}</div></div>
+    <CardGrid list={list} f={f} /></div>
 }
 
 /** DSH-style soft cloud background: a few solid-colour blobs, blurred via CSS filter (solid fills only). */

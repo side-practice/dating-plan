@@ -74,3 +74,6 @@ body { background-color: #fbf1f4; }
 .chip-off { background-color: rgba(255,255,255,.6); }
 .win-bar { border-bottom: 1px solid rgba(30,35,44,.06); background-color: rgba(255,255,255,.45); border-radius: 22px 22px 0 0; }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }
+
+/* Perf: list cards skip backdrop-filter (one GPU layer per card x ~400 crashed mobile tabs); offscreen cards skip render. */
+.card.card-hover { -webkit-backdrop-filter: none; backdrop-filter: none; background-color: rgba(255,255,255,.88); content-visibility: auto; contain-intrinsic-size: auto 420px; }

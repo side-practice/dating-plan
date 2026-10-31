@@ -172,7 +172,7 @@
   "rating": null,
   "reviews": null,
   "lists": [],
-  "maps_url": "https://www.google.com/maps/search/?api=1&hl=vi&query=Momento%20Rooftop%20T%E1%BA%A7ng%208%2C%20105%20C%C3%B4%20Giang%2C%20Q.1%20TP.HCM",
+  "maps_url": "https://www.google.com/maps/search/?api=1&query=Momento%20Rooftop%20Bar%20105%20C%C3%B4%20Giang%20Qu%E1%BA%ADn%201",
   "lat": null,
   "lng": null,
   "website": null,
@@ -192,7 +192,7 @@
   "price_confidence": "low",
   "price_checked": "2026-10-26",
   "price_method": "web_research_2026-10-26",
-  "maps_kind": "direct",
+  "maps_kind": "search",
   "image": "/images/gm-momento-rooftop-tr-c-y-cocoon-rooftop-3.webp",
   "image_kind": "photo",
   "image_credit": "Google Maps",
@@ -761,8 +761,8 @@
   ],
   "source": "web",
   "out_of_area": false,
-  "status": "likely_operating",
-  "date_checked": "2026-10-25",
+  "status": "hidden",
+  "date_checked": "2026-10-31",
   "rating": null,
   "reviews": null,
   "lists": [],
@@ -790,7 +790,8 @@
   "image": "/images/gm-pergola-cafe-15.webp",
   "image_kind": "photo",
   "image_credit": "Google Maps",
-  "image_source_url": "https://www.google.com/maps/search/?api=1&hl=vi&query=Pergola%20Cafe%2028A%20Tr%E1%BA%A7n%20Cao%20V%C3%A2n%2C%20P.12%2C%20Ph%C3%BA%20Nhu%E1%BA%ADn%20TP.HCM"
+  "image_source_url": "https://www.google.com/maps/search/?api=1&hl=vi&query=Pergola%20Cafe%2028A%20Tr%E1%BA%A7n%20Cao%20V%C3%A2n%2C%20P.12%2C%20Ph%C3%BA%20Nhu%E1%BA%ADn%20TP.HCM",
+  "hidden_reason": "Google Maps place page shows \"Tạm thời đóng cửa\" (temporarily closed) on 2026-10-31"
  },
  {
   "name": "Nến Cafe",
@@ -1223,7 +1224,7 @@
   "google_category": null,
   "hours": null,
   "area": "TP Thủ Đức (Q2 cũ)",
-  "kind": "cafe",
+  "kind": "restaurant",
   "price_min": 200000,
   "price_max": 400000,
   "price_unit": "person",
@@ -2006,9 +2007,9 @@
   "price_unit": "ticket",
   "couple_min": 120000,
   "couple_max": 120000,
-  "price_source_url": "https://congbao.hochiminhcity.gov.vn/",
+  "price_source_url": "https://congbao.hochiminhcity.gov.vn/cong-bao/van-ban/nghi-quyet/so/29-2026-nq-hdnd/ngay/27-08-2026/tai-ve/50039",
   "price_confidence": "high",
-  "price_checked": "2026-10-26",
+  "price_checked": "2026-10-31",
   "price_method": "earlier_research_structured",
   "maps_kind": "direct",
   "image": "/images/gm-b-o-t-ng-m-thu-t-tp-hcm-40.webp",
@@ -2059,9 +2060,9 @@
   "price_unit": "ticket",
   "couple_min": 120000,
   "couple_max": 120000,
-  "price_source_url": "https://congbao.hochiminhcity.gov.vn/",
+  "price_source_url": "https://congbao.hochiminhcity.gov.vn/cong-bao/van-ban/nghi-quyet/so/29-2026-nq-hdnd/ngay/27-08-2026/tai-ve/50039",
   "price_confidence": "high",
-  "price_checked": "2026-10-26",
+  "price_checked": "2026-10-31",
   "price_method": "web_research_2026-10-26",
   "maps_kind": "direct",
   "image": "/images/gm-b-o-t-ng-ch-ng-t-ch-chi-n-tranh-41.webp",
@@ -2503,14 +2504,14 @@
   "image_source_url": "https://www.google.com/maps/search/?api=1&hl=vi&query=Karaoke%20ICOOL%20Th%C3%A0nh%20Th%C3%A1i%20120%20Th%C3%A0nh%20Th%C3%A1i%2C%20Q.10%20TP.HCM"
  },
  {
-  "name": "Bowling Vạn Hạnh Mall",
+  "name": "Powerbowl Vạn Hạnh Mall (bowling)",
   "type": "activity",
   "category": "bowling",
   "district": "Quận 10",
-  "address": "Tầng 5, 11 Sư Vạn Hạnh, Q.10",
+  "address": "Tầng 5, Vạn Hạnh Mall, 11 Sư Vạn Hạnh, P. Hòa Hưng (Q.10)",
   "price_per_couple_vnd": 200000,
-  "price_note": "Nguồn chung: 60.000–100.000đ/người/game; chưa xác nhận còn hoạt động",
-  "opening_hours": null,
+  "price_note": "35–65k/ván tùy khung giờ/ngày + thuê giày 10k (1 ván/người)",
+  "opening_hours": "9:00–22:00",
   "mood_tags": [
    "năng động",
    "ngày mưa"
@@ -2521,8 +2522,8 @@
   ],
   "source": "web",
   "out_of_area": false,
-  "status": "uncertain",
-  "date_checked": "2026-10-25",
+  "status": "likely_operating",
+  "date_checked": "2026-10-31",
   "rating": null,
   "reviews": null,
   "lists": [],
@@ -2534,14 +2535,14 @@
   "hours": null,
   "area": "Quận 10",
   "kind": "game",
-  "price_min": 60000,
-  "price_max": 100000,
+  "price_min": 45000,
+  "price_max": 75000,
   "price_unit": "person",
-  "couple_min": 120000,
-  "couple_max": 200000,
-  "price_source_url": "https://pastafrescasaigon.com/en/fun-to-play/",
-  "price_confidence": "low",
-  "price_checked": "2026-10-26",
+  "couple_min": 90000,
+  "couple_max": 150000,
+  "price_source_url": "https://meetup.vn/dia-diem/bowling-van-hanh-mall-11-su-van-hanh-quan-10/",
+  "price_confidence": "medium",
+  "price_checked": "2026-10-31",
   "price_method": "earlier_research_structured",
   "maps_kind": "direct",
   "image": "/images/gm-bowling-v-n-h-nh-mall-51.webp",
@@ -2892,7 +2893,7 @@
  {
   "name": "HARUFILM Nguyễn Thái Học",
   "type": "activity",
-  "category": "Photobooth date",
+  "category": "studio nhiếp ảnh",
   "district": "Quận 1",
   "address": "165 Nguyễn Thái Học, P. Phạm Ngũ Lão, Quận 1",
   "price_per_couple_vnd": 150000,
@@ -2941,7 +2942,7 @@
  {
   "name": "PHOTOBY Nguyễn Bỉnh Khiêm",
   "type": "activity",
-  "category": "Photobooth date",
+  "category": "studio nhiếp ảnh",
   "district": "Quận 1",
   "address": "113 Nguyễn Bỉnh Khiêm, P. Đa Kao, Quận 1",
   "price_per_couple_vnd": 100000,
@@ -2993,7 +2994,7 @@
  {
   "name": "PHOTOBY Nguyễn Khắc Nhu",
   "type": "activity",
-  "category": "Photobooth date",
+  "category": "buồng chụp ảnh",
   "district": "Quận 1",
   "address": "210 Nguyễn Khắc Nhu, P. Cô Giang, Quận 1",
   "price_per_couple_vnd": 100000,
@@ -3090,7 +3091,7 @@
  {
   "name": "PHOTO TIME Nguyễn Gia Trí",
   "type": "activity",
-  "category": "Photobooth date",
+  "category": "studio nhiếp ảnh",
   "district": "Bình Thạnh",
   "address": "39 Nguyễn Gia Trí (D2 cũ), P.25, Bình Thạnh",
   "price_per_couple_vnd": 110000,
@@ -3141,7 +3142,7 @@
  {
   "name": "PHOTO TIME Phú Nhuận",
   "type": "activity",
-  "category": "Photobooth date",
+  "category": "studio nhiếp ảnh",
   "district": "Phú Nhuận",
   "address": "234 Phan Xích Long, Phú Nhuận",
   "price_per_couple_vnd": 110000,
@@ -3192,7 +3193,7 @@
  {
   "name": "PHOTO TIME Sư Vạn Hạnh",
   "type": "activity",
-  "category": "Photobooth date",
+  "category": "studio nhiếp ảnh",
   "district": "Quận 10",
   "address": "11 Sư Vạn Hạnh, P.12, Quận 10",
   "price_per_couple_vnd": 130000,
@@ -3242,7 +3243,7 @@
  {
   "name": "PhotoYoyo",
   "type": "activity",
-  "category": "Photobooth date",
+  "category": "quán cà phê",
   "district": "Quận 10",
   "address": "856 Sư Vạn Hạnh, P.13, Quận 10",
   "price_per_couple_vnd": 110000,
@@ -3294,7 +3295,7 @@
  {
   "name": "Fun Studio Điện Biên Phủ",
   "type": "activity",
-  "category": "Photobooth date",
+  "category": "buồng chụp ảnh",
   "district": "Quận 10",
   "address": "482 Điện Biên Phủ (ngã tư Cao Thắng), Quận 10",
   "price_per_couple_vnd": 200000,
@@ -3345,7 +3346,7 @@
  {
   "name": "Photo Story Cửu Long",
   "type": "activity",
-  "category": "Photobooth date",
+  "category": "buồng chụp ảnh",
   "district": "Quận 10",
   "address": "57 Cửu Long, P.15, Quận 10",
   "price_per_couple_vnd": 100000,
@@ -3458,10 +3459,10 @@
    "https://hcm.inhat.vn/photobooth-tphcm/",
    "http://www.printaphy.com/"
   ],
-  "status": "uncertain",
+  "status": "hidden",
   "source": "web",
   "out_of_area": false,
-  "date_checked": "2026-10-25",
+  "date_checked": "2026-10-31",
   "rating": null,
   "reviews": null,
   "lists": [],
@@ -3486,12 +3487,13 @@
   "image": "/images/gm-printaphy-photobooth-71.webp",
   "image_kind": "photo",
   "image_credit": "Google Maps",
-  "image_source_url": "https://www.google.com/maps/search/?api=1&hl=vi&query=Printaphy%20Photobooth%201%20Nguy%E1%BB%85n%20Th%E1%BB%8B%20Hu%E1%BB%B3nh%2C%20P.8%2C%20Ph%C3%BA%20Nhu%E1%BA%ADn%20TP.HCM"
+  "image_source_url": "https://www.google.com/maps/search/?api=1&hl=vi&query=Printaphy%20Photobooth%201%20Nguy%E1%BB%85n%20Th%E1%BB%8B%20Hu%E1%BB%B3nh%2C%20P.8%2C%20Ph%C3%BA%20Nhu%E1%BA%ADn%20TP.HCM",
+  "hidden_reason": "Not a walk-in photobooth: Printaphy only rents photobooths for events (quote-based)"
  },
  {
   "name": "Hachi Saigon – ảnh thẻ lấy liền",
   "type": "activity",
-  "category": "Photobooth date",
+  "category": "dịch vụ nhiếp ảnh",
   "district": "Quận 1",
   "address": "Lầu 1, chung cư 88 Lê Lợi, Quận 1",
   "price_per_couple_vnd": 160000,
@@ -3538,7 +3540,7 @@
  {
   "name": "Gạo Nâu Profile – ảnh thẻ/profile Hàn",
   "type": "activity",
-  "category": "Photobooth date",
+  "category": "studio nhiếp ảnh",
   "district": "Quận 3",
   "address": "351/45 Lê Văn Sỹ, Quận 3 (CN2: 436A/71 Đường 3/2, Quận 10)",
   "price_per_couple_vnd": 1780000,
@@ -3588,7 +3590,7 @@
  {
   "name": "Fotopop Selfie Studio",
   "type": "activity",
-  "category": "Photobooth date",
+  "category": "buồng chụp ảnh",
   "district": "Quận 4",
   "address": "77 Đoàn Như Hài, P.13, Quận 4",
   "price_per_couple_vnd": 300000,
@@ -3638,7 +3640,7 @@
  {
   "name": "PHOTO TIME Crescent Mall",
   "type": "activity",
-  "category": "Photobooth date",
+  "category": "studio nhiếp ảnh",
   "district": "Quận 7",
   "address": "Tầng 5, 5F-18 Crescent Mall, Quận 7",
   "price_per_couple_vnd": 110000,
@@ -4348,10 +4350,10 @@
   "source_urls": [
    "https://factoryartscentre.com/lien-he/"
   ],
-  "status": "uncertain",
+  "status": "hidden",
   "source": "web",
   "out_of_area": false,
-  "date_checked": "2026-10-26",
+  "date_checked": "2026-10-31",
   "rating": null,
   "reviews": null,
   "lists": [],
@@ -4373,7 +4375,8 @@
   "price_checked": "2026-10-26",
   "price_method": "earlier_research_structured",
   "maps_kind": "search",
-  "note": "Chuyển từ 15 Nguyễn Ư Dĩ từ 2022 (web chính thức). | Google Maps 26/10/2026: không thấy ở 165 Nguyễn Văn Hưởng"
+  "note": "Chuyển từ 15 Nguyễn Ư Dĩ từ 2022 (web chính thức). | Google Maps 26/10/2026: không thấy ở 165 Nguyễn Văn Hưởng",
+  "hidden_reason": "Tripadvisor: \"reported permanently closed\"; reviews 2023 say moved/closed; website has no programmes"
  },
  {
   "name": "Saigon Outcast (leo núi nhân tạo)",
@@ -4393,10 +4396,10 @@
    "https://dibui.vn/saigon-outcast-khu-to-hop-vui-choi-o-sai-gon",
    "https://digiticket.vn/blog/leo-nui-nhan-tao-quan-2/"
   ],
-  "status": "uncertain",
+  "status": "hidden",
   "source": "web",
   "out_of_area": false,
-  "date_checked": "2026-10-25",
+  "date_checked": "2026-10-31",
   "rating": null,
   "reviews": null,
   "lists": [],
@@ -4422,7 +4425,8 @@
   "image_credit": "Ảnh: saigonoutcast.com",
   "image_source_url": "https://saigonoutcast.com/",
   "image_kind": "photo",
-  "note": "Google Maps 26/10/2026 ghi “Tạm thời đóng cửa” – gọi trước"
+  "note": "Google Maps 26/10/2026 ghi “Tạm thời đóng cửa” – gọi trước",
+  "hidden_reason": "188/1 Nguyễn Văn Hưởng permanently closed (Wanderlog/hcm-cityguide); brand relaunching at new venue, address not yet confirmed"
  },
  {
   "name": "Sân Pickleball 189/1 Cống Quỳnh",
@@ -5749,9 +5753,9 @@
   "price_unit": "ticket",
   "couple_min": 120000,
   "couple_max": 120000,
-  "price_source_url": "https://congbao.hochiminhcity.gov.vn/",
+  "price_source_url": "https://congbao.hochiminhcity.gov.vn/cong-bao/van-ban/nghi-quyet/so/29-2026-nq-hdnd/ngay/27-08-2026/tai-ve/50039",
   "price_confidence": "high",
-  "price_checked": "2026-10-26",
+  "price_checked": "2026-10-31",
   "price_method": "earlier_research_structured",
   "maps_kind": "direct",
   "image": "/images/gm-b-o-t-ng-th-nh-ph-h-ch-minh-dinh-gia-long-119.webp",
@@ -5859,7 +5863,7 @@
  {
   "name": "Bliss Homestay Bình Thạnh",
   "type": "activity",
-  "category": "Homestay date",
+  "category": "khách sạn",
   "district": "Bình Thạnh",
   "address": "217/70/5 Bùi Đình Tuý, Bình Thạnh (Bình Thạnh)",
   "price_per_couple_vnd": 550000,
@@ -5910,7 +5914,7 @@
  {
   "name": "Bliss Homestay Gò Vấp",
   "type": "activity",
-  "category": "Homestay date",
+  "category": "khách sạn",
   "district": "Gò Vấp",
   "address": "331/14 Phan Huy Ích, An Hội Tây (Gò Vấp)",
   "price_per_couple_vnd": 550000,
@@ -5961,7 +5965,7 @@
  {
   "name": "Bliss Homestay Quận 10",
   "type": "activity",
-  "category": "Homestay date",
+  "category": "khách sạn",
   "district": "Quận 10",
   "address": "25a 3 Tháng 2, Vườn Lài (Quận 10)",
   "price_per_couple_vnd": 550000,
@@ -5979,8 +5983,8 @@
   ],
   "source": "bliss_home",
   "out_of_area": false,
-  "status": "uncertain",
-  "date_checked": "2026-10-26",
+  "status": "hidden",
+  "date_checked": "2026-10-31",
   "rating": 4.9,
   "reviews": 431,
   "lat": 10.775082,
@@ -6007,12 +6011,13 @@
   "image": "/images/gm-bliss-homestay-qu-n-10.webp",
   "image_kind": "photo",
   "image_credit": "Google Maps",
-  "image_source_url": "https://www.google.com/maps?cid=9218002822789821591"
+  "image_source_url": "https://www.google.com/maps?cid=9218002822789821591",
+  "hidden_reason": "Google Maps place page shows \"Tạm thời đóng cửa\" (temporarily closed) on 2026-10-31"
  },
  {
   "name": "Bliss Homestay Quận 5",
   "type": "activity",
-  "category": "Homestay date",
+  "category": "khách sạn",
   "district": "Quận 5",
   "address": "2N Phạm Hữu Chí, Chợ Lớn (Quận 5)",
   "price_per_couple_vnd": 550000,
@@ -6063,7 +6068,7 @@
  {
   "name": "Bliss Homestay Tân Bình",
   "type": "activity",
-  "category": "Homestay date",
+  "category": "khách sạn",
   "district": "Tân Bình",
   "address": "71 Xuân Hồng Phường 4, 71 Xuân Hồng, Bảy Hiền (Tân Bình)",
   "price_per_couple_vnd": 550000,
@@ -6081,8 +6086,8 @@
   ],
   "source": "bliss_home",
   "out_of_area": false,
-  "status": "uncertain",
-  "date_checked": "2026-10-26",
+  "status": "hidden",
+  "date_checked": "2026-10-31",
   "rating": 4.9,
   "reviews": 626,
   "lat": 10.794981,
@@ -6109,12 +6114,13 @@
   "image": "/images/gm-bliss-homestay-t-n-b-nh.webp",
   "image_kind": "photo",
   "image_credit": "Google Maps",
-  "image_source_url": "https://www.google.com/maps?cid=16729755792662501900"
+  "image_source_url": "https://www.google.com/maps?cid=16729755792662501900",
+  "hidden_reason": "Google Maps place page shows \"Tạm thời đóng cửa\" (temporarily closed) on 2026-10-31"
  },
  {
   "name": "Sense Homestay Quận Tân Bình",
   "type": "activity",
-  "category": "Homestay date",
+  "category": "lưu trú nhà dân",
   "district": "Tân Bình",
   "address": "40/31 Đ. Lam Sơn, Tân Sơn Hòa (Tân Bình)",
   "price_per_couple_vnd": 825000,
@@ -6267,7 +6273,7 @@
  {
   "name": "Alma Homestay",
   "type": "activity",
-  "category": "Homestay date",
+  "category": "khách sạn",
   "district": "Quận 3",
   "address": "611/14B Điện Biên Phủ, Bàn Cờ (Quận 3)",
   "price_per_couple_vnd": null,
@@ -6420,7 +6426,7 @@
  {
   "name": "Oh-hi Home",
   "type": "activity",
-  "category": "Homestay date",
+  "category": "trạm nghỉ",
   "district": "Phú Nhuận",
   "address": "38/19E, Đ. Nguyễn Công Hoan, Cầu Kiệu (Phú Nhuận)",
   "price_per_couple_vnd": null,
@@ -6474,7 +6480,7 @@
  {
   "name": "Peanut Homestay - Homestay Sài Gòn",
   "type": "activity",
-  "category": "Homestay date",
+  "category": "khách sạn",
   "district": "Tân Bình",
   "address": "153 Bạch Đằng, Khu phố 8, Tân Sơn Hòa (Tân Bình)",
   "price_per_couple_vnd": null,
@@ -6525,7 +6531,7 @@
  {
   "name": "DEY HOME - Hoa Lan",
   "type": "activity",
-  "category": "Homestay date",
+  "category": "khách sạn",
   "district": "Phú Nhuận",
   "address": "123 Hoa Lan, Cầu Kiệu (Phú Nhuận)",
   "price_per_couple_vnd": null,
@@ -6576,7 +6582,7 @@
  {
   "name": "Q Home Thích Quảng Đức",
   "type": "activity",
-  "category": "Homestay date",
+  "category": "khách sạn",
   "district": "Phú Nhuận",
   "address": "3/37 Hẻm 3 Thích Quảng Đức, Đức Nhuận (Phú Nhuận)",
   "price_per_couple_vnd": null,
@@ -6645,8 +6651,8 @@
   ],
   "source": "bliss_home",
   "out_of_area": false,
-  "status": "likely_operating",
-  "date_checked": "2026-10-26",
+  "status": "hidden",
+  "date_checked": "2026-10-31",
   "rating": 4.9,
   "reviews": 35,
   "lat": 10.873871,
@@ -6673,12 +6679,13 @@
   "image": "/images/gm-h-me-n-o-staycation-cn-1.webp",
   "image_credit": "Google Maps",
   "image_source_url": "https://www.google.com/maps?cid=4409305750199860324",
-  "image_kind": "photo"
+  "image_kind": "photo",
+  "hidden_reason": "Out of central HCMC: coords 10.873871,106.723067 (TP Thủ Đức (Thủ Đức cũ))"
  },
  {
   "name": "Sense Homes An Dương Vương",
   "type": "activity",
-  "category": "Homestay date",
+  "category": "khách sạn",
   "district": "Quận 5",
   "address": "78/13 An Dương Vương, An Đông (Quận 5)",
   "price_per_couple_vnd": 825000,
@@ -6747,8 +6754,8 @@
   ],
   "source": "bliss_home",
   "out_of_area": false,
-  "status": "likely_operating",
-  "date_checked": "2026-10-26",
+  "status": "hidden",
+  "date_checked": "2026-10-31",
   "rating": 5.0,
   "reviews": 21,
   "lat": 10.842374,
@@ -6775,7 +6782,8 @@
   "image": "/images/gm-bliss-home-signature.webp",
   "image_kind": "photo",
   "image_credit": "Google Maps",
-  "image_source_url": "https://www.google.com/maps?cid=7189855427630750324"
+  "image_source_url": "https://www.google.com/maps?cid=7189855427630750324",
+  "hidden_reason": "Out of central HCMC: coords 10.842374,106.639612 (Gò Vấp)"
  },
  {
   "name": "Co Bar Cafe",
@@ -6798,8 +6806,8 @@
   ],
   "source": "bliss_home",
   "out_of_area": false,
-  "status": "likely_operating",
-  "date_checked": "2026-10-26",
+  "status": "hidden",
+  "date_checked": "2026-10-31",
   "rating": 4.9,
   "reviews": 71,
   "lat": 10.842374,
@@ -6830,12 +6838,13 @@
   "image": "/images/gm-co-bar-cafe.webp",
   "image_kind": "photo",
   "image_credit": "Google Maps",
-  "image_source_url": "https://www.google.com/maps?cid=6888952389162678302"
+  "image_source_url": "https://www.google.com/maps?cid=6888952389162678302",
+  "hidden_reason": "Out of central HCMC: coords 10.842374,106.639612 (Gò Vấp)"
  },
  {
   "name": "NYNA Coffee 24h - Nguyễn Trãi",
   "type": "food",
-  "category": "Work date",
+  "category": "quán cà phê",
   "district": "Quận 1",
   "address": "212B/D18B Nguyễn Trãi, Cầu Ông Lãnh (Quận 1)",
   "price_per_couple_vnd": 200000,
@@ -6888,7 +6897,7 @@
  {
   "name": "Room44 Caffe - Bến Thành",
   "type": "food",
-  "category": "Work date",
+  "category": "quán cà phê",
   "district": "Quận 1",
   "address": "35 Nguyễn Văn Tráng, Bến Thành (Quận 1)",
   "price_per_couple_vnd": 200000,
@@ -6991,7 +7000,7 @@
  {
   "name": "80plus Coffee Roastery Trần Nhật Duật",
   "type": "food",
-  "category": "Work date",
+  "category": "quán cà phê",
   "district": "Quận 1",
   "address": "5E Đ. Trần Nhật Duật, Tân Định (Quận 1)",
   "price_per_couple_vnd": 200000,
@@ -7044,7 +7053,7 @@
  {
   "name": "Samm Coffee",
   "type": "food",
-  "category": "Work date",
+  "category": "quán cà phê",
   "district": "Quận 3",
   "address": "63 Rạch Bùng Binh, Nhiêu Lộc (Quận 3)",
   "price_per_couple_vnd": 200000,
@@ -7097,7 +7106,7 @@
  {
   "name": "Trap Space",
   "type": "food",
-  "category": "Work date",
+  "category": "quán cà phê",
   "district": "Bình Thạnh",
   "address": "12/67 Nguyễn Hữu Cảnh, Thạnh Mỹ Tây (Bình Thạnh)",
   "price_per_couple_vnd": 200000,
@@ -7150,7 +7159,7 @@
  {
   "name": "MI CASA coffee & kitchen",
   "type": "food",
-  "category": "Work date",
+  "category": "quán cà phê",
   "district": "Phú Nhuận",
   "address": "104 Cư Xá Nguyễn Văn Trổi, Phú Nhuận (Phú Nhuận)",
   "price_per_couple_vnd": 200000,
@@ -7203,7 +7212,7 @@
  {
   "name": "The Workshop Coffee",
   "type": "food",
-  "category": "Work date",
+  "category": "quán cà phê",
   "district": "Quận 1",
   "address": "27 Ngô Đức Kế, Sài Gòn (Quận 1)",
   "price_per_couple_vnd": 400000,
@@ -7273,8 +7282,8 @@
   ],
   "source": "bliss_home",
   "out_of_area": false,
-  "status": "likely_operating",
-  "date_checked": "2026-10-26",
+  "status": "hidden",
+  "date_checked": "2026-10-31",
   "rating": 4.7,
   "reviews": 1121,
   "lat": 10.848462,
@@ -7304,12 +7313,13 @@
   "image": "/images/gm-americano-coffee-ph-m-v-n-chi-u.webp",
   "image_credit": "Google Maps",
   "image_source_url": "https://www.google.com/maps?cid=4792361536768732892",
-  "image_kind": "photo"
+  "image_kind": "photo",
+  "hidden_reason": "Out of central HCMC: coords 10.848462,106.648782 (Gò Vấp)"
  },
  {
   "name": "Do.Corner - Study & Working Space",
   "type": "food",
-  "category": "Work date",
+  "category": "không gian làm việc chia sẻ",
   "district": "Gò Vấp",
   "address": "220/38 Nguyễn Oanh, Gò Vấp (Gò Vấp)",
   "price_per_couple_vnd": null,
@@ -7362,7 +7372,7 @@
  {
   "name": "C.Fleur Cafe",
   "type": "food",
-  "category": "Work date",
+  "category": "quán cà phê",
   "district": "Phú Nhuận",
   "address": "10L Đ. Trần Hữu Trang, Phú Nhuận (Phú Nhuận)",
   "price_per_couple_vnd": 200000,
@@ -7415,7 +7425,7 @@
  {
   "name": "GEEK Hub Huynh Van Banh",
   "type": "food",
-  "category": "Work date",
+  "category": "không gian làm việc chia sẻ",
   "district": "Phú Nhuận",
   "address": "244/31 Hẻm 244 Huỳnh Văn Bánh, Phú Nhuận (Phú Nhuận)",
   "price_per_couple_vnd": 60000,
@@ -7468,7 +7478,7 @@
  {
   "name": "WorkFlow Thảo Điền - Working Space & Cafe",
   "type": "food",
-  "category": "Work date",
+  "category": "không gian làm việc chia sẻ",
   "district": "TP Thủ Đức (Q2 cũ)",
   "address": "39 Nguyễn Duy Hiệu, An Khánh (TP Thủ Đức (Q2 cũ))",
   "price_per_couple_vnd": 170000,
@@ -7521,7 +7531,7 @@
  {
   "name": "WorkFlow Gò Vấp - Working Space & Café",
   "type": "food",
-  "category": "Work date",
+  "category": "không gian làm việc chia sẻ",
   "district": "Gò Vấp",
   "address": "2 Đ. Số 2, CityLand Park Hills, Gò Vấp (Gò Vấp)",
   "price_per_couple_vnd": 170000,
@@ -7574,7 +7584,7 @@
  {
   "name": "WorkFlow Quận 3 - Working Space & Café",
   "type": "food",
-  "category": "Work date",
+  "category": "không gian làm việc chia sẻ",
   "district": "Quận 3",
   "address": "195/3 Hai Bà Trưng, Xuân Hòa (Quận 3)",
   "price_per_couple_vnd": 170000,
@@ -7627,7 +7637,7 @@
  {
   "name": "OLLIN Café",
   "type": "food",
-  "category": "Work date",
+  "category": "quán cà phê",
   "district": "Quận 1",
   "address": "180 Nguyễn Văn Thủ, Tân Định (Quận 1)",
   "price_per_couple_vnd": 200000,
@@ -7677,7 +7687,7 @@
  {
   "name": "soo coffee & bakery _ PKB",
   "type": "food",
-  "category": "Work date",
+  "category": "quán cà phê",
   "district": "Quận 1",
   "address": "85A Phan Kế Bính, Tân Định (Quận 1)",
   "price_per_couple_vnd": 400000,
@@ -7730,7 +7740,7 @@
  {
   "name": "SUA Coffee & Cakes",
   "type": "food",
-  "category": "Work date",
+  "category": "quán cà phê",
   "district": "Phú Nhuận",
   "address": "1162 Trường Sa, Phường, Phú Nhuận (Phú Nhuận)",
   "price_per_couple_vnd": 200000,
@@ -7783,7 +7793,7 @@
  {
   "name": "MỘT NƠI cafe",
   "type": "food",
-  "category": "Work date",
+  "category": "quán cà phê",
   "district": "Bình Thạnh",
   "address": "35/7 D5, Thạnh Mỹ Tây (Bình Thạnh)",
   "price_per_couple_vnd": 200000,
@@ -7836,7 +7846,7 @@
  {
   "name": "Chốn Riêng Café (Tân Bình)",
   "type": "food",
-  "category": "Work date",
+  "category": "quán cà phê",
   "district": "Tân Bình",
   "address": "45 Bá Tòng, Bảy Hiền (Tân Bình)",
   "price_per_couple_vnd": 200000,
@@ -7889,7 +7899,7 @@
  {
   "name": "ThiBa Space",
   "type": "food",
-  "category": "Work date",
+  "category": "quán cà phê",
   "district": "Quận 1",
   "address": "13 Nguyễn Văn Thủ, Tân Định (Quận 1)",
   "price_per_couple_vnd": 200000,
@@ -7942,7 +7952,7 @@
  {
   "name": "Chốn Riêng Café (Gò Vấp)",
   "type": "food",
-  "category": "Work date",
+  "category": "quán cà phê",
   "district": "Gò Vấp",
   "address": "74/1 Đ. Nguyễn Thái Sơn, Hạnh Thông (Gò Vấp)",
   "price_per_couple_vnd": 200000,
@@ -7995,7 +8005,7 @@
  {
   "name": "Beanie Home",
   "type": "activity",
-  "category": "Shopping date",
+  "category": "hội thủ công mỹ nghệ",
   "district": "Quận 3",
   "address": "400/2A Đ. Lê Văn Sỹ, Nhiêu Lộc (Quận 3)",
   "price_per_couple_vnd": 0,
@@ -8101,7 +8111,7 @@
  {
   "name": "Lamor Studio",
   "type": "activity",
-  "category": "Shopping date",
+  "category": "cửa hàng quà tặng",
   "district": "Quận 3",
   "address": "25A Cao Thắng, Bàn Cờ (Quận 3)",
   "price_per_couple_vnd": 0,
@@ -8145,16 +8155,12 @@
   "price_confidence": "medium",
   "price_checked": "2026-10-26",
   "price_method": "free_entry",
-  "maps_kind": "direct",
-  "image": "/images/gm-lamor-studio-165.webp",
-  "image_kind": "photo",
-  "image_credit": "Google Maps",
-  "image_source_url": "https://www.google.com/maps?cid=16774902850924552168"
+  "maps_kind": "direct"
  },
  {
   "name": "Himitsu no Kichi",
   "type": "activity",
-  "category": "Shopping date",
+  "category": "cửa hàng",
   "district": "Quận 10",
   "address": "446A 3 Tháng 2, Hòa Hưng (Quận 10)",
   "price_per_couple_vnd": 0,
@@ -8206,7 +8212,7 @@
  {
   "name": "Viechie - Jewelry & Accessories",
   "type": "activity",
-  "category": "Shopping date",
+  "category": "cửa hàng trang sức",
   "district": "Quận 1",
   "address": "35 Thạch Thị Thanh, Tân Định (Quận 1)",
   "price_per_couple_vnd": 0,
@@ -8259,7 +8265,7 @@
  {
   "name": "The Box Concept",
   "type": "activity",
-  "category": "Shopping date",
+  "category": "chợ",
   "district": "Quận 1",
   "address": "37 Nguyễn Thị Minh Khai, Sài Gòn (Quận 1)",
   "price_per_couple_vnd": 0,
@@ -8276,8 +8282,8 @@
   ],
   "source": "bliss_home",
   "out_of_area": false,
-  "status": "uncertain",
-  "date_checked": "2026-10-26",
+  "status": "hidden",
+  "date_checked": "2026-10-31",
   "rating": 4.7,
   "reviews": 432,
   "lat": 10.782097,
@@ -8304,12 +8310,13 @@
   "image": "/images/gm-the-box-concept-168.webp",
   "image_kind": "photo",
   "image_credit": "Google Maps",
-  "image_source_url": "https://www.google.com/maps?cid=420780228301293356"
+  "image_source_url": "https://www.google.com/maps?cid=420780228301293356",
+  "hidden_reason": "Google Maps place page shows \"Tạm thời đóng cửa\" (temporarily closed) on 2026-10-31"
  },
  {
   "name": "WARDROBE ARC",
   "type": "activity",
-  "category": "Shopping date",
+  "category": "cửa hàng quần áo",
   "district": "Quận 3",
   "address": "351/44 Đ. Lê Văn Sỹ, Nhiêu Lộc (Quận 3)",
   "price_per_couple_vnd": 0,
@@ -8362,7 +8369,7 @@
  {
   "name": "Saigon Eco Craft",
   "type": "activity",
-  "category": "Shopping date",
+  "category": "cửa hàng quà tặng",
   "district": "Quận 1",
   "address": "36 Lê Lợi, Sài Gòn (Quận 1)",
   "price_per_couple_vnd": 0,
@@ -8415,7 +8422,7 @@
  {
   "name": "Konbini Xin Chào",
   "type": "activity",
-  "category": "Shopping date",
+  "category": "cửa hàng tổng hợp",
   "district": "Quận 1",
   "address": "385/12 Nguyễn Trãi, Cầu Ông Lãnh (Quận 1)",
   "price_per_couple_vnd": 0,
@@ -8468,7 +8475,7 @@
  {
   "name": "Vesta Lifestyle & Gifts - Flagship store",
   "type": "activity",
-  "category": "Shopping date",
+  "category": "cửa hàng quà tặng",
   "district": "TP Thủ Đức (Q2 cũ)",
   "address": "34 Ngô Quang Huy, An Khánh (TP Thủ Đức (Q2 cũ))",
   "price_per_couple_vnd": 0,
@@ -8521,7 +8528,7 @@
  {
   "name": "The New Playground",
   "type": "activity",
-  "category": "Shopping date",
+  "category": "cửa hàng quần áo",
   "district": "Quận 1",
   "address": "26 Lý Tự Trọng, Sài Gòn (Quận 1)",
   "price_per_couple_vnd": 0,
@@ -8574,7 +8581,7 @@
  {
   "name": "Peachiful Vintage Room",
   "type": "activity",
-  "category": "Shopping date",
+  "category": "cửa hàng quà tặng",
   "district": "Quận 3",
   "address": "330 Đ. Lê Văn Sỹ, Nhiêu Lộc (Quận 3)",
   "price_per_couple_vnd": 0,
@@ -8627,9 +8634,9 @@
  {
   "name": "Whenever Atelier",
   "type": "activity",
-  "category": "Shopping date",
-  "district": "Quận 10",
-  "address": "141/8 Bàn Cờ, phường, Quận 3 (Quận 10)",
+  "category": "cửa hàng quần áo",
+  "district": "Quận 3",
+  "address": "141/8 Bàn Cờ, P. Bàn Cờ, Q.3",
   "price_per_couple_vnd": 0,
   "price_note": "Vào xem miễn phí; mua sắm tuỳ ý",
   "opening_hours": "10:00–21:30 (giờ Chủ Nhật theo Google Maps)",
@@ -8645,7 +8652,7 @@
   "source": "bliss_home",
   "out_of_area": false,
   "status": "likely_operating",
-  "date_checked": "2026-10-26",
+  "date_checked": "2026-10-31",
   "rating": 4.9,
   "reviews": 1732,
   "lat": 10.771209,
@@ -8656,7 +8663,7 @@
   "google_category": "Cửa hàng quần áo",
   "maps_url": "https://maps.google.com/?cid=16367085753719469",
   "website": "https://whenever.vn/",
-  "area": "Quận 10",
+  "area": "Quận 3",
   "kind": "shopping",
   "hours": [
    600,
@@ -8680,7 +8687,7 @@
  {
   "name": "NOI Space",
   "type": "activity",
-  "category": "Shopping date",
+  "category": "cửa hàng quần áo",
   "district": "Quận 1",
   "address": "385E2 Nguyễn Trãi, Cầu Ông Lãnh (Quận 1)",
   "price_per_couple_vnd": 0,
@@ -8733,7 +8740,7 @@
  {
   "name": "MINISO D2 NGUYỄN GIA TRÍ",
   "type": "activity",
-  "category": "Shopping date",
+  "category": "cửa hàng tổng hợp",
   "district": "Bình Thạnh",
   "address": "22 Nguyễn Gia Trí, Phường, Thạnh Mỹ Tây (Bình Thạnh)",
   "price_per_couple_vnd": 0,
@@ -8786,7 +8793,7 @@
  {
   "name": "Miniso Phan Văn Trị",
   "type": "activity",
-  "category": "Shopping date",
+  "category": "cửa hàng",
   "district": "Gò Vấp",
   "address": "12 Đ. Phan Văn Trị, Hạnh Thông (Gò Vấp)",
   "price_per_couple_vnd": 0,
@@ -8839,7 +8846,7 @@
  {
   "name": "Miniso Việt Nam",
   "type": "activity",
-  "category": "Shopping date",
+  "category": "cửa hàng lưu niệm",
   "district": "Quận 1",
   "address": "29 Trần Hưng Đạo, Bến Thành (Quận 1)",
   "price_per_couple_vnd": 0,
@@ -8892,7 +8899,7 @@
  {
   "name": "Cửa Hàng Miniso 252 Lê Văn Sỹ",
   "type": "activity",
-  "category": "Shopping date",
+  "category": "cửa hàng quà tặng",
   "district": "Quận 3",
   "address": "252 Đ. Lê Văn Sỹ, Nhiêu Lộc (Quận 3)",
   "price_per_couple_vnd": 0,
@@ -8945,7 +8952,7 @@
  {
   "name": "Shimmer Silver Jewelry",
   "type": "activity",
-  "category": "Shopping date",
+  "category": "cửa hàng trang sức",
   "district": "Quận 1",
   "address": "128 Lê Lai, Bến Thành (Quận 1)",
   "price_per_couple_vnd": 0,
@@ -8998,7 +9005,7 @@
  {
   "name": "11 Garmentory",
   "type": "activity",
-  "category": "Shopping date",
+  "category": "cửa hàng quần áo",
   "district": "Phú Nhuận",
   "address": "117B Nguyễn Đình Chính, Cầu Kiệu (Phú Nhuận)",
   "price_per_couple_vnd": 0,
@@ -9051,7 +9058,7 @@
  {
   "name": "Daspace 1",
   "type": "activity",
-  "category": "Shopping date",
+  "category": "cửa hàng quần áo",
   "district": "Quận 1",
   "address": "46/13 Trần Quý Khoách, Tân Định (Quận 1)",
   "price_per_couple_vnd": 0,
@@ -9104,7 +9111,7 @@
  {
   "name": "Lạc Yên Healing Spa - Gội Đầu Dưỡng Sinh & Massage Quận Tân Phú",
   "type": "activity",
-  "category": "Spa date",
+  "category": "spa mát xa",
   "district": "Tân Phú",
   "address": "107 Bác Ái, Phú Thọ Hòa (Tân Phú)",
   "price_per_couple_vnd": 398000,
@@ -9158,7 +9165,7 @@
  {
   "name": "Tiệm Gội Nhà Xưn",
   "type": "activity",
-  "category": "Spa date",
+  "category": "spa",
   "district": "Phú Nhuận",
   "address": "137/18/16 Đ. Lê Văn Sỹ, Phú Nhuận (Phú Nhuận)",
   "price_per_couple_vnd": null,
@@ -9212,7 +9219,7 @@
  {
   "name": "Tiệm Gội Đầu Mèo Xù - Nguyễn Gia Trí",
   "type": "activity",
-  "category": "Spa date",
+  "category": "cửa hàng chăm sóc sức khỏe và làm đẹp",
   "district": "Bình Thạnh",
   "address": "157/56A, Nguyễn Gia Trí, Thạnh Mỹ Tây (Bình Thạnh)",
   "price_per_couple_vnd": 238000,
@@ -9266,7 +9273,7 @@
  {
   "name": "Tiệm Gội Đầu Mèo Xù - Lê Văn Sỹ",
   "type": "activity",
-  "category": "Spa date",
+  "category": "cửa hàng chăm sóc sức khỏe và làm đẹp",
   "district": "Quận 3",
   "address": "315/26B Đ. Lê Văn Sỹ, Nhiêu Lộc (Quận 3)",
   "price_per_couple_vnd": 238000,
@@ -9338,8 +9345,8 @@
   ],
   "source": "bliss_home",
   "out_of_area": false,
-  "status": "likely_operating",
-  "date_checked": "2026-10-26",
+  "status": "hidden",
+  "date_checked": "2026-10-31",
   "rating": 5.0,
   "reviews": 1258,
   "lat": 10.843076,
@@ -9369,12 +9376,13 @@
   "image": "/images/gm-today-g-i-u-d-ng-sinh-massage-188.webp",
   "image_kind": "photo",
   "image_credit": "Google Maps",
-  "image_source_url": "https://www.google.com/maps?cid=10409623717973740626"
+  "image_source_url": "https://www.google.com/maps?cid=10409623717973740626",
+  "hidden_reason": "Out of central HCMC: coords 10.843076,106.766869 (TP Thủ Đức (Thủ Đức cũ))"
  },
  {
   "name": "Doojin Beauty Center",
   "type": "activity",
-  "category": "Spa date",
+  "category": "hiệu làm tóc",
   "district": "Quận 10",
   "address": "678 3 Tháng 2, Diên Hồng (Quận 10)",
   "price_per_couple_vnd": null,
@@ -9428,7 +9436,7 @@
  {
   "name": "MASSAGE HẠ SPA Tân Bình",
   "type": "activity",
-  "category": "Spa date",
+  "category": "spa mát xa",
   "district": "Tân Bình",
   "address": "334 Nguyễn Trọng Tuyển, Tân Sơn Hòa (Tân Bình)",
   "price_per_couple_vnd": 798000,
@@ -9482,7 +9490,7 @@
  {
   "name": "Golden Lotus",
   "type": "activity",
-  "category": "Spa date",
+  "category": "trung tâm an dưỡng",
   "district": "Quận 1",
   "address": "15 Thái Văn Lung, Sài Gòn (Quận 1)",
   "price_per_couple_vnd": 1120000,
@@ -9536,7 +9544,7 @@
  {
   "name": "Golden Lotus Healing World",
   "type": "activity",
-  "category": "Spa date",
+  "category": "nhà tắm công cộng",
   "district": "TP Thủ Đức (Q2 cũ)",
   "address": "16A Đ. Số 10, An Khánh (TP Thủ Đức (Q2 cũ))",
   "price_per_couple_vnd": 1120000,
@@ -9590,7 +9598,7 @@
  {
   "name": "Phaya Thai Spa - 44 đặng dung Q1",
   "type": "activity",
-  "category": "Spa date",
+  "category": "spa sức khỏe",
   "district": "Quận 1",
   "address": "44 Đặng Dung, Tân Định (Quận 1)",
   "price_per_couple_vnd": 1198000,
@@ -9644,7 +9652,7 @@
  {
   "name": "Phaya Thai Spa Quận 1",
   "type": "activity",
-  "category": "Spa date",
+  "category": "spa sức khỏe",
   "district": "Quận 1",
   "address": "10B Sương Nguyệt Anh, Bến Thành (Quận 1)",
   "price_per_couple_vnd": 1198000,
@@ -9698,7 +9706,7 @@
  {
   "name": "Phaya Thai Spa - Bình Thạnh",
   "type": "activity",
-  "category": "Spa date",
+  "category": "spa",
   "district": "Bình Thạnh",
   "address": "94/14 Võ Oanh, Thạnh Mỹ Tây (Bình Thạnh)",
   "price_per_couple_vnd": 1198000,
@@ -9752,7 +9760,7 @@
  {
   "name": "Phaya thai spa - Him Lam Quận 7",
   "type": "activity",
-  "category": "Spa date",
+  "category": "spa sức khỏe",
   "district": "Quận 7",
   "address": "58 Nguyễn Thị Thập, Khu đô thị Him Lam, Tân Hưng (Quận 7)",
   "price_per_couple_vnd": 1198000,
@@ -9806,7 +9814,7 @@
  {
   "name": "Phaya Thai Spa 220B, Lê Văn Lương, Quận 7",
   "type": "activity",
-  "category": "Spa date",
+  "category": "spa",
   "district": "Quận 7",
   "address": "220B Đường Lê Văn Lương, Tân Hưng (Quận 7)",
   "price_per_couple_vnd": 1198000,
@@ -9878,8 +9886,8 @@
   ],
   "source": "bliss_home",
   "out_of_area": false,
-  "status": "likely_operating",
-  "date_checked": "2026-10-26",
+  "status": "hidden",
+  "date_checked": "2026-10-31",
   "rating": 4.9,
   "reviews": 347,
   "lat": 10.852251,
@@ -9909,12 +9917,13 @@
   "image": "/images/gm-phaya-thai-spa-g-v-p-198.webp",
   "image_kind": "photo",
   "image_credit": "Google Maps",
-  "image_source_url": "https://www.google.com/maps?cid=17971940292097138559"
+  "image_source_url": "https://www.google.com/maps?cid=17971940292097138559",
+  "hidden_reason": "Out of central HCMC: coords 10.852251,106.665762 (Gò Vấp)"
  },
  {
   "name": "Phaya Thai Spa - Thảo Điền - An Khánh Quận 2",
   "type": "activity",
-  "category": "Spa date",
+  "category": "spa",
   "district": "TP Thủ Đức (Q2 cũ)",
   "address": "59 Quốc Hương, An Khánh (TP Thủ Đức (Q2 cũ))",
   "price_per_couple_vnd": 1198000,
@@ -9968,7 +9977,7 @@
  {
   "name": "Massage Cổ Phong Q3 | Gội Đầu Dưỡng Sinh",
   "type": "activity",
-  "category": "Spa date",
+  "category": "spa mát xa",
   "district": "Quận 3",
   "address": "408 Nguyễn Thị Minh Khai, Bàn Cờ (Quận 3)",
   "price_per_couple_vnd": 1780000,
@@ -10022,7 +10031,7 @@
  {
   "name": "An Nhật Wellness Onsen & Jjimjilbang, Spa",
   "type": "activity",
-  "category": "Spa date",
+  "category": "spa",
   "district": "TP Thủ Đức (Thủ Đức cũ)",
   "address": "240 Đ. Phạm Văn Đồng, Hiệp Bình (TP Thủ Đức (Thủ Đức cũ))",
   "price_per_couple_vnd": 536000,
@@ -10076,7 +10085,7 @@
  {
   "name": "MayLi Nail - Scalp&Hair - Body Massage",
   "type": "activity",
-  "category": "Spa date",
+  "category": "spa",
   "district": "Quận 5",
   "address": "416 An Dương Vương, Chợ Quán (Quận 5)",
   "price_per_couple_vnd": null,
@@ -10130,7 +10139,7 @@
  {
   "name": "Timezone Vincom Đồng Khởi",
   "type": "activity",
-  "category": "Tổ hợp game date",
+  "category": "sàn chơi bô-linh",
   "district": "Quận 1",
   "address": "72 Lê Thánh Tôn, Sài Gòn (Quận 1)",
   "price_per_couple_vnd": 350000,
@@ -10185,7 +10194,7 @@
  {
   "name": "Sân Patin Vietnam Roller Rink & Academy",
   "type": "activity",
-  "category": "Tổ hợp game date",
+  "category": "sân trượt băng cuộn",
   "district": "Tân Bình",
   "address": "15-17 Cộng Hòa, Tân Sơn Nhất (Tân Bình)",
   "price_per_couple_vnd": 150000,
@@ -10239,7 +10248,7 @@
  {
   "name": "MIA TOWN - Khu Vui Chơi, Bida, Gaming Đỉnh Cao Quận 10",
   "type": "activity",
-  "category": "Tổ hợp game date",
+  "category": "trung tâm vui chơi giải trí",
   "district": "Quận 10",
   "address": "583B Sư Vạn Hạnh, Hòa Hưng (Quận 10)",
   "price_per_couple_vnd": null,
@@ -10293,7 +10302,7 @@
  {
   "name": "Jump Arena HimLam",
   "type": "activity",
-  "category": "Tổ hợp game date",
+  "category": "công viên giải trí",
   "district": "Quận 7",
   "address": "2 – 4 Đ. số 9, Khu đô thị Him Lam, Tân Hưng (Quận 7)",
   "price_per_couple_vnd": 420000,
@@ -10347,7 +10356,7 @@
  {
   "name": "Jump Arena Starmart Gò Vấp",
   "type": "activity",
-  "category": "Tổ hợp game date",
+  "category": "trung tâm vui chơi giải trí",
   "district": "Gò Vấp",
   "address": "647 Quang Trung, Thông Tây Hội (Gò Vấp)",
   "price_per_couple_vnd": 360000,
@@ -10419,8 +10428,8 @@
   ],
   "source": "bliss_home",
   "out_of_area": false,
-  "status": "likely_operating",
-  "date_checked": "2026-10-26",
+  "status": "hidden",
+  "date_checked": "2026-10-31",
   "rating": 4.9,
   "reviews": 518,
   "lat": 10.841885,
@@ -10450,12 +10459,13 @@
   "image": "/images/gm-funifun-thiso-mall-tr-ng-chinh-phan-huy-ch-208.webp",
   "image_kind": "photo",
   "image_credit": "Google Maps",
-  "image_source_url": "https://www.google.com/maps?cid=8329875965913569249&hl=en"
+  "image_source_url": "https://www.google.com/maps?cid=8329875965913569249&hl=en",
+  "hidden_reason": "Out of central HCMC: coords 10.841885,106.637528 (Gò Vấp)"
  },
  {
   "name": "Infinity Racing Vincom Thảo Điền",
   "type": "activity",
-  "category": "Tổ hợp game date",
+  "category": "trung tâm vui chơi giải trí",
   "district": "TP Thủ Đức (Q2 cũ)",
   "address": "161 Võ Nguyên Giáp, An Khánh (TP Thủ Đức (Q2 cũ))",
   "price_per_couple_vnd": 780000,
@@ -10509,7 +10519,7 @@
  {
   "name": "JP BOWLING & GAME CENTER",
   "type": "activity",
-  "category": "Tổ hợp game date",
+  "category": "câu lạc bộ thể thao",
   "district": "TP Thủ Đức (Thủ Đức cũ)",
   "address": "240 Đ. Phạm Văn Đồng, Hiệp Bình (TP Thủ Đức (Thủ Đức cũ))",
   "price_per_couple_vnd": 150000,
@@ -10563,7 +10573,7 @@
  {
   "name": "Real Escape Sài Gòn",
   "type": "activity",
-  "category": "Tổ hợp game date",
+  "category": "trung tâm trò chơi truy tìm lối thoát",
   "district": "Phú Nhuận",
   "address": "Phan Đăng Lưu, Đức Nhuận (Phú Nhuận)",
   "price_per_couple_vnd": 398000,
@@ -10617,7 +10627,7 @@
  {
   "name": "Khu công viên giải trí D-Joy",
   "type": "activity",
-  "category": "Tổ hợp game date",
+  "category": "sân chơi",
   "district": "TP Thủ Đức (Q2 cũ)",
   "address": "QPH6+8M4, An Khánh (TP Thủ Đức (Q2 cũ))",
   "price_per_couple_vnd": 400000,
@@ -10671,7 +10681,7 @@
  {
   "name": "Joy Station",
   "type": "activity",
-  "category": "Tổ hợp game date",
+  "category": "cửa hàng trò chơi điện tử",
   "district": "Bình Thạnh",
   "address": "64/10 Võ Oanh, Thạnh Mỹ Tây (Bình Thạnh)",
   "price_per_couple_vnd": null,
@@ -10725,7 +10735,7 @@
  {
   "name": "Công Viên Bờ Sông Sài Gòn Tp Thủ Đức",
   "type": "activity",
-  "category": "Tổ hợp game date",
+  "category": "công viên",
   "district": "TP Thủ Đức (Q2 cũ)",
   "address": "QPC5+MWF, An Khánh (TP Thủ Đức (Q2 cũ))",
   "price_per_couple_vnd": 0,
@@ -10799,8 +10809,8 @@
   ],
   "source": "bliss_home",
   "out_of_area": false,
-  "status": "likely_operating",
-  "date_checked": "2026-10-26",
+  "status": "hidden",
+  "date_checked": "2026-10-31",
   "rating": 4.3,
   "reviews": 52,
   "lat": 10.801923,
@@ -10827,12 +10837,13 @@
   "image": "/images/gm-c-ng-vi-n-vui-ch-i-th-tr-ng-215.webp",
   "image_kind": "photo",
   "image_credit": "Google Maps",
-  "image_source_url": "https://www.google.com/maps?cid=5930225062417399997"
+  "image_source_url": "https://www.google.com/maps?cid=5930225062417399997",
+  "hidden_reason": "Out of central HCMC: coords 10.801923,106.619526 (Tân Phú)"
  },
  {
   "name": "Gigamall",
   "type": "activity",
-  "category": "Tổ hợp game date",
+  "category": "trung tâm mua sắm",
   "district": "TP Thủ Đức (Thủ Đức cũ)",
   "address": "240 - 242 Đ. Phạm Văn Đồng, Hiệp Bình (TP Thủ Đức (Thủ Đức cũ))",
   "price_per_couple_vnd": 0,
@@ -10886,7 +10897,7 @@
  {
   "name": "Lava Planet Vincom Thảo Điền",
   "type": "activity",
-  "category": "Tổ hợp game date",
+  "category": "trung tâm vui chơi giải trí",
   "district": "TP Thủ Đức (Q2 cũ)",
   "address": "Vincom 161, Võ Nguyên Giáp, An Khánh (TP Thủ Đức (Q2 cũ))",
   "price_per_couple_vnd": null,
@@ -10940,7 +10951,7 @@
  {
   "name": "City Park, The Global City",
   "type": "activity",
-  "category": "Tổ hợp game date",
+  "category": "công viên",
   "district": "TP Thủ Đức (Q2 cũ)",
   "address": "Đường D3, Bình Trưng (TP Thủ Đức (Q2 cũ))",
   "price_per_couple_vnd": 0,
@@ -10994,7 +11005,7 @@
  {
   "name": "Công Viên Sala",
   "type": "activity",
-  "category": "Picnic date",
+  "category": "công viên",
   "district": "TP Thủ Đức (Q2 cũ)",
   "address": "01 Đ. Hoàng Thế Thiện, An Khánh (TP Thủ Đức (Q2 cũ))",
   "price_per_couple_vnd": 0,
@@ -11066,8 +11077,8 @@
   ],
   "source": "bliss_home",
   "out_of_area": false,
-  "status": "likely_operating",
-  "date_checked": "2026-10-26",
+  "status": "hidden",
+  "date_checked": "2026-10-31",
   "rating": 4.4,
   "reviews": 4635,
   "lat": 10.840349,
@@ -11097,12 +11108,13 @@
   "image": "/images/gm-c-ng-vi-n-v-n-h-a-g-v-p-220.webp",
   "image_kind": "photo",
   "image_credit": "Google Maps",
-  "image_source_url": "https://www.google.com/maps?cid=14048954194267339834"
+  "image_source_url": "https://www.google.com/maps?cid=14048954194267339834",
+  "hidden_reason": "Out of central HCMC: coords 10.840349,106.68306 (Gò Vấp)"
  },
  {
   "name": "MICHE OUS CAFÉ",
   "type": "food",
-  "category": "Check-in date",
+  "category": "quán cà phê",
   "district": "Quận 3",
   "address": "339/47 Đ. Lê Văn Sỹ, Nhiêu Lộc (Quận 3)",
   "price_per_couple_vnd": 200000,
@@ -11155,7 +11167,7 @@
  {
   "name": "Casa Lê Quý Đôn",
   "type": "food",
-  "category": "Check-in date",
+  "category": "nhà hàng Việt Nam",
   "district": "Quận 3",
   "address": "2C Lê Quý Đôn, Xuân Hòa (Quận 3)",
   "price_per_couple_vnd": 400000,
@@ -11208,7 +11220,7 @@
  {
   "name": "Crea Coffee & Studio",
   "type": "food",
-  "category": "Check-in date",
+  "category": "quán cà phê",
   "district": "Tân Bình",
   "address": "48/03 Út Tịch, Tân Sơn Nhất (Tân Bình)",
   "price_per_couple_vnd": 200000,
@@ -11261,7 +11273,7 @@
  {
   "name": "Every Half Coffee Roasters - Võ Thị Sáu",
   "type": "food",
-  "category": "Check-in date",
+  "category": "cơ sở rang cà phê",
   "district": "Quận 3",
   "address": "232/23 Võ Thị Sáu, Xuân Hòa (Quận 3)",
   "price_per_couple_vnd": 170000,
@@ -11314,7 +11326,7 @@
  {
   "name": "Faro Cafe - Nguyễn Trãi Corner",
   "type": "food",
-  "category": "Check-in date",
+  "category": "quán cà phê",
   "district": "Quận 1",
   "address": "214/B11 Nguyễn Trãi, Cầu Ông Lãnh (Quận 1)",
   "price_per_couple_vnd": 200000,
@@ -11367,7 +11379,7 @@
  {
   "name": "Mood Space Coffee - Concept",
   "type": "food",
-  "category": "Check-in date",
+  "category": "quán cà phê",
   "district": "Bình Thạnh",
   "address": "Bình Quới (Bình Thạnh)",
   "price_per_couple_vnd": 400000,
@@ -11420,7 +11432,7 @@
  {
   "name": "Ther Thẩn Cafe - Tân Bình",
   "type": "food",
-  "category": "Check-in date",
+  "category": "quán cà phê",
   "district": "Tân Bình",
   "address": "149/33 Bành Văn Trân, Tân Bình (Tân Bình)",
   "price_per_couple_vnd": 200000,
@@ -11473,7 +11485,7 @@
  {
   "name": "Sterik Café",
   "type": "food",
-  "category": "Check-in date",
+  "category": "quán cà phê nghệ thuật",
   "district": "Tân Phú",
   "address": "11/9 Thoại Ngọc Hầu, Tân Phú (Tân Phú)",
   "price_per_couple_vnd": 200000,
@@ -11526,7 +11538,7 @@
  {
   "name": "Nhà hàng - Cafe Casa Notre Dame - Nguyễn Du",
   "type": "food",
-  "category": "Check-in date",
+  "category": "quán cà phê",
   "district": "Quận 1",
   "address": "65 Nguyễn Du, Sài Gòn (Quận 1)",
   "price_per_couple_vnd": 400000,
@@ -11579,7 +11591,7 @@
  {
   "name": "Highlands Coffee 213 Hoàng Văn Thụ",
   "type": "food",
-  "category": "Check-in date",
+  "category": "quán cà phê",
   "district": "Phú Nhuận",
   "address": "213 Đ. Hoàng Văn Thụ, Phú Nhuận (Phú Nhuận)",
   "price_per_couple_vnd": 200000,
@@ -11632,7 +11644,7 @@
  {
   "name": "FIVEX HOUSE",
   "type": "activity",
-  "category": "Check-in date",
+  "category": "cửa hàng",
   "district": "Quận 1",
   "address": "205/2-3 Nguyễn Trãi, Cầu Ông Lãnh (Quận 1)",
   "price_per_couple_vnd": null,
@@ -11685,7 +11697,7 @@
  {
   "name": "Cafe Forest",
   "type": "food",
-  "category": "Check-in date",
+  "category": "quán cà phê",
   "district": "Quận 7",
   "address": "Sky Garden 2, 1016/36, lô/2 Đ. Phạm Văn Nghị, Tân Hưng (Quận 7)",
   "price_per_couple_vnd": 200000,
@@ -11738,7 +11750,7 @@
  {
   "name": "Dangdo Cafe Thảo Điền",
   "type": "food",
-  "category": "Check-in date",
+  "category": "quán cà phê",
   "district": "TP Thủ Đức (Q2 cũ)",
   "address": "19 Đường số 65, An Khánh (TP Thủ Đức (Q2 cũ))",
   "price_per_couple_vnd": 400000,
@@ -11791,9 +11803,9 @@
  {
   "name": "KKAEN Da Kuffee",
   "type": "food",
-  "category": "Check-in date",
-  "district": "Bình Thạnh",
-  "address": "1A Hoa Lan, Cầu Kiệu (Bình Thạnh)",
+  "category": "quán cà phê",
+  "district": "Phú Nhuận",
+  "address": "1A Hoa Lan, P. Cầu Kiệu, Phú Nhuận",
   "price_per_couple_vnd": 120000,
   "price_note": "Cà phê/trà 32–59k",
   "opening_hours": null,
@@ -11808,8 +11820,8 @@
   ],
   "source": "bliss_home",
   "out_of_area": false,
-  "status": "uncertain",
-  "date_checked": "2026-10-26",
+  "status": "hidden",
+  "date_checked": "2026-10-31",
   "rating": 3.8,
   "reviews": 211,
   "lat": 10.796774,
@@ -11820,7 +11832,7 @@
   "google_category": "Quán cà phê",
   "maps_url": "https://maps.google.com/?cid=15590980122355734237",
   "website": "https://www.facebook.com/kkaendakuffee?mibextid=LQQJ4d",
-  "area": "Bình Thạnh",
+  "area": "Phú Nhuận",
   "kind": "cafe",
   "hours": null,
   "price_min": 32000,
@@ -11836,12 +11848,13 @@
   "image": "/images/gm-kkaen-da-kuffee-234.webp",
   "image_credit": "Google Maps",
   "image_source_url": "https://www.google.com/maps?cid=15590980122355734237",
-  "image_kind": "photo"
+  "image_kind": "photo",
+  "hidden_reason": "Google Maps place page shows \"Tạm thời đóng cửa\" (temporarily closed) on 2026-10-31"
  },
  {
   "name": "Bodega Saigon",
   "type": "food",
-  "category": "Check-in date",
+  "category": "hộp đêm",
   "district": "Quận 1",
   "address": "2 Thi Sách, Sài Gòn (Quận 1)",
   "price_per_couple_vnd": 600000,
@@ -11894,7 +11907,7 @@
  {
   "name": "Công viên gầm cầu Ba Son",
   "type": "activity",
-  "category": "Check-in date",
+  "category": "công viên",
   "district": "Quận 1",
   "address": "QPJ5+974, Cầu Ba Son, Sài Gòn (Quận 1)",
   "price_per_couple_vnd": 0,
@@ -11944,7 +11957,7 @@
  {
   "name": "Maison De Artisan",
   "type": "food",
-  "category": "Check-in date",
+  "category": "quán cà phê",
   "district": "Quận 7",
   "address": "2 Đường Số 17, Khu Pho Nam Vien, Tân Mỹ (Quận 7)",
   "price_per_couple_vnd": 400000,
@@ -11997,7 +12010,7 @@
  {
   "name": "Maycaighe space",
   "type": "food",
-  "category": "Check-in date",
+  "category": "quán cà phê",
   "district": "Tân Bình",
   "address": "245e/2, 245E/2A Đ. Hoàng Văn Thụ, Tân Sơn Hòa (Tân Bình)",
   "price_per_couple_vnd": 200000,
@@ -12050,7 +12063,7 @@
  {
   "name": "Hoko_fragrances",
   "type": "activity",
-  "category": "Check-in date",
+  "category": "cửa hàng bán nến",
   "district": "Phú Nhuận",
   "address": "10/23 Đ. Đoàn Thị Điểm, Cầu Kiệu (Phú Nhuận)",
   "price_per_couple_vnd": null,
@@ -12103,7 +12116,7 @@
  {
   "name": "Fiction cafe & bar",
   "type": "food",
-  "category": "Check-in date",
+  "category": "quán cà phê",
   "district": "Quận 1",
   "address": "33/11 Lý Văn Phức, Tân Định (Quận 1)",
   "price_per_couple_vnd": 200000,
@@ -12171,8 +12184,8 @@
   ],
   "source": "bliss_home",
   "out_of_area": false,
-  "status": "likely_operating",
-  "date_checked": "2026-10-26",
+  "status": "hidden",
+  "date_checked": "2026-10-31",
   "rating": 5.0,
   "reviews": 33,
   "lat": 10.842374,
@@ -12202,12 +12215,13 @@
   "image": "/images/gm-bliss-photobooth-241.webp",
   "image_kind": "photo",
   "image_credit": "Google Maps",
-  "image_source_url": "https://www.google.com/maps?cid=17825365554666882654"
+  "image_source_url": "https://www.google.com/maps?cid=17825365554666882654",
+  "hidden_reason": "Out of central HCMC: coords 10.842374,106.639612 (Gò Vấp)"
  },
  {
   "name": "MÈO MỐC PHOTOBOOTH QUẬN 5 (PHƯỜNG CHỢ LỚN)",
   "type": "activity",
-  "category": "Photobooth date",
+  "category": "buồng chụp ảnh",
   "district": "Quận 5",
   "address": "10 Đ. Nguyễn Án, Chợ Lớn (Quận 5)",
   "price_per_couple_vnd": 100000,
@@ -12261,7 +12275,7 @@
  {
   "name": "Paris Booth",
   "type": "activity",
-  "category": "Photobooth date",
+  "category": "buồng chụp ảnh",
   "district": "Quận 10",
   "address": "580 Sư Vạn Hạnh, Vườn Lài (Quận 10)",
   "price_per_couple_vnd": 100000,
@@ -12315,7 +12329,7 @@
  {
   "name": "Twinkle.booth",
   "type": "activity",
-  "category": "Photobooth date",
+  "category": "studio nhiếp ảnh",
   "district": "Quận 1",
   "address": "40E Ngô Đức Kế, Sài Gòn (Quận 1)",
   "price_per_couple_vnd": 120000,
@@ -12369,7 +12383,7 @@
  {
   "name": "Ngói Photobooth - Nguyễn Tri Phương",
   "type": "activity",
-  "category": "Photobooth date",
+  "category": "buồng chụp ảnh",
   "district": "Quận 10",
   "address": "404 Nguyễn Tri Phương, Vườn Lài (Quận 10)",
   "price_per_couple_vnd": 90000,
@@ -12423,7 +12437,7 @@
  {
   "name": "Mothaiba Vivid - Quận 3",
   "type": "activity",
-  "category": "Photobooth date",
+  "category": "buồng chụp ảnh",
   "district": "Quận 3",
   "address": "301a Đ. Lê Văn Sỹ, Nhiêu Lộc (Quận 3)",
   "price_per_couple_vnd": 100000,
@@ -12477,7 +12491,7 @@
  {
   "name": "Photoism Huỳnh Thúc Kháng",
   "type": "activity",
-  "category": "Photobooth date",
+  "category": "studio nhiếp ảnh",
   "district": "Quận 1",
   "address": "17 Huỳnh Thúc Kháng, Sài Gòn (Quận 1)",
   "price_per_couple_vnd": 100000,
@@ -12531,7 +12545,7 @@
  {
   "name": "MonoBooth",
   "type": "activity",
-  "category": "Photobooth date",
+  "category": "buồng chụp ảnh",
   "district": "Quận 1",
   "address": "42 Đ. Tôn Thất Thiệp, Sài Gòn (Quận 1)",
   "price_per_couple_vnd": null,
@@ -12585,7 +12599,7 @@
  {
   "name": "Foto Hunter/ JULY ULIKE",
   "type": "activity",
-  "category": "Photobooth date",
+  "category": "studio nhiếp ảnh",
   "district": "Quận 1",
   "address": "88 Trương Định, Bến Thành (Quận 1)",
   "price_per_couple_vnd": null,
@@ -12639,7 +12653,7 @@
  {
   "name": "Foto.Flicker Photobooth Saigon",
   "type": "activity",
-  "category": "Photobooth date",
+  "category": "buồng chụp ảnh",
   "district": "TP Thủ Đức (Q2 cũ)",
   "address": "34 Tống Hữu Định, An Khánh (TP Thủ Đức (Q2 cũ))",
   "price_per_couple_vnd": 110000,
@@ -12693,7 +12707,7 @@
  {
   "name": "Photo Palette - Quận 7",
   "type": "activity",
-  "category": "Photobooth date",
+  "category": "buồng chụp ảnh",
   "district": "Quận 7",
   "address": "547 Nguyễn Thị Thập, Tân Hưng (Quận 7)",
   "price_per_couple_vnd": 110000,
@@ -12747,7 +12761,7 @@
  {
   "name": "Photo Palette - Bình Thạnh",
   "type": "activity",
-  "category": "Photobooth date",
+  "category": "phòng ảnh chân dung",
   "district": "Bình Thạnh",
   "address": "16-18 Nguyễn Gia Trí, Thạnh Mỹ Tây (Bình Thạnh)",
   "price_per_couple_vnd": 110000,
@@ -12801,7 +12815,7 @@
  {
   "name": "Photo Palette - Tân Phú",
   "type": "activity",
-  "category": "Photobooth date",
+  "category": "buồng chụp ảnh",
   "district": "Tân Phú",
   "address": "166 Lê Trọng Tấn, Tây Thạnh (Tân Phú)",
   "price_per_couple_vnd": 110000,
@@ -12855,7 +12869,7 @@
  {
   "name": "Photo Palette - Quận 1",
   "type": "activity",
-  "category": "Photobooth date",
+  "category": "studio nhiếp ảnh",
   "district": "Quận 1",
   "address": "10 Huỳnh Thúc Kháng, Sài Gòn (Quận 1)",
   "price_per_couple_vnd": 110000,
@@ -12909,7 +12923,7 @@
  {
   "name": "Photo Palette - Quận 10",
   "type": "activity",
-  "category": "Photobooth date",
+  "category": "buồng chụp ảnh",
   "district": "Quận 10",
   "address": "501 Sư Vạn Hạnh, Hòa Hưng (Quận 10)",
   "price_per_couple_vnd": 110000,
@@ -12963,9 +12977,9 @@
  {
   "name": "QAN Photobooth",
   "type": "activity",
-  "category": "Photobooth date",
-  "district": "Phú Nhuận",
-  "address": "534 Đ. Lê Văn Sỹ, Nhiêu Lộc (Phú Nhuận)",
+  "category": "studio nhiếp ảnh",
+  "district": "Quận 3",
+  "address": "534 Lê Văn Sỹ, P. Nhiêu Lộc, Q.3",
   "price_per_couple_vnd": null,
   "price_note": null,
   "opening_hours": "09:00–23:00 (giờ Chủ Nhật theo Google Maps)",
@@ -12982,7 +12996,7 @@
   "source": "bliss_home",
   "out_of_area": false,
   "status": "likely_operating",
-  "date_checked": "2026-10-26",
+  "date_checked": "2026-10-31",
   "rating": 4.9,
   "reviews": 283,
   "lat": 10.790057,
@@ -12993,7 +13007,7 @@
   "google_category": "Studio nhiếp ảnh",
   "maps_url": "https://maps.google.com/?cid=9664685120369988877",
   "website": "http://facebook.com/photoqan",
-  "area": "Phú Nhuận",
+  "area": "Quận 3",
   "kind": "photobooth",
   "hours": [
    540,
@@ -13017,7 +13031,7 @@
  {
   "name": "Life4cuts photobooth - 인생네컷 (TP Thủ Đức (Thủ Đức cũ))",
   "type": "activity",
-  "category": "Photobooth date",
+  "category": "buồng chụp ảnh",
   "district": "TP Thủ Đức (Thủ Đức cũ)",
   "address": "TTTM Gigamall, 240 - 242 Đ. Phạm Văn Đồng, P, Hiệp Bình (TP Thủ Đức (Thủ Đức cũ))",
   "price_per_couple_vnd": 100000,
@@ -13089,8 +13103,8 @@
   ],
   "source": "bliss_home",
   "out_of_area": false,
-  "status": "likely_operating",
-  "date_checked": "2026-10-26",
+  "status": "hidden",
+  "date_checked": "2026-10-31",
   "rating": 4.9,
   "reviews": 1103,
   "lat": 10.80128,
@@ -13120,12 +13134,13 @@
   "image": "/images/gm-life4cuts-photobooth-t-n-ph-258.webp",
   "image_credit": "Google Maps",
   "image_source_url": "https://www.google.com/maps?cid=17666310573480102495&hl=en",
-  "image_kind": "photo"
+  "image_kind": "photo",
+  "hidden_reason": "Out of central HCMC: coords 10.80128,106.61659 (Tân Phú)"
  },
  {
   "name": "Life4cuts photobooth - 인생네컷 (Quận 7)",
   "type": "activity",
-  "category": "Photobooth date",
+  "category": "buồng chụp ảnh",
   "district": "Quận 7",
   "address": "Tầng 3, 3- A14 & A15 , TTTM SC VivoCity, Tân Hưng (Quận 7)",
   "price_per_couple_vnd": 100000,
@@ -13179,7 +13194,7 @@
  {
   "name": "Life4cuts photobooth - 인생네컷 (Gò Vấp)",
   "type": "activity",
-  "category": "Photobooth date",
+  "category": "buồng chụp ảnh",
   "district": "Gò Vấp",
   "address": "Emart, Đ. Phan Văn Trị, Tầng 2, An Nhơn (Gò Vấp)",
   "price_per_couple_vnd": 100000,
@@ -13233,7 +13248,7 @@
  {
   "name": "Life4cuts 인생네컷",
   "type": "activity",
-  "category": "Photobooth date",
+  "category": "buồng chụp ảnh",
   "district": "Quận 1",
   "address": "Sảnh Chính - Central Market, Lê Lai/04 Phạm Ngũ Lão, P, Bến Thành (Quận 1)",
   "price_per_couple_vnd": 100000,
@@ -13287,7 +13302,7 @@
  {
   "name": "Life Four Cut",
   "type": "activity",
-  "category": "Photobooth date",
+  "category": "buồng chụp ảnh",
   "district": "Quận 1",
   "address": "26 Lý Tự Trọng, Sài Gòn (Quận 1)",
   "price_per_couple_vnd": 100000,
@@ -13341,7 +13356,7 @@
  {
   "name": "Life4cuts photobooth - 인생네컷 (Quận 1)",
   "type": "activity",
-  "category": "Photobooth date",
+  "category": "buồng chụp ảnh",
   "district": "Quận 1",
   "address": "TTTM NOWZONE, Số 2407 - lầu 4, Cầu Ông Lãnh (Quận 1)",
   "price_per_couple_vnd": 100000,
@@ -13395,7 +13410,7 @@
  {
   "name": "Life Four Cuts Photobooth",
   "type": "activity",
-  "category": "Photobooth date",
+  "category": "buồng chụp ảnh",
   "district": "Quận 1",
   "address": "68 Nguyễn Huệ, Sài Gòn (Quận 1)",
   "price_per_couple_vnd": 100000,
@@ -13413,8 +13428,8 @@
   ],
   "source": "bliss_home",
   "out_of_area": false,
-  "status": "uncertain",
-  "date_checked": "2026-10-26",
+  "status": "hidden",
+  "date_checked": "2026-10-31",
   "rating": 4.8,
   "reviews": 405,
   "lat": 10.774605,
@@ -13441,12 +13456,13 @@
   "image": "/images/gm-life-four-cuts-photobooth-264.webp",
   "image_kind": "photo",
   "image_credit": "Google Maps",
-  "image_source_url": "https://www.google.com/maps?cid=12662174903771791778"
+  "image_source_url": "https://www.google.com/maps?cid=12662174903771791778",
+  "hidden_reason": "Google Maps place page shows \"Tạm thời đóng cửa\" (temporarily closed) on 2026-10-31"
  },
  {
   "name": "Life4cuts photobooth Thiso Sala - 인생네컷",
   "type": "activity",
-  "category": "Photobooth date",
+  "category": "buồng chụp ảnh",
   "district": "TP Thủ Đức (Q2 cũ)",
   "address": "Thiso Mall, Tầng 3, 10 Mai Chí Thọ, An Khánh (TP Thủ Đức (Q2 cũ))",
   "price_per_couple_vnd": 100000,
@@ -13500,7 +13516,7 @@
  {
   "name": "PHOTO OBJET QUANG TRUNG",
   "type": "activity",
-  "category": "Photobooth date",
+  "category": "buồng chụp ảnh",
   "district": "Gò Vấp",
   "address": "190 Quang Trung, Gò Vấp (Gò Vấp)",
   "price_per_couple_vnd": 100000,
@@ -13554,7 +13570,7 @@
  {
   "name": "PHOTO OBJET VẠN HẠNH MALL (포토 오브제 반한몰)",
   "type": "activity",
-  "category": "Photobooth date",
+  "category": "studio nhiếp ảnh",
   "district": "Quận 10",
   "address": "11 Sư Vạn Hạnh, Hòa Hưng (Quận 10)",
   "price_per_couple_vnd": 100000,
@@ -13608,7 +13624,7 @@
  {
   "name": "PHOTO OBJET NOWZONE",
   "type": "activity",
-  "category": "Photobooth date",
+  "category": "buồng chụp ảnh",
   "district": "Quận 1",
   "address": "TTTM Nowzone, 235 Nguyễn Văn Cừ, Cầu Ông Lãnh (Quận 1)",
   "price_per_couple_vnd": 100000,
@@ -13662,7 +13678,7 @@
  {
   "name": "Photo Objet Saigon Centre HCM",
   "type": "activity",
-  "category": "Photobooth date",
+  "category": "buồng chụp ảnh",
   "district": "Quận 1",
   "address": "65-67 Lê Lợi, Sài Gòn (Quận 1)",
   "price_per_couple_vnd": 100000,
@@ -13716,7 +13732,7 @@
  {
   "name": "PHOTO OBJET THẢO ĐIỀN",
   "type": "activity",
-  "category": "Photobooth date",
+  "category": "buồng chụp ảnh",
   "district": "TP Thủ Đức (Q2 cũ)",
   "address": "161 Võ Nguyên Giáp, An Khánh (TP Thủ Đức (Q2 cũ))",
   "price_per_couple_vnd": 100000,
@@ -13788,8 +13804,8 @@
   ],
   "source": "bliss_home",
   "out_of_area": false,
-  "status": "likely_operating",
-  "date_checked": "2026-10-26",
+  "status": "hidden",
+  "date_checked": "2026-10-31",
   "rating": 4.9,
   "reviews": 3077,
   "lat": 10.801284,
@@ -13819,12 +13835,13 @@
   "image": "/images/gm-photo-objet-aeon-t-n-ph-271.webp",
   "image_kind": "photo",
   "image_credit": "Google Maps",
-  "image_source_url": "https://www.google.com/maps?cid=7695425993317257208"
+  "image_source_url": "https://www.google.com/maps?cid=7695425993317257208",
+  "hidden_reason": "Out of central HCMC: coords 10.801284,106.616795 (Tân Phú)"
  },
  {
   "name": "MIRAFILM PHOTOBOOTH - CN ĐINH TIÊN HOÀNG",
   "type": "activity",
-  "category": "Photobooth date",
+  "category": "buồng chụp ảnh",
   "district": "Quận 1",
   "address": "169 Đinh Tiên Hoàng, Tân Định (Quận 1)",
   "price_per_couple_vnd": null,
@@ -13896,8 +13913,8 @@
   ],
   "source": "bliss_home",
   "out_of_area": false,
-  "status": "likely_operating",
-  "date_checked": "2026-10-26",
+  "status": "hidden",
+  "date_checked": "2026-10-31",
   "rating": 4.8,
   "reviews": 332,
   "lat": 10.799789,
@@ -13927,12 +13944,13 @@
   "image": "/images/gm-pixelb-vintage-photobooth-273.webp",
   "image_kind": "photo",
   "image_credit": "Google Maps",
-  "image_source_url": "https://www.google.com/maps?cid=17235848034969743102"
+  "image_source_url": "https://www.google.com/maps?cid=17235848034969743102",
+  "hidden_reason": "Out of central HCMC: coords 10.799789,106.615586 (Tân Phú)"
  },
  {
   "name": "PixelB photobooth",
   "type": "activity",
-  "category": "Photobooth date",
+  "category": "buồng chụp ảnh",
   "district": "Tân Bình",
   "address": "35a Bàu Cát 1, Tân Bình (Tân Bình)",
   "price_per_couple_vnd": 90000,
@@ -13986,7 +14004,7 @@
  {
   "name": "Vesou cocktail bar",
   "type": "food",
-  "category": "Deep talk date",
+  "category": "quầy giải khát",
   "district": "Quận 1",
   "address": "150/7/3 Nguyễn Trãi, Bến Thành (Quận 1)",
   "price_per_couple_vnd": 1000000,
@@ -14017,7 +14035,7 @@
   "maps_url": "https://maps.google.com/?cid=1771794986646845958",
   "website": null,
   "area": "Quận 1",
-  "kind": "cafe",
+  "kind": "bar",
   "hours": [
    1080,
    1440
@@ -14040,7 +14058,7 @@
  {
   "name": "LIB. Hidden Bar",
   "type": "food",
-  "category": "Deep talk date",
+  "category": "quán bar cocktail",
   "district": "Quận 3",
   "address": "519 Hoàng Sa, Xuân Hòa (Quận 3)",
   "price_per_couple_vnd": 600000,
@@ -14094,7 +14112,7 @@
  {
   "name": "VOTRI - Cabinet of Curiosities",
   "type": "food",
-  "category": "Deep talk date",
+  "category": "quán bar cocktail",
   "district": "Quận 1",
   "address": "45 Trần Hưng Đạo, Quận 1 (Quận 1)",
   "price_per_couple_vnd": 540000,
@@ -14145,7 +14163,7 @@
  {
   "name": "Umatcha Se - Omakase Matcha - HVB",
   "type": "food",
-  "category": "Deep talk date",
+  "category": "quán cà phê",
   "district": "Phú Nhuận",
   "address": "489/29/11 Huỳnh Văn Bánh, Phường, Phú Nhuận (Phú Nhuận)",
   "price_per_couple_vnd": 190000,
@@ -14163,8 +14181,8 @@
   ],
   "source": "bliss_home",
   "out_of_area": false,
-  "status": "uncertain",
-  "date_checked": "2026-10-26",
+  "status": "hidden",
+  "date_checked": "2026-10-31",
   "rating": 4.9,
   "reviews": 319,
   "lat": 10.790792,
@@ -14191,12 +14209,13 @@
   "image": "/images/gm-umatcha-se-omakase-matcha-hvb-278.webp",
   "image_kind": "photo",
   "image_credit": "Google Maps",
-  "image_source_url": "https://www.google.com/maps?cid=9946886543773912922"
+  "image_source_url": "https://www.google.com/maps?cid=9946886543773912922",
+  "hidden_reason": "Google Maps place page shows \"Tạm thời đóng cửa\" (temporarily closed) on 2026-10-31"
  },
  {
   "name": "Loop 1 - Cocktail Bar & Kitchen",
   "type": "food",
-  "category": "Deep talk date",
+  "category": "quán bar cocktail",
   "district": "Quận 1",
   "address": "39 Lý Tự Trọng, Sài Gòn (Quận 1)",
   "price_per_couple_vnd": 1200000,
@@ -14250,7 +14269,7 @@
  {
   "name": "RRR - Just A Bar",
   "type": "food",
-  "category": "Deep talk date",
+  "category": "quán bar cocktail",
   "district": "Quận 10",
   "address": "Nguyễn Tri Phương/468/14 Phường Vườn Lài, Vườn Lài (Quận 10)",
   "price_per_couple_vnd": 400000,
@@ -14301,7 +14320,7 @@
  {
   "name": "Angels' Share",
   "type": "food",
-  "category": "Deep talk date",
+  "category": "quán bar",
   "district": "Quận 1",
   "address": "178 Pasteur, Sài Gòn (Quận 1)",
   "price_per_couple_vnd": 800000,
@@ -14355,7 +14374,7 @@
  {
   "name": "AEX Cocktail Bar",
   "type": "food",
-  "category": "Deep talk date",
+  "category": "quán bar cocktail",
   "district": "Phú Nhuận",
   "address": "128g Nguyễn Đình Chính, Phú Nhuận (Phú Nhuận)",
   "price_per_couple_vnd": 600000,
@@ -14409,7 +14428,7 @@
  {
   "name": "88 Rooftop bar",
   "type": "food",
-  "category": "Deep talk date",
+  "category": "quán bar",
   "district": "Bình Thạnh",
   "address": "114 Phạm Viết Chánh, Thạnh Mỹ Tây (Bình Thạnh)",
   "price_per_couple_vnd": 400000,
@@ -14463,7 +14482,7 @@
  {
   "name": "Lulu - Bar & Eatery",
   "type": "food",
-  "category": "Deep talk date",
+  "category": "quán bar cocktail",
   "district": "Quận 1",
   "address": "1A Đ. Phan Tôn, Tân Định (Quận 1)",
   "price_per_couple_vnd": 600000,
@@ -14517,7 +14536,7 @@
  {
   "name": "Tủ Bar",
   "type": "food",
-  "category": "Deep talk date",
+  "category": "quán bar",
   "district": "Bình Thạnh",
   "address": "160 Ngô Tất Tố, Thạnh Mỹ Tây (Bình Thạnh)",
   "price_per_couple_vnd": 800000,
@@ -14571,7 +14590,7 @@
  {
   "name": "Sweet & Sour Bar",
   "type": "food",
-  "category": "Deep talk date",
+  "category": "quán bar cocktail",
   "district": "Quận 1",
   "address": "86/8A Mạc Đĩnh Chi, Tân Định (Quận 1)",
   "price_per_couple_vnd": 600000,
@@ -14625,7 +14644,7 @@
  {
   "name": "Dear Bar",
   "type": "food",
-  "category": "Deep talk date",
+  "category": "quán bar cocktail",
   "district": "Quận 3",
   "address": "107f Trương Định, Xuân Hòa (Quận 3)",
   "price_per_couple_vnd": 600000,
@@ -14679,7 +14698,7 @@
  {
   "name": "BỜM - Kitchen & Wine Bar",
   "type": "food",
-  "category": "Fine Dining date",
+  "category": "nhà hàng lai Á",
   "district": "Quận 1",
   "address": "24 Nguyễn Thị Nghĩa, Quận 1 (Quận 1)",
   "price_per_couple_vnd": 1500000,
@@ -14733,7 +14752,7 @@
  {
   "name": "Đèn Dầu Thảo Điền",
   "type": "food",
-  "category": "Fine Dining date",
+  "category": "quán bar cocktail",
   "district": "TP Thủ Đức (Q2 cũ)",
   "address": "19C Ngô Quang Huy, An Khánh (TP Thủ Đức (Q2 cũ))",
   "price_per_couple_vnd": 1200000,
@@ -14784,7 +14803,7 @@
  {
   "name": "Mr.Saigon - Mì Ý, Salad Sài Gòn - Lê Lai",
   "type": "food",
-  "category": "Fine Dining date",
+  "category": "nhà hàng Ý (mì Ý, salad)",
   "district": "Gò Vấp",
   "address": "75 Đ. Lê Lai, Hạnh Thông (Gò Vấp)",
   "price_per_couple_vnd": 1400000,
@@ -14856,8 +14875,8 @@
   ],
   "source": "bliss_home",
   "out_of_area": false,
-  "status": "likely_operating",
-  "date_checked": "2026-10-26",
+  "status": "hidden",
+  "date_checked": "2026-10-31",
   "rating": 4.4,
   "reviews": 189,
   "lat": 10.847305,
@@ -14887,12 +14906,13 @@
   "image": "/images/gm-fenice-cuisine-bar-291.webp",
   "image_kind": "photo",
   "image_credit": "Google Maps",
-  "image_source_url": "https://www.google.com/maps?cid=15586756056140073011"
+  "image_source_url": "https://www.google.com/maps?cid=15586756056140073011",
+  "hidden_reason": "Out of central HCMC: coords 10.847305,106.67215 (Gò Vấp)"
  },
  {
   "name": "Mạch Saigon",
   "type": "food",
-  "category": "Fine Dining date",
+  "category": "nhà hàng lai Á",
   "district": "Quận 1",
   "address": "75/1 Mai Thị Lựu, Ward, Tân Định (Quận 1)",
   "price_per_couple_vnd": 1200000,
@@ -14946,7 +14966,7 @@
  {
   "name": "Matsuri Japanese Restaurant - Vincom Center Landmark 81",
   "type": "food",
-  "category": "Fine Dining date",
+  "category": "nhà hàng",
   "district": "Bình Thạnh",
   "address": "Vincom Center Landmark, 81 772 Điện Biên Phủ, Vinhomes Tân Cảng, Thạnh Mỹ Tây (Bình Thạnh)",
   "price_per_couple_vnd": 1400000,
@@ -15000,7 +15020,7 @@
  {
   "name": "Apero Bistro & Bar",
   "type": "food",
-  "category": "Fine Dining date",
+  "category": "quán ăn nhỏ",
   "district": "TP Thủ Đức (Q2 cũ)",
   "address": "45 Nguyễn Duy Hiệu, An Khánh (TP Thủ Đức (Q2 cũ))",
   "price_per_couple_vnd": 1200000,
@@ -15054,7 +15074,7 @@
  {
   "name": "Én’s Kitchen- Italian Cuisine & more",
   "type": "food",
-  "category": "Fine Dining date",
+  "category": "nhà hàng ý",
   "district": "Quận 1",
   "address": "109/11 Nguyễn Bỉnh Khiêm, Tân Định (Quận 1)",
   "price_per_couple_vnd": 800000,
@@ -15108,7 +15128,7 @@
  {
   "name": "Smith's Kitchen & Bar",
   "type": "food",
-  "category": "Fine Dining date",
+  "category": "nhà hàng cao cấp",
   "district": "Quận 1",
   "address": "14 Lê Lai, Bến Thành (Quận 1)",
   "price_per_couple_vnd": 2500000,
@@ -15162,7 +15182,7 @@
  {
   "name": "NOIRE Dining & Cafe - Phạm Ngọc Thạch",
   "type": "food",
-  "category": "Fine Dining date",
+  "category": "nhà hàng cao cấp",
   "district": "Quận 1",
   "address": "1Bis Phạm Ngọc Thạch, Sài Gòn (Quận 1)",
   "price_per_couple_vnd": 1000000,
@@ -15216,7 +15236,7 @@
  {
   "name": "GLAMISQUE - Fusion Dining",
   "type": "food",
-  "category": "Fine Dining date",
+  "category": "nhà hàng lai Á",
   "district": "Quận 1",
   "address": "59 - 59B Nguyễn Hữu Cầu, Tân Định (Quận 1)",
   "price_per_couple_vnd": 1376000,
@@ -15270,7 +15290,7 @@
  {
   "name": "Trạm Hầm Quận 3",
   "type": "food",
-  "category": "Fine Dining date",
+  "category": "nhà hàng món nướng",
   "district": "Quận 3",
   "address": "540/17 Cách Mạng Tháng Tám, Nhiêu Lộc (Quận 3)",
   "price_per_couple_vnd": 600000,
@@ -15324,7 +15344,7 @@
  {
   "name": "CHIIK Steak & Pasta Thảo Điền",
   "type": "food",
-  "category": "Fine Dining date",
+  "category": "nhà hàng bít tết",
   "district": "TP Thủ Đức (Q2 cũ)",
   "address": "07 Đ. Đỗ Quang, An Khánh (TP Thủ Đức (Q2 cũ))",
   "price_per_couple_vnd": 1400000,
@@ -15378,7 +15398,7 @@
  {
   "name": "Le Monde Steak, Nguyễn Thị Minh Khai",
   "type": "food",
-  "category": "Fine Dining date",
+  "category": "nhà hàng Pháp",
   "district": "Quận 1",
   "address": "11H Nguyễn Thị Minh Khai, Sài Gòn (Quận 1)",
   "price_per_couple_vnd": 600000,
@@ -15432,7 +15452,7 @@
  {
   "name": "Calóre Coffee & Eatery",
   "type": "food",
-  "category": "Fine Dining date",
+  "category": "nhà hàng châu Á",
   "district": "Tân Bình",
   "address": "769/1 Cách Mạng Tháng Tám, Tân Hòa (Tân Bình)",
   "price_per_couple_vnd": 600000,
@@ -15486,7 +15506,7 @@
  {
   "name": "Livannah - Sips & Bites Thảo Điền",
   "type": "food",
-  "category": "Fine Dining date",
+  "category": "nhà hàng phong cách chiết trung",
   "district": "TP Thủ Đức (Q2 cũ)",
   "address": "12 Nguyễn Ư Dĩ, An Khánh (TP Thủ Đức (Q2 cũ))",
   "price_per_couple_vnd": 1400000,
@@ -15540,7 +15560,7 @@
  {
   "name": "Chamie Steak",
   "type": "food",
-  "category": "Fine Dining date",
+  "category": "nhà hàng bít tết",
   "district": "Quận 10",
   "address": "770B Sư Vạn Hạnh, Hòa Hưng (Quận 10)",
   "price_per_couple_vnd": 1000000,
@@ -15594,7 +15614,7 @@
  {
   "name": "The Lăng Kính",
   "type": "food",
-  "category": "Fine Dining date",
+  "category": "quán ăn nhỏ",
   "district": "Quận 1",
   "address": "145 Nguyễn Trãi, Bến Thành (Quận 1)",
   "price_per_couple_vnd": 1400000,
@@ -15648,7 +15668,7 @@
  {
   "name": "Yeshi Taiwanese Fusion",
   "type": "food",
-  "category": "Fine Dining date",
+  "category": "nhà hàng",
   "district": "TP Thủ Đức (Q2 cũ)",
   "address": "1F 16 Thảo Điền, An Khánh (TP Thủ Đức (Q2 cũ))",
   "price_per_couple_vnd": 600000,
@@ -15699,7 +15719,7 @@
  {
   "name": "Gabi's Corner",
   "type": "activity",
-  "category": "Workshop date",
+  "category": "quán cà phê",
   "district": "Quận 10",
   "address": "702/76 Điện Biên Phủ, Vườn Lài (Quận 10)",
   "price_per_couple_vnd": 600000,
@@ -15752,7 +15772,7 @@
  {
   "name": "Workshop Hub",
   "type": "activity",
-  "category": "Workshop date",
+  "category": "trung tâm nghệ thuật",
   "district": "TP Thủ Đức (Q2 cũ)",
   "address": "6 Lê Văn Miến, An Khánh (TP Thủ Đức (Q2 cũ))",
   "price_per_couple_vnd": null,
@@ -15805,7 +15825,7 @@
  {
   "name": "The Joy Workshop",
   "type": "activity",
-  "category": "Workshop date",
+  "category": "xưởng nghệ thuật",
   "district": "Quận 10",
   "address": "39/5 Hoàng Dư Khương, Hòa Hưng (Quận 10)",
   "price_per_couple_vnd": null,
@@ -15858,7 +15878,7 @@
  {
   "name": "Another Saigon by LG",
   "type": "activity",
-  "category": "Workshop date",
+  "category": "trưng bày",
   "district": "Quận 1",
   "address": "96 Mạc Thị Bưởi, Sài Gòn (Quận 1)",
   "price_per_couple_vnd": 0,
@@ -15911,7 +15931,7 @@
  {
   "name": "Véry Nice Bracelet",
   "type": "activity",
-  "category": "Workshop date",
+  "category": "cửa hàng trang sức",
   "district": "Quận 1",
   "address": "37/10 Đinh Công Tráng, Tân Định (Quận 1)",
   "price_per_couple_vnd": null,
@@ -15964,7 +15984,7 @@
  {
   "name": "Hiên Concept",
   "type": "activity",
-  "category": "Workshop date",
+  "category": "lớp học làm gốm",
   "district": "Tân Bình",
   "address": "26 Bá Tòng, Bảy Hiền (Tân Bình)",
   "price_per_couple_vnd": 900000,
@@ -16017,7 +16037,7 @@
  {
   "name": "Workshop Làm Bánh-IdiM DIY Bakery (Phú Mỹ Hưng) 自己做烘培俱樂部",
   "type": "activity",
-  "category": "Workshop date",
+  "category": "tiệm bánh",
   "district": "Quận 7",
   "address": "22 Raymondienne, Khu đô thị Phú Mỹ Hưng, Tân Mỹ (Quận 7)",
   "price_per_couple_vnd": 1200000,
@@ -16070,7 +16090,7 @@
  {
   "name": "MYU MEMORIES - Trang Sức Phụ Kiện Italy",
   "type": "activity",
-  "category": "Workshop date",
+  "category": "cửa hàng quà tặng",
   "district": "Phú Nhuận",
   "address": "The Box Icon, 22 Đ. Trần Huy Liệu, Phú Nhuận (Phú Nhuận)",
   "price_per_couple_vnd": null,
@@ -16123,7 +16143,7 @@
  {
   "name": "Tiệm Tranh Bắp Vẽ Workshop Thư Giãn tại Sunsetview Coffee",
   "type": "activity",
-  "category": "Workshop date",
+  "category": "thủ công mỹ nghệ",
   "district": "Bình Thạnh",
   "address": "353/7a Bình Quới (Bình Thạnh)",
   "price_per_couple_vnd": null,
@@ -16173,7 +16193,7 @@
  {
   "name": "XOXO SAIGON - Workshop, Accessories, Custom",
   "type": "activity",
-  "category": "Workshop date",
+  "category": "cửa hàng phụ kiện thời trang",
   "district": "Bình Thạnh",
   "address": "47L Đ. số 11, Gia Định (Bình Thạnh)",
   "price_per_couple_vnd": null,
@@ -16226,7 +16246,7 @@
  {
   "name": "Tía Tô Artbook",
   "type": "activity",
-  "category": "Workshop date",
+  "category": "quán cà phê",
   "district": "Quận 1",
   "address": "chung cư 14, Tôn Thất Đạm, Sài Gòn (Quận 1)",
   "price_per_couple_vnd": 400000,
@@ -16279,7 +16299,7 @@
  {
   "name": "CHUCKY BEETLE INDUSTRY",
   "type": "activity",
-  "category": "Workshop date",
+  "category": "cửa hàng bán đồ thủ công",
   "district": "Gò Vấp",
   "address": "525/9 Quang Trung, Gò Vấp (Gò Vấp)",
   "price_per_couple_vnd": 1298000,
@@ -16332,7 +16352,7 @@
  {
   "name": "TÒONG TENG ® Mosaic Workshop & Cafe - 412/10 Nơ Trang Long",
   "type": "activity",
-  "category": "Workshop date",
+  "category": "quán cà phê nghệ thuật",
   "district": "Bình Thạnh",
   "address": "412/10 Nơ Trang Long, Bình Lợi Trung (Bình Thạnh)",
   "price_per_couple_vnd": 600000,
@@ -16385,7 +16405,7 @@
  {
   "name": "Art Vendors Studio",
   "type": "activity",
-  "category": "Workshop date",
+  "category": "cửa hàng quà tặng",
   "district": "Quận 3",
   "address": "443/6 Đ. Lê Văn Sỹ, Nhiêu Lộc (Quận 3)",
   "price_per_couple_vnd": null,
@@ -17323,7 +17343,7 @@
   "area": "Quận 3",
   "kind": "workshop",
   "name": "Daydreamer Workshop (HCM)",
-  "category": "Workshop date",
+  "category": "nơi tổ chức sự kiện",
   "description_vi": "Workshop thủ công hơn 20 chủ đề cho cặp đôi/nhóm bạn.",
   "source_urls": [
    "https://www.tiktok.com/@daydreamerworkshop/video/7657551396325133588",
@@ -17373,7 +17393,7 @@
   "area": "Bình Thạnh",
   "kind": "workshop",
   "name": "Kani Workshop",
-  "category": "Workshop date",
+  "category": "cửa hàng trang sức",
   "description_vi": "Workshop làm đồ handmade cho cặp đôi/bạn bè.",
   "source_urls": [
    "https://www.tiktok.com/@reviewsaigon.59/video/7697212511564614913",
@@ -17471,7 +17491,7 @@
   "area": "Quận 10",
   "kind": "workshop",
   "name": "Ward Coffee (workshop cặp đôi)",
-  "category": "Workshop date",
+  "category": "tiệm bánh",
   "description_vi": "Quán cà phê yên tĩnh có workshop cuối tuần dành cho cặp đôi.",
   "source_urls": [
    "https://www.tiktok.com/@naoranhcaphe/video/7618617079322676497",
@@ -17507,8 +17527,8 @@
   ],
   "source": "social",
   "out_of_area": false,
-  "status": "uncertain",
-  "date_checked": "2026-10-26",
+  "status": "hidden",
+  "date_checked": "2026-10-31",
   "rating": 5.0,
   "reviews": 3,
   "lists": [],
@@ -17543,7 +17563,8 @@
   "image": "/images/gm-vi-decord-workshop-hoa-th-y-tinh-341.webp",
   "image_kind": "photo",
   "image_credit": "Google Maps",
-  "image_source_url": "https://www.google.com/maps/place/VI+DECORD+AND+COFFEE/data=!4m7!3m6!1s0x317529006f50b145:0x1b0023387edaa5dd!8m2!3d10.8455943!4d106.7129433!16s%2Fg%2F11zwtzpkqk"
+  "image_source_url": "https://www.google.com/maps/place/VI+DECORD+AND+COFFEE/data=!4m7!3m6!1s0x317529006f50b145:0x1b0023387edaa5dd!8m2!3d10.8455943!4d106.7129433!16s%2Fg%2F11zwtzpkqk",
+  "hidden_reason": "Out of central HCMC: coords 10.8455943,106.7129433 (TP Thủ Đức (Thủ Đức cũ))"
  },
  {
   "type": "activity",
@@ -17572,7 +17593,7 @@
   "area": "Bình Thạnh",
   "kind": "workshop",
   "name": "Tâm Ngọc Coffee & Workshop",
-  "category": "Workshop date",
+  "category": "quán cà phê",
   "description_vi": "Cà phê + workshop (tranh hoa khô, in ly, trang sức đá), có hoạt động couple.",
   "source_urls": [
    "https://notes.tiktok.com/@bolonton_/7670873440244810258?region=vn",
@@ -17844,7 +17865,7 @@
   "area": "Bình Thạnh",
   "kind": "game",
   "name": "FIGHT STATION – PS5 PES Cinema Nintendo",
-  "category": "Tổ hợp game date",
+  "category": "cửa hàng trò chơi điện tử",
   "description_vi": "Phòng PS5/Nintendo/xem phim riêng cho cặp đôi.",
   "source_urls": [
    "https://www.tiktok.com/@vivucungtri/video/7641822826256796936",
@@ -17895,7 +17916,7 @@
   "area": "Quận 1",
   "kind": "photobooth",
   "name": "Lumi Photobooth – Saigon Garden",
-  "category": "Photobooth date",
+  "category": "buồng chụp ảnh",
   "description_vi": "Photobooth tự động trong Saigon Garden.",
   "source_urls": [
    "https://www.tiktok.com/@hynn280/photo/7649347171224964360"
@@ -18648,8 +18669,8 @@
   "name": "Lẩu Dê Tri Kỷ",
   "type": "food",
   "category": "lẩu",
-  "district": "Phú Nhuận",
-  "address": "351 Đ. Lê Văn Sỹ, Tân Sơn Hòa, Hồ Chí Minh 700000, Việt Nam",
+  "district": "Tân Bình",
+  "address": "351 Lê Văn Sỹ, P. Tân Sơn Hòa, Tân Bình",
   "price_per_couple_vnd": 320000,
   "price_note": "Lẩu dê nhỏ 280k, size L 320k (nồi cho 2–3 người)",
   "opening_hours": "10:00–23:00 (giờ Thứ Hai theo Google Maps)",
@@ -18666,7 +18687,7 @@
   "source": "web",
   "out_of_area": false,
   "status": "likely_operating",
-  "date_checked": "2026-10-26",
+  "date_checked": "2026-10-31",
   "rating": 4.1,
   "reviews": null,
   "lists": [],
@@ -18679,7 +18700,7 @@
    600,
    1380
   ],
-  "area": "Phú Nhuận",
+  "area": "Tân Bình",
   "kind": "restaurant",
   "price_min": 280000,
   "price_max": 320000,
@@ -18954,7 +18975,7 @@
   "district": "Quận 3",
   "address": "339 Lê Văn Sỹ, Q.3",
   "price_per_couple_vnd": 120000,
-  "price_note": "~60k/phần (saigonhomestay)",
+  "price_note": "~60k/phần (saigonhomestay) · ⚠️ chưa xác minh chi nhánh 339 Lê Văn Sỹ (Foody chỉ có 458 Lê Văn Sỹ, Tân Bình)",
   "opening_hours": null,
   "mood_tags": [
    "rẻ mà vui"
@@ -18966,7 +18987,7 @@
   "source": "web",
   "out_of_area": false,
   "status": "uncertain",
-  "date_checked": "2026-10-26",
+  "date_checked": "2026-10-31",
   "rating": null,
   "reviews": null,
   "lists": [],
@@ -18996,10 +19017,10 @@
   "type": "food",
   "category": "hủ tiếu",
   "district": "Quận 1",
-  "address": "86 Lê Thị Riêng, Q.1",
+  "address": "A65 Nguyễn Trãi, P. Nguyễn Cư Trinh, Q.1",
   "price_per_couple_vnd": 110000,
-  "price_note": "50–55k/tô",
-  "opening_hours": "06:00–23:00 (saigonhomestay)",
+  "price_note": "69–80k/tô (Foody)",
+  "opening_hours": "05:30–21:30",
   "mood_tags": [
    "rẻ mà vui"
   ],
@@ -19010,11 +19031,11 @@
   "source": "web",
   "out_of_area": false,
   "status": "uncertain",
-  "date_checked": "2026-10-26",
+  "date_checked": "2026-10-31",
   "rating": null,
   "reviews": null,
   "lists": [],
-  "maps_url": "https://www.google.com/maps/search/?api=1&query=H%E1%BB%A7%20Ti%E1%BA%BFu%20Nam%20Vang%20Qu%E1%BB%B3nh%2086%20L%C3%AA%20Th%E1%BB%8B%20Ri%C3%AAng%2C%20Q.1%20TP.HCM",
+  "maps_url": "https://www.google.com/maps/search/?api=1&query=H%E1%BB%A7%20Ti%E1%BA%BFu%20Nam%20Vang%20Qu%E1%BB%B3nh%20A65%20Nguy%E1%BB%85n%20Tr%C3%A3i%2C%20P.%20Nguy%E1%BB%85n%20C%C6%B0%20Trinh%2C%20Q.1%20TP.HCM",
   "lat": null,
   "lng": null,
   "website": null,
@@ -19025,14 +19046,14 @@
   ],
   "area": "Quận 1",
   "kind": "restaurant",
-  "price_min": 50000,
-  "price_max": 55000,
+  "price_min": 69000,
+  "price_max": 80000,
   "price_unit": "person",
-  "couple_min": 100000,
-  "couple_max": 110000,
-  "price_source_url": "https://saigonhomestay.com/best-street-food-in-saigon/",
-  "price_confidence": "low",
-  "price_checked": "2026-10-26",
+  "couple_min": 138000,
+  "couple_max": 160000,
+  "price_source_url": "https://www.foody.vn/ho-chi-minh/quynh-hu-tieu-nam-vang",
+  "price_confidence": "medium",
+  "price_checked": "2026-10-31",
   "price_method": "web_research_v6",
   "maps_kind": "search",
   "image": null,
@@ -19056,8 +19077,8 @@
   ],
   "source": "web",
   "out_of_area": false,
-  "status": "uncertain",
-  "date_checked": "2026-10-26",
+  "status": "hidden",
+  "date_checked": "2026-10-31",
   "rating": null,
   "reviews": null,
   "lists": [],
@@ -19083,7 +19104,8 @@
   "price_method": "web_research_v6",
   "maps_kind": "search",
   "image": null,
-  "note": "Google Maps 26/10/2026: không thấy Cuốn N Roll ở 12 Nguyễn Trung Trực; các kết quả đều ở Hà Nội và đã đóng"
+  "note": "Google Maps 26/10/2026: không thấy Cuốn N Roll ở 12 Nguyễn Trung Trực; các kết quả đều ở Hà Nội và đã đóng",
+  "hidden_reason": "Cuốn N Roll announced closure of the whole chain from 25/4/2026 (and it is a Hà Nội brand)"
  },
  {
   "name": "Bún Bò Gánh (Nguyễn Trãi)",
@@ -21489,7 +21511,7 @@
   "rating": null,
   "reviews": null,
   "lists": [],
-  "maps_url": "https://www.google.com/maps/search/?api=1&query=Yuna%20Alaska%20Coffee%20%28cafe%20ch%C3%B3%29%2058%20Nguy%E1%BB%85n%20Gia%20Tr%C3%AD%2C%20B%C3%ACnh%20Th%E1%BA%A1nh%20TP.HCM",
+  "maps_url": "https://www.google.com/maps/search/?api=1&query=Yuna%20Alaska%20Coffee%20Nguy%E1%BB%85n%20Gia%20Tr%C3%AD%20B%C3%ACnh%20Th%E1%BA%A1nh",
   "lat": null,
   "lng": null,
   "website": null,
@@ -21664,8 +21686,8 @@
   "name": "Sân khấu Trống Đồng",
   "type": "activity",
   "category": "xem kịch",
-  "district": "Quận 3",
-  "address": "12b Cách Mạng Tháng Tám, Bến Thành, Hồ Chí Minh, Việt Nam",
+  "district": "Quận 1",
+  "address": "12B Cách Mạng Tháng Tám, P. Bến Thành, Q.1",
   "price_per_couple_vnd": 500000,
   "price_note": "100–250k/vé (bảng giá tổng hợp)",
   "opening_hours": null,
@@ -21681,7 +21703,7 @@
   "source": "web",
   "out_of_area": false,
   "status": "likely_operating",
-  "date_checked": "2026-10-26",
+  "date_checked": "2026-10-31",
   "rating": 4.1,
   "reviews": null,
   "lists": [],
@@ -21691,7 +21713,7 @@
   "website": null,
   "google_category": null,
   "hours": null,
-  "area": "Quận 3",
+  "area": "Quận 1",
   "kind": "show",
   "price_min": 100000,
   "price_max": 250000,
@@ -21932,8 +21954,8 @@
   ],
   "source": "web",
   "out_of_area": false,
-  "status": "uncertain",
-  "date_checked": "2026-10-26",
+  "status": "hidden",
+  "date_checked": "2026-10-31",
   "rating": 4.7,
   "reviews": null,
   "lists": [],
@@ -21950,16 +21972,17 @@
   "price_unit": "free",
   "couple_min": 0,
   "couple_max": 0,
-  "price_source_url": "https://congbao.hochiminhcity.gov.vn/",
+  "price_source_url": "https://congbao.hochiminhcity.gov.vn/cong-bao/van-ban/nghi-quyet/so/29-2026-nq-hdnd/ngay/27-08-2026/tai-ve/50039",
   "price_confidence": "medium",
-  "price_checked": "2026-10-26",
+  "price_checked": "2026-10-31",
   "price_method": "web_research_v7",
   "maps_kind": "direct",
   "image": "/images/gm-b-o-t-ng-h-ch-minh-b-n-nh-r-ng-428.webp",
   "note": null,
   "image_kind": "photo",
   "image_credit": "Google Maps",
-  "image_source_url": "https://maps.google.com/?cid=5579796624018008206"
+  "image_source_url": "https://maps.google.com/?cid=5579796624018008206",
+  "hidden_reason": "Google Maps place page shows \"Tạm thời đóng cửa\" (temporarily closed) on 2026-10-31"
  },
  {
   "name": "Bảo tàng Tôn Đức Thắng",
@@ -21998,9 +22021,9 @@
   "price_unit": "free",
   "couple_min": 0,
   "couple_max": 0,
-  "price_source_url": "https://congbao.hochiminhcity.gov.vn/",
+  "price_source_url": "https://congbao.hochiminhcity.gov.vn/cong-bao/van-ban/nghi-quyet/so/29-2026-nq-hdnd/ngay/27-08-2026/tai-ve/50039",
   "price_confidence": "medium",
-  "price_checked": "2026-10-26",
+  "price_checked": "2026-10-31",
   "price_method": "web_research_v7",
   "maps_kind": "direct",
   "image": "/images/gm-b-o-t-ng-t-n-c-th-ng-429.webp",
